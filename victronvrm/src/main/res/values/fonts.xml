@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="font_museo300">MuseoSans-300.ttf</string>
+    <string name="font_museo500">MuseoSans-500.ttf</string>
+</resources>

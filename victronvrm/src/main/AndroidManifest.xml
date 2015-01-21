@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="nl.victronenergy"
+          android:installLocation="preferExternal">
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.SEND_SMS"/>
+    <uses-permission android:name="android.permission.WRITE_SMS"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <!-- Permission to write in the app's external storage is not required anymore from SDK 18 and up http://developer.android.com/training/camera/photobasics.html#TaskPath -->
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="18"/>
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false"/>
+    <uses-feature
+        android:name="android.hardware.telephony"
+        android:required="false"/>
+
+    <application
+        android:name="nl.victronenergy.VictronApplication"
+        android:allowBackup="true"
+        android:hardwareAccelerated="true"
+        android:icon="@drawable/ic_launcher_base"
+        android:label="@string/app_name"
+        android:theme="@style/ThemeActionBar">
+
+        <activity
+            android:name="nl.victronenergy.activities.ActivitySplash"
+            android:icon="@drawable/ic_launcher"
+            android:noHistory="true"
+            android:theme="@android:style/Theme.Light.NoTitleBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="nl.victronenergy.activities.ActivityLogin"
+            android:logo="@drawable/logo_full"/>
+        <activity
+            android:name="nl.victronenergy.activities.ActivityAbout"
+            android:label="@string/actionbar_title_about"/>
+        <activity
+            android:name="nl.victronenergy.activities.ActivityHistoricData"
+            android:label="@string/actionbar_title_historic_data"/>
+        <activity
+            android:name="nl.victronenergy.activities.ActivityIOSettings"
+            android:configChanges="orientation|screenSize"
+            android:label="@string/actionbar_title_io_settings"/>
+        <activity
+            android:name="nl.victronenergy.activities.ActivityIOGeneratorSettings"
+            android:label="@string/actionbar_title_io_settings"/>
+        <activity
+            android:name="nl.victronenergy.activities.ActivityWebsite"
+            android:configChanges="orientation|screenSize"/>
+        <activity
+            android:name="nl.victronenergy.activities.ActivitySiteSummary"
+            android:label="@string/actionbar_title_site_summary"/>
+        <activity
+            android:name="nl.victronenergy.activities.ActivitySiteDetail"
+            android:label="@string/actionbar_title_site_detail"/>
+        <activity
+            android:name="nl.victronenergy.activities.ActivityGallery"
+            android:theme="@style/GalleryThemeActionBar"/>
+        <activity
+            android:name="nl.victronenergy.activities.TakePictureActivity"
+            android:theme="@style/TransparentDialogTheme"
+            android:configChanges="keyboardHidden|orientation|screenSize"/>
+        <meta-data android:name="com.crashlytics.ApiKey" android:value="d50d41cc16153f4927c01a1c210fbdc801b2d0c3"/>
+    </application>
+
+</manifest>

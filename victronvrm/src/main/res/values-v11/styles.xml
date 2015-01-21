@@ -1,0 +1,32 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Actionbar Victron theme -->
+    <style name="ThemeActionBar" parent="Theme.AppCompat.Light">
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:textColor">@color/blue</item>
+        <item name="android:background">@null</item>
+        <item name="actionBarStyle">@style/Widget.ActionBar</item>
+        <item name="android:actionBarStyle">@style/Widget.ActionBar</item>
+        <item name="android:actionMenuTextAppearance">@style/TextMenuItem</item>
+        <item name="actionBarWidgetTheme">@style/Widget.ActionBar.Theme</item>
+    </style>
+
+    <!-- Gallery actionbar theme -->
+    <style name="GalleryThemeActionBar" parent="ThemeActionBar">
+        <item name="android:windowActionBarOverlay">true</item>
+
+        <!-- Support library compatibility -->
+        <item name="windowActionBarOverlay">true</item>
+    </style>
+
+    <style name="Widget.ActionBar" parent="Widget.AppCompat.Light.ActionBar">
+        <item name="android:background">@drawable/actionbar_background</item>
+        <item name="background">@drawable/actionbar_background</item>
+        <item name="android:textColor">@color/blue</item>
+        <item name="titleTextStyle">@style/ActionBarTitleTextStyle</item>
+        <item name="android:titleTextStyle">@style/ActionBarTitleTextStyle</item>
+    </style>
+
+    <style name="AlertDialogCustom" parent="@android:style/Theme.Holo.Dialog"/>
+
+</resources>

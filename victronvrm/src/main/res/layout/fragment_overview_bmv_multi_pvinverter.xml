@@ -1,0 +1,321 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical">
+
+    <!-- Top part -->
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:weightSum="4">
+
+        <!-- AC In -->
+
+        <LinearLayout
+                android:id="@+id/layout_ac_in"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+            <nl.victronenergy.views.BetterTextView
+                    android:id="@+id/tv_ac_in_header"
+                    style="@style/TextOverviewHeader"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"/>
+
+            <nl.victronenergy.views.BetterTextView
+                    android:id="@+id/textview_ac_in_w_phase_1"
+                    style="@style/TextOverviewValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"/>
+
+            <nl.victronenergy.views.BetterTextView
+                    android:id="@+id/textview_ac_in_w_phase_2"
+                    style="@style/TextOverviewValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"/>
+
+            <nl.victronenergy.views.BetterTextView
+                    android:id="@+id/textview_ac_in_w_phase_3"
+                    style="@style/TextOverviewValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"/>
+        </LinearLayout>
+
+        <!-- Arrow multi - ac in -->
+
+        <LinearLayout
+                android:id="@+id/layout_arrow_multi_ac_in"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+            <ImageView
+                    android:id="@+id/imageview_arrow_multi_ac_in"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_medium"
+                    android:src="@drawable/arrow_dot"/>
+        </LinearLayout>
+
+        <!-- Multi -->
+
+        <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+            <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/battery_charger"/>
+        </LinearLayout>
+
+        <!-- Arrow multi - ac system and multi - PV Inverter -->
+
+        <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+            <!-- Arrow multi - ac system -->
+
+            <LinearLayout
+                    android:id="@+id/layout_arrow_multi_ac_system"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:layout_marginBottom="@dimen/spacing_medium"
+                    android:orientation="vertical">
+
+                <ImageView
+                        android:id="@+id/imageview_arrow_multi_ac_system"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/arrow_dot"/>
+            </LinearLayout>
+
+            <!-- Arrow multi - pv inverter -->
+
+            <nl.victronenergy.views.BetterTextView
+                    android:id="@+id/textview_multi_pv_inverter_w_phase_1"
+                    style="@style/TextOverviewValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_medium"/>
+
+            <nl.victronenergy.views.BetterTextView
+                    android:id="@+id/textview_multi_pv_inverter_w_phase_2"
+                    style="@style/TextOverviewValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            <nl.victronenergy.views.BetterTextView
+                    android:id="@+id/textview_multi_pv_inverter_w_phase_3"
+                    style="@style/TextOverviewValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            <ImageView
+                    android:id="@+id/imageview_arrow_multi_pv_inverter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/arrow_dot"/>
+        </LinearLayout>
+
+        <!-- AC System and PV Inverter -->
+
+        <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+            <!-- AC System -->
+
+            <LinearLayout
+                    android:id="@+id/layout_ac_system"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/spacing_medium"
+                    android:orientation="vertical">
+
+                <nl.victronenergy.views.BetterTextView
+                        style="@style/TextOverviewHeader"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="@string/site_detail_header_ac_load"/>
+
+                <nl.victronenergy.views.BetterTextView
+                        android:id="@+id/textview_ac_system_w_phase_1"
+                        style="@style/TextOverviewValue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"/>
+
+                <nl.victronenergy.views.BetterTextView
+                        android:id="@+id/textview_ac_system_w_phase_2"
+                        style="@style/TextOverviewValue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"/>
+
+                <nl.victronenergy.views.BetterTextView
+                        android:id="@+id/textview_ac_system_w_phase_3"
+                        style="@style/TextOverviewValue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"/>
+            </LinearLayout>
+
+            <!-- PV Inverter -->
+
+            <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/spacing_small"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/pv_inverter"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Arrow multi - battery -->
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/spacing_small"
+            android:orientation="horizontal">
+
+        <ImageView
+                android:id="@+id/imageview_arrow_multi_battery"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:src="@drawable/arrow_dot_up"/>
+
+        <nl.victronenergy.views.BetterTextView
+                android:id="@+id/textview_multi_battery_a"
+                style="@style/TextOverviewValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/spacing_small"
+                android:layout_toRightOf="@+id/imageview_arrow_multi_battery"/>
+    </RelativeLayout>
+    <!-- Botom part -->
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            android:weightSum="4">
+
+        <!-- Left side of the battery is empty -->
+
+        <View
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.5"/>
+
+        <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+            <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/battery"/>
+
+            <nl.victronenergy.views.BetterTextView
+                    android:id="@+id/textview_battery_v"
+                    style="@style/TextOverviewValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"/>
+
+            <nl.victronenergy.views.BetterTextView
+                    android:id="@+id/textview_battery_percentage"
+                    style="@style/TextOverviewValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"/>
+
+            <nl.victronenergy.views.BetterTextView
+                    android:id="@+id/textview_battery_ttg"
+                    style="@style/TextOverviewValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"/>
+        </LinearLayout>
+
+        <!-- Arrow right side of the battery -->
+
+        <LinearLayout
+                android:id="@+id/layout_dc_system_arrow"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.6"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+            <ImageView
+                    android:id="@+id/imageview_arrow_battery_dc_system"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_medium"
+                    android:src="@drawable/arrow_dot"/>
+        </LinearLayout>
+
+        <!-- DC System out -->
+
+        <LinearLayout
+                android:id="@+id/layout_dc_system_out"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.9"
+                android:orientation="vertical">
+
+            <nl.victronenergy.views.BetterTextView
+                    style="@style/TextOverviewHeader"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="@string/site_detail_header_dc_system"/>
+
+            <nl.victronenergy.views.BetterTextView
+                    android:id="@+id/textview_dc_system_w"
+                    style="@style/TextOverviewValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,102 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginTop="@dimen/spacing_medium"
+              android:baselineAligned="false"
+              android:orientation="horizontal"
+              android:weightSum="4">
+
+    <!-- Left side of the battery is empty -->
+
+    <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.5"/>
+
+    <!-- Battery data -->
+
+    <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+        <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleType="fitCenter"
+                android:src="@drawable/battery"/>
+
+        <nl.victronenergy.views.BetterTextView
+                android:id="@+id/textview_battery_v"
+                style="@style/TextOverviewValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"/>
+
+        <nl.victronenergy.views.BetterTextView
+                android:id="@+id/textview_battery_a"
+                style="@style/TextOverviewValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"/>
+
+        <nl.victronenergy.views.BetterTextView
+                android:id="@+id/textview_battery_percentage"
+                style="@style/TextOverviewValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"/>
+
+        <nl.victronenergy.views.BetterTextView
+                android:id="@+id/textview_battery_ttg"
+                style="@style/TextOverviewValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"/>
+    </LinearLayout>
+
+    <!-- Arrow right side of the battery -->
+
+    <LinearLayout
+            android:id="@+id/layout_dc_system_arrow"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+        <ImageView
+                android:id="@+id/imageview_arrow_battery_dc_system"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_medium"
+                android:src="@drawable/arrow_dot"/>
+    </LinearLayout>
+
+    <!-- DC System out -->
+
+    <LinearLayout
+            android:id="@+id/layout_dc_system_out"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+        <nl.victronenergy.views.BetterTextView
+                style="@style/TextOverviewHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/site_detail_header_dc_system"/>
+
+        <nl.victronenergy.views.BetterTextView
+                android:id="@+id/textview_dc_system_w"
+                style="@style/TextOverviewValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"/>
+    </LinearLayout>
+
+</LinearLayout>

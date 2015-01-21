@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <item name="button_start_gen" type="id"/>
+    <item name="button_stop_gen" type="id"/>
+
+    <!-- Sliding Menu -->
+    <item name="selected_view" type="id"/>
+</resources>

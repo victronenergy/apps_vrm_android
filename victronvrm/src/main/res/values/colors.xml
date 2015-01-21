@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Victron colors -->
+    <color name="lightest_grey">#f8f7f7</color>
+    <color name="light_grey">#e5e4e0</color>
+    <color name="grey">#cac9c8</color>
+    <color name="dark_grey">#63625E</color>
+    <color name="black">#272622</color>
+    <color name="blue">#5AA5E1</color>
+    <color name="dark_blue">#4790D0</color>
+    <color name="orange">#F7AB3E</color>
+    <color name="dark_orange">#F0962E</color>
+    <color name="green">#A0D87B</color>
+    <color name="red">#FA716F</color>
+    <color name="white">#FFFFFF</color>
+
+    <color name="actionbar_background">@color/white</color>
+    <color name="background">@color/light_grey</color>
+    <color name="panel_background">@color/white</color>
+    <color name="border_color">@color/grey</color>
+    <color name="subheader_background">@color/lightest_grey</color>
+
+    <!-- Site summary list item colors -->
+    <color name="background_site_summary_item_default">@color/white</color>
+    <color name="background_site_summary_item_pressed">@color/lightest_grey</color>
+
+</resources>

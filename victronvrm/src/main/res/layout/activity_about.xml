@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/background">
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scrollbars="none">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/spacing_medium"
+            android:paddingBottom="@dimen/spacing_medium"
+            android:paddingLeft="@dimen/spacing_small"
+            android:paddingRight="@dimen/spacing_small">
+
+            <LinearLayout
+                android:background="@drawable/background_panel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <nl.victronenergy.views.BetterTextView
+                    android:id="@+id/textview_about_version"
+                    style="@style/TextSubHeading"
+                    android:gravity="center_vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/spacing_medium"
+                    android:background="@drawable/header_background"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/spacing_medium"
+                    android:paddingLeft="@dimen/spacing_medium"
+                    android:paddingRight="@dimen/spacing_medium"
+                    android:orientation="vertical">
+
+                    <nl.victronenergy.views.BetterTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/about_text"
+                        style="@style/about_content"/>
+
+                    <LinearLayout
+                        android:layout_marginTop="@dimen/spacing_large"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:weightSum="3"
+                        android:layout_marginBottom="@dimen/spacing_large">
+
+                        <ImageView
+                            android:id="@+id/about_imageview_fb"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_facebook"
+                            android:layout_weight="1"/>
+
+                        <ImageView
+                            android:id="@+id/about_imageview_twitter"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_twitter"
+                            android:layout_weight="1"/>
+
+                        <ImageView
+                            android:id="@+id/about_imageview_linkedin"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_linkedin"
+                            android:layout_weight="1"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+        </FrameLayout>
+    </ScrollView>
+
+</LinearLayout>

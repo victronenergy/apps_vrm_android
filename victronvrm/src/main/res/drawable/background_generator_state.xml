@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item>
+        <shape android:shape="rectangle">
+            <corners android:radius="@dimen/rounded_corner_settings_generator_state"/>
+            <solid android:color="@color/border_color"/>
+        </shape>
+    </item>
+
+    <item
+            android:top="@dimen/border_width_settings_generator_state"
+            android:left="@dimen/border_width_settings_generator_state"
+            android:right="@dimen/border_width_settings_generator_state"
+            android:bottom="@dimen/border_width_settings_generator_state">
+        <shape android:shape="rectangle">
+            <corners android:radius="@dimen/rounded_corner_settings_generator_state"/>
+            <solid android:color="@color/background"/>
+        </shape>
+    </item>
+
+</layer-list>

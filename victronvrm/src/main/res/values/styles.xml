@@ -1,0 +1,197 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <style name="AppTheme" parent="android:Theme.Light"/>
+
+    <!-- Actionbar Victron theme -->
+    <style name="ThemeActionBar" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:textColor">@color/blue</item>
+        <item name="android:background">@null</item>
+        <item name="actionBarStyle">@style/Widget.ActionBar</item>
+        <item name="actionMenuTextAppearance">@style/TextMenuItem</item>
+        <item name="actionBarWidgetTheme">@style/Widget.ActionBar.Theme</item>
+    </style>
+
+    <style name="Widget.ActionBar.Theme">
+        <item name="android:textColorHint">@android:color/white</item>
+        <item name="android:textColor">@color/blue</item>
+    </style>
+
+    <style name="Widget.ActionBar" parent="Widget.AppCompat.ActionBar">
+        <item name="android:background">@color/actionbar_background</item>
+        <item name="background">@drawable/actionbar_background</item>
+        <item name="android:textColor">@color/blue</item>
+        <item name="titleTextStyle">@style/ActionBarTitleTextStyle</item>
+    </style>
+
+    <style name="ActionBarTitleTextStyle" parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <!-- Gallery actionbar theme -->
+    <style name="GalleryThemeActionBar" parent="ThemeActionBar">
+        <!-- Support library compatibility -->
+        <item name="windowActionBarOverlay">true</item>
+    </style>
+
+    <!-- Alert Dialog themes -->
+    <style name="AlertDialogCustom" parent="@android:style/Theme.Dialog"/>
+
+    <style name="TransparentDialogTheme" parent="android:Theme.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFrame">@null</item>
+    </style>
+
+    <style name="WidgetDividerPopUp">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/divider_height</item>
+        <item name="android:background">@drawable/popup_divider</item>
+    </style>
+
+    <!-- Text styles -->
+    <style name="TextActionbar">
+        <item name="@attr/fontFace">@string/font_museo500</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="TextLoginHeader">
+        <item name="@attr/fontFace">@string/font_museo500</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">@dimen/text_medium</item>
+    </style>
+
+    <style name="TextSubHeading">
+        <item name="@attr/fontFace">@string/font_museo500</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/text_medium</item>
+    </style>
+
+    <style name="TextSecondHeader">
+        <item name="@attr/fontFace">@string/font_museo300</item>
+        <item name="android:textColor">@color/dark_grey</item>
+        <item name="android:textSize">@dimen/text_medium</item>
+    </style>
+
+    <style name="TextSummaryTitle">
+        <item name="@attr/fontFace">@string/font_museo300</item>
+        <item name="android:textColor">@color/dark_grey</item>
+        <item name="android:textSize">@dimen/text_nano</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
+    <style name="TextSummaryItem">
+        <item name="@attr/fontFace">@string/font_museo300</item>
+        <item name="android:textColor">@color/dark_grey</item>
+        <item name="android:textSize">@dimen/text_micro</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
+    <style name="TextSpinnerItem">
+        <item name="@attr/fontFace">@string/font_museo500</item>
+        <item name="android:textColor">@color/dark_grey</item>
+        <item name="android:textSize">@dimen/text_medium</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
+    <style name="TextEditText">
+        <item name="@attr/fontFace">@string/font_museo300</item>
+        <item name="android:background">@drawable/edit_text_holo_light</item>
+        <item name="android:textColorHint">@color/dark_grey</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">@dimen/text_medium</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
+    <style name="TextOverviewHeader">
+        <item name="@attr/fontFace">@string/font_museo300</item>
+        <item name="android:textColor">@color/dark_grey</item>
+        <item name="android:textSize">@dimen/text_micro</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:ellipsize">none</item>
+    </style>
+
+    <style name="TextOverviewValue">
+        <item name="@attr/fontFace">@string/font_museo300</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">@dimen/text_micro</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:ellipsize">none</item>
+    </style>
+
+    <style name="TextIOListItem">
+        <item name="@attr/fontFace">@string/font_museo300</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">@dimen/text_medium</item>
+    </style>
+
+    <style name="TextIOListItemValue">
+        <item name="@attr/fontFace">@string/font_museo300</item>
+        <item name="android:textColor">@color/blue</item>
+        <item name="android:textSize">@dimen/text_medium</item>
+    </style>
+
+    <style name="TextHistoricListItem">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">@dimen/text_small</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:ellipsize">end</item>
+        <item name="@attr/fontFace">@string/font_museo300</item>
+    </style>
+
+    <style name="TextMenuItem">
+        <item name="android:textColor">@color/blue</item>
+        <item name="android:textSize">@dimen/text_medium</item>
+    </style>
+
+    <!-- Debug info -->
+    <style name="TextDebugInfo">
+        <item name="@attr/fontFace">@string/font_museo300</item>
+        <item name="android:textColor">@color/dark_grey</item>
+        <item name="android:textSize">@dimen/text_micro</item>
+    </style>
+
+    <!-- Gallery text styles -->
+    <style name="TextGalleryEmpty">
+        <item name="@attr/fontFace">@string/font_museo300</item>
+        <item name="android:textColor">@color/dark_grey</item>
+        <item name="android:textSize">@dimen/text_micro</item>
+    </style>
+
+    <!-- Victron Button Styles -->
+    <style name="Button">
+        <item name="android:padding">@dimen/spacing_small</item>
+        <item name="android:background">@drawable/button_victron</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">@dimen/text_medium</item>
+        <item name="@attr/fontFace">@string/font_museo300</item>
+    </style>
+
+    <style name="ButtonGeneratorState">
+        <item name="android:padding">@dimen/spacing_small</item>
+        <item name="android:background">@drawable/button_generator_state</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">@dimen/text_medium</item>
+        <item name="@attr/fontFace">@string/font_museo500</item>
+    </style>
+
+    <!-- Victron spinner style -->
+    <style name="SpinnerDropDownItem" parent="Theme.AppCompat.Light">
+        <item name="android:textColor">@drawable/color_selector</item>
+    </style>
+
+    <!-- Victron list styles -->
+    <style name="ListSiteSummary">
+        <item name="android:cacheColorHint">@android:color/transparent</item>
+        <item name="android:divider">@null</item>
+        <item name="android:dividerHeight">0px</item>
+    </style>
+
+    <!-- About page styles -->
+    <style name="about_content">
+        <item name="android:textColor">@color/dark_grey</item>
+        <item name="android:textSize">@dimen/text_small</item>
+        <item name="fontFace">@string/font_museo300</item>
+    </style>
+
+</resources>

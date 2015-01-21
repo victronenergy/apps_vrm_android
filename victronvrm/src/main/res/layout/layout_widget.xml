@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:id="@+id/layout_widget"
+              android:layout_width="0dp"
+              android:layout_height="wrap_content"
+              android:layout_weight="1"
+              android:orientation="vertical"
+              android:visibility="invisible">
+
+    <nl.victronenergy.views.BetterTextView
+            android:id="@+id/textview_widget_title"
+            style="@style/TextSummaryTitle"
+            android:gravity="center_vertical"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"/>
+
+    <nl.victronenergy.views.BetterTextView
+            android:id="@+id/textview_widget_value"
+            style="@style/TextSummaryItem"
+            android:drawablePadding="@dimen/spacing_xxsmall"
+            android:drawableLeft="@drawable/ic_battery_0"
+            android:gravity="center_vertical"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"/>
+</LinearLayout>

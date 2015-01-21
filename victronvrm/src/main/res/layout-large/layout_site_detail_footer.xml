@@ -1,0 +1,34 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical">
+
+    <LinearLayout
+            android:id="@+id/view_generator_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/background_panel"
+            android:gravity="center">
+
+        <nl.victronenergy.views.BetterButton
+                android:id="@+id/button_generator"
+                style="@style/Button"
+                android:layout_width="@dimen/panel_width"
+                android:layout_height="@dimen/size_medium"
+                android:layout_margin="@dimen/spacing_medium"
+                android:text="@string/site_detail_button_stop_generator"
+                android:visibility="gone"/>
+
+    </LinearLayout>
+
+    <nl.victronenergy.views.WrapContentGridView
+            android:id="@+id/gridview_gallery"
+            android:layout_marginTop="@dimen/spacing_medium"
+            android:horizontalSpacing="@dimen/spacing_xsmall"
+            android:verticalSpacing="@dimen/spacing_xsmall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnWidth="@dimen/gallery_grid_width"
+            android:numColumns="auto_fit"/>
+
+</LinearLayout>

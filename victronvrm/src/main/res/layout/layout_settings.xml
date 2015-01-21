@@ -1,0 +1,166 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical">
+
+    <nl.victronenergy.views.BetterTextView
+            android:id="@+id/textview_site_name"
+            style="@style/TextSubHeading"
+            android:padding="@dimen/spacing_medium"
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/header_background"/>
+
+    <LinearLayout
+            android:id="@+id/layout_settings_io"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/background_panel_settings"
+            android:orientation="vertical">
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/spacing_small"
+                android:paddingRight="@dimen/spacing_small"
+                android:paddingTop="@dimen/spacing_medium"
+                android:paddingBottom="@dimen/spacing_medium"
+                android:orientation="horizontal">
+
+            <nl.victronenergy.views.BetterTextView
+                    android:id="@+id/tv_has_generator"
+                    style="@style/TextSecondHeader"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/row_height_medium"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="@string/settings_has_generator"/>
+
+            <ImageButton
+                    android:id="@+id/ib_settings_has_generator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|right"
+                    android:background="@null"
+                    android:gravity="center_vertical"
+                    android:src="@drawable/button_switch_no"/>
+        </LinearLayout>
+
+        <!-- Line -->
+        <FrameLayout
+                android:background="@color/light_grey"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/border_width"/>
+
+        <LinearLayout
+                android:id="@+id/layout_subsettings_generator"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/spacing_medium"
+                android:paddingBottom="@dimen/spacing_medium"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+            <nl.victronenergy.views.BetterTextView
+                    android:id="@+id/tv_generator_output"
+                    style="@style/TextSecondHeader"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/spacing_small"
+                    android:layout_marginRight="@dimen/spacing_small"
+                    android:lines="2"
+                    android:minLines="2"
+                    android:text="@string/settings_generator_output"/>
+
+            <nl.victronenergy.views.BetterButton
+                    android:id="@+id/button_settings_select_output"
+                    style="@style/Button"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/size_medium"
+                    android:layout_marginTop="@dimen/spacing_small"
+                    android:layout_marginBottom="@dimen/spacing_medium"
+                    android:layout_marginLeft="@dimen/spacing_medium"
+                    android:layout_marginRight="@dimen/spacing_medium"/>
+
+            <!-- Line -->
+            <FrameLayout
+                    android:background="@color/light_grey"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/border_width"/>
+
+            <nl.victronenergy.views.BetterTextView
+                    android:id="@+id/tv_generator_state"
+                    style="@style/TextSecondHeader"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/settings_generator_state"
+                    android:layout_marginTop="@dimen/spacing_medium"
+                    android:layout_marginBottom="@dimen/spacing_small"
+                    android:layout_marginLeft="@dimen/spacing_small"
+                    android:layout_marginRight="@dimen/spacing_small"/>
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/size_medium"
+                    android:orientation="horizontal"
+                    android:background="@drawable/background_generator_state"
+                    android:padding="@dimen/spacing_xsmall"
+                    android:layout_marginLeft="@dimen/spacing_medium"
+                    android:layout_marginRight="@dimen/spacing_medium">
+
+                <nl.victronenergy.views.BetterButton
+                        android:id="@+id/button_settings_state_stopped"
+                        style="@style/ButtonGeneratorState"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="@string/settings_generator_state_stopped"
+                        android:drawableLeft="@drawable/circle_state_stopped"/>
+
+                <nl.victronenergy.views.BetterButton
+                        android:id="@+id/button_settings_state_running"
+                        style="@style/ButtonGeneratorState"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="@string/settings_generator_state_running"
+                        android:drawableLeft="@drawable/circle_state_running"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+                android:id="@+id/data_loading_subsettings"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:paddingBottom="@dimen/spacing_small"
+                android:paddingTop="@dimen/spacing_small"
+                android:visibility="gone">
+
+            <ProgressBar
+                    android:layout_width="@dimen/progress_size"
+                    android:layout_height="@dimen/progress_size"/>
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/spacing_small"
+                    android:text="@string/loading"
+                    android:textColor="@color/light_grey"
+                    android:textSize="@dimen/text_medium"/>
+        </LinearLayout>
+
+        <TextView
+                style="@style/TextLoginHeader"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingLeft="@dimen/spacing_medium"
+                android:paddingTop="@dimen/spacing_medium"
+                android:paddingBottom="@dimen/spacing_medium"
+                android:background="@drawable/background_io_header"
+                android:text="@string/settings_io_extender"/>
+    </LinearLayout>
+
+</LinearLayout>

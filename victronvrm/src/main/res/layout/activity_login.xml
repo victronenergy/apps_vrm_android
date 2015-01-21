@@ -1,0 +1,121 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/background"
+                android:orientation="vertical"
+                android:paddingRight="@dimen/spacing_small"
+                android:paddingTop="@dimen/spacing_medium"
+                android:paddingLeft="@dimen/spacing_small">
+
+    <nl.victronenergy.views.BetterTextView
+            android:id="@+id/tv_login_header"
+            style="@style/TextSubHeading"
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/spacing_medium"
+            android:background="@drawable/header_background"
+            android:text="@string/login"/>
+
+    <LinearLayout
+            android:id="@+id/panel_login"
+            android:layout_below="@+id/tv_login_header"
+            android:padding="@dimen/spacing_small"
+            android:background="@drawable/background_panel"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <nl.victronenergy.views.BetterEditText
+                android:id="@+id/edittext_email"
+                style="@style/TextEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/spacing_medium"
+                android:layout_marginTop="@dimen/spacing_medium"
+                android:hint="@string/user"
+                android:imeActionLabel="Next"
+                android:inputType="textEmailAddress"/>
+
+        <nl.victronenergy.views.BetterEditText
+                android:id="@+id/edittext_password"
+                style="@style/TextEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/password"
+                android:imeOptions="actionDone"
+                android:inputType="textPassword"/>
+
+        <nl.victronenergy.views.BetterButton
+                android:id="@+id/button_sign_in"
+                style="@style/Button"
+                android:layout_marginTop="@dimen/spacing_large"
+                android:layout_marginBottom="@dimen/spacing_large"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_medium"
+                android:text="@string/sign_in"/>
+
+    </LinearLayout>
+
+    <nl.victronenergy.views.BetterTextView
+            android:id="@+id/textview_forgot_password"
+            style="@style/TextSecondHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="@dimen/spacing_medium"
+            android:layout_below="@+id/panel_login"
+            android:layout_marginRight="@dimen/spacing_small"
+            android:text="@string/forgot_password"/>
+
+    <LinearLayout
+            android:layout_below="@+id/textview_forgot_password"
+            android:id="@+id/layout_login_progress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:gravity="center_vertical|center_horizontal"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+        <ProgressBar
+                android:layout_width="@dimen/progress_size"
+                android:layout_height="@dimen/progress_size"
+                android:layout_marginRight="@dimen/spacing_small"
+                android:indeterminateOnly="true"/>
+
+        <nl.victronenergy.views.BetterTextView
+                style="@style/TextSecondHeader"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/logging_in"/>
+    </LinearLayout>
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/spacing_small"
+            android:layout_marginBottom="@dimen/spacing_medium"
+            android:layout_height="wrap_content">
+
+        <nl.victronenergy.views.BetterTextView
+                style="@style/TextSecondHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/look_inside"/>
+
+        <nl.victronenergy.views.BetterButton
+                android:id="@+id/button_demo"
+                style="@style/Button"
+                android:layout_marginTop="@dimen/spacing_small"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_medium"
+                android:text="@string/demo"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,96 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical">
+
+    <nl.victronenergy.views.BetterTextView
+            android:id="@+id/textview_site_name"
+            style="@style/TextSubHeading"
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/spacing_medium"
+            android:background="@drawable/header_background"/>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/background_panel"
+            android:orientation="vertical">
+
+        <nl.victronenergy.views.BetterTextView
+                android:id="@+id/textview_site_status"
+                style="@style/TextSummaryItem"
+                android:textColor="@color/red"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_small"
+                android:layout_marginLeft="@dimen/spacing_small"
+                android:drawableLeft="@drawable/ic_alert_red"
+                android:drawablePadding="@dimen/spacing_xsmall"
+                android:gravity="center_vertical"
+                android:visibility="gone"/>
+
+        <include layout="@layout/layout_loading"/>
+
+        <nl.victronenergy.views.BetterTextView
+                android:layout_marginTop="@dimen/spacing_small"
+                android:layout_marginLeft="@dimen/spacing_small"
+                android:id="@+id/debug_info"
+                style="@style/TextSummaryItem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"/>
+
+        <FrameLayout
+                android:id="@+id/frame_overview"
+                android:layout_width="@dimen/panel_width"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_medium"
+                android:layout_gravity="center_horizontal"
+                android:visibility="gone"/>
+
+        <nl.victronenergy.views.BetterButton
+                android:id="@+id/button_historical_data"
+                style="@style/Button"
+                android:layout_width="@dimen/panel_width"
+                android:layout_height="@dimen/size_medium"
+                android:layout_margin="@dimen/spacing_medium"
+                android:layout_weight="0.5"
+                android:text="@string/site_detail_button_historical_data"
+                android:layout_gravity="center_horizontal"
+                android:visibility="gone"/>
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_marginTop="@dimen/spacing_medium"
+            android:background="@drawable/background_io_header"
+            android:id="@+id/layout_io_header"
+            android:layout_width="match_parent"
+            android:gravity="center_vertical"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+        <nl.victronenergy.views.BetterTextView
+                android:id="@+id/textview_io_extender"
+                style="@style/TextLoginHeader"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/spacing_medium"
+                android:layout_marginLeft="@dimen/spacing_small"
+                android:layout_marginTop="@dimen/spacing_medium"
+                android:layout_marginRight="@dimen/spacing_medium"
+                android:text="@string/site_detail_header_site_io"/>
+
+        <ImageView
+                android:id="@+id/button_io_settings"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/spacing_medium"
+                android:src="@drawable/ic_menu_settings"/>
+
+    </LinearLayout>
+
+</LinearLayout>

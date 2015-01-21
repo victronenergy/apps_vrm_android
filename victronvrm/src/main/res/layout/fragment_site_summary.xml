@@ -1,0 +1,34 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/background"
+              android:paddingLeft="@dimen/spacing_small"
+              android:paddingRight="@dimen/spacing_small"
+              android:orientation="vertical">
+
+    <include layout="@layout/layout_loading"/>
+
+    <ListView
+        style="@style/ListSiteSummary"
+        android:scrollbars="none"
+        android:id="@+id/list_sites"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:listSelector="@android:color/transparent"
+        android:visibility="gone"
+        android:clipToPadding="false"/>
+
+    <nl.victronenergy.views.BetterTextView
+        android:id="@+id/layout_empty_view_site_summary"
+        android:layout_marginTop="@dimen/spacing_large"
+        style="@style/TextSecondHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal"
+        android:text="@string/sitesummary_filter_no_sites_found"
+        android:drawablePadding="@dimen/spacing_large"
+        android:drawableBottom="@drawable/warning"
+        android:visibility="gone"/>
+
+</LinearLayout>

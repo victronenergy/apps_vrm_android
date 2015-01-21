@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:gravity="center_vertical"
+              android:minHeight="@dimen/size_medium"
+              android:paddingRight="@dimen/spacing_small"
+              android:orientation="horizontal"
+              android:background="@drawable/background_io_list_item"
+              android:paddingBottom="@dimen/spacing_small"
+              android:paddingTop="@dimen/spacing_small">
+
+    <ImageView
+            android:id="@+id/iv_io_icon"
+            android:layout_width="@dimen/thumbnail_size"
+            android:layout_height="@dimen/thumbnail_size"
+            android:layout_marginLeft="@dimen/spacing_small"
+            android:paddingBottom="@dimen/spacing_small"
+            android:paddingTop="@dimen/spacing_small"
+            android:scaleType="centerCrop"
+            android:src="@drawable/thumb_camera"/>
+
+    <nl.victronenergy.views.BetterTextView
+            android:id="@+id/tv_io_name"
+            style="@style/TextIOListItem"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/spacing_small"
+            android:layout_weight="1"/>
+
+    <nl.victronenergy.views.BetterTextView
+            android:id="@+id/tv_io_value"
+            style="@style/TextIOListItemValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:text="@string/io_state_closed"
+            android:visibility="gone"/>
+
+    <ImageButton
+            android:id="@+id/ib_toggle_io"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:src="@drawable/button_switch_on"
+            android:visibility="visible"/>
+
+</LinearLayout>

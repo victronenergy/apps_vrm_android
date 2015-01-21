@@ -1,0 +1,396 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/background"
+              android:orientation="vertical">
+
+    <include layout="@layout/layout_loading"/>
+
+    <ScrollView
+            android:id="@+id/sv_historic_data"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none"
+            android:visibility="gone">
+
+        <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/spacing_medium"
+                android:paddingBottom="@dimen/spacing_medium"
+                android:paddingLeft="@dimen/spacing_small"
+                android:paddingRight="@dimen/spacing_small">
+
+            <LinearLayout
+                    android:background="@drawable/background_panel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                <nl.victronenergy.views.BetterTextView
+                        android:id="@+id/textview_site_name"
+                        style="@style/TextSubHeading"
+                        android:gravity="center_vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/spacing_medium"
+                        android:background="@drawable/header_background"/>
+
+                <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/spacing_medium">
+
+                    <nl.victronenergy.views.BetterTextView
+                            android:id="@+id/tv_historic_1"
+                            android:text="@string/historic_deepest_discharge"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentTop="true"
+                            android:layout_width="wrap_content"
+                            style="@style/TextHistoricListItem"
+                            android:layout_marginBottom="@dimen/spacing_small"
+                            android:layout_height="wrap_content"/>
+
+                    <nl.victronenergy.views.BetterTextView
+                            android:layout_marginBottom="@dimen/spacing_small"
+                            android:id="@+id/tv_historic_deepest_discharge"
+                            android:text="@string/not_available_ah"
+                            android:layout_alignParentRight="true"
+                            android:layout_alignParentTop="true"
+                            style="@style/TextHistoricListItem"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                    <nl.victronenergy.views.BetterTextView
+                            android:layout_below="@+id/tv_historic_1"
+                            android:layout_marginTop="@dimen/spacing_small"
+                            android:id="@+id/tv_historic_2"
+                            android:text="@string/historic_last_discharge"
+                            android:layout_alignParentLeft="true"
+                            android:layout_width="wrap_content"
+                            style="@style/TextHistoricListItem"
+                            android:layout_marginBottom="@dimen/spacing_small"
+                            android:layout_height="wrap_content"/>
+
+                    <nl.victronenergy.views.BetterTextView
+                            android:layout_below="@+id/tv_historic_1"
+                            android:layout_marginBottom="@dimen/spacing_small"
+                            android:layout_marginTop="@dimen/spacing_small"
+                            android:id="@+id/tv_historic_last_discharge"
+                            android:text="@string/not_available_ah"
+                            android:layout_alignParentRight="true"
+                            style="@style/TextHistoricListItem"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                    <nl.victronenergy.views.BetterTextView
+                            android:layout_below="@+id/tv_historic_2"
+                            android:layout_marginTop="@dimen/spacing_small"
+                            android:id="@+id/tv_historic_3"
+                            android:text="@string/historic_average_discharge"
+                            android:layout_alignParentLeft="true"
+                            android:layout_width="wrap_content"
+                            style="@style/TextHistoricListItem"
+                            android:layout_marginBottom="@dimen/spacing_small"
+                            android:layout_height="wrap_content"/>
+
+                    <nl.victronenergy.views.BetterTextView
+                            android:layout_below="@+id/tv_historic_2"
+                            android:layout_marginBottom="@dimen/spacing_small"
+                            android:layout_marginTop="@dimen/spacing_small"
+                            android:id="@+id/tv_historic_average_discharge"
+                            android:text="@string/not_available_ah"
+                            android:layout_alignParentRight="true"
+                            style="@style/TextHistoricListItem"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                    <nl.victronenergy.views.BetterTextView
+                            android:layout_below="@+id/tv_historic_3"
+                            android:layout_marginTop="@dimen/spacing_small"
+                            android:id="@+id/tv_historic_4"
+                            android:text="@string/historic_charge_cycles"
+                            android:layout_alignParentLeft="true"
+                            android:layout_width="wrap_content"
+                            style="@style/TextHistoricListItem"
+                            android:layout_marginBottom="@dimen/spacing_small"
+                            android:layout_height="wrap_content"/>
+
+                    <nl.victronenergy.views.BetterTextView
+                            android:layout_below="@+id/tv_historic_3"
+                            android:layout_marginBottom="@dimen/spacing_small"
+                            android:layout_marginTop="@dimen/spacing_small"
+                            android:id="@+id/tv_historic_charge_cycles"
+                            android:text="@string/not_available"
+                            android:layout_alignParentRight="true"
+                            style="@style/TextHistoricListItem"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                    <nl.victronenergy.views.BetterTextView
+                            android:layout_below="@+id/tv_historic_4"
+                            android:layout_marginTop="@dimen/spacing_small"
+                            android:id="@+id/tv_historic_5"
+                            android:text="@string/historic_full_discharge_cycles"
+                            android:layout_alignParentLeft="true"
+                            android:layout_width="wrap_content"
+                            style="@style/TextHistoricListItem"
+                            android:layout_marginBottom="@dimen/spacing_small"
+                            android:layout_height="wrap_content"/>
+
+                    <nl.victronenergy.views.BetterTextView
+                            android:layout_below="@+id/tv_historic_4"
+                            android:layout_marginBottom="@dimen/spacing_small"
+                            android:layout_marginTop="@dimen/spacing_small"
+                            android:id="@+id/tv_historic_full_discharge_cycles"
+                            android:text="@string/not_available"
+                            android:layout_alignParentRight="true"
+                            style="@style/TextHistoricListItem"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                    <nl.victronenergy.views.BetterTextView
+                            android:layout_below="@+id/tv_historic_5"
+                            android:layout_marginTop="@dimen/spacing_small"
+                            android:id="@+id/tv_historic_6"
+                            android:text="@string/historic_total_ah_drawn"
+                            android:layout_alignParentLeft="true"
+                            android:layout_width="wrap_content"
+                            style="@style/TextHistoricListItem"
+                            android:layout_marginBottom="@dimen/spacing_small"
+                            android:layout_height="wrap_content"/>
+
+                    <nl.victronenergy.views.BetterTextView
+                            android:layout_below="@+id/tv_historic_5"
+                            android:layout_marginBottom="@dimen/spacing_small"
+                            android:layout_marginTop="@dimen/spacing_small"
+                            android:id="@+id/tv_historic_total_ah_drawn"
+                            android:text="@string/not_available_ah"
+                            android:layout_alignParentRight="true"
+                            style="@style/TextHistoricListItem"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                    <nl.victronenergy.views.BetterTextView
+                            android:layout_below="@+id/tv_historic_6"
+                            android:layout_marginTop="@dimen/spacing_small"
+                            android:id="@+id/tv_historic_7"
+                            android:text="@string/historic_minimum_voltage"
+                            android:layout_alignParentLeft="true"
+                            android:layout_width="wrap_content"
+                            style="@style/TextHistoricListItem"
+                            android:layout_marginBottom="@dimen/spacing_small"
+                            android:layout_height="wrap_content"/>
+
+                    <nl.victronenergy.views.BetterTextView
+                            android:layout_below="@+id/tv_historic_6"
+                            android:layout_marginBottom="@dimen/spacing_small"
+                            android:layout_marginTop="@dimen/spacing_small"
+                            android:id="@+id/tv_historic_minimum_voltage"
+                            android:text="@string/not_available_v"
+                            android:layout_alignParentRight="true"
+                            style="@style/TextHistoricListItem"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                    <nl.victronenergy.views.BetterTextView
+                            android:layout_below="@+id/tv_historic_7"
+                            android:layout_marginTop="@dimen/spacing_small"
+                            android:id="@+id/tv_historic_8"
+                            android:text="@string/historic_maximum_voltage"
+                            android:layout_alignParentLeft="true"
+                            android:layout_width="wrap_content"
+                            style="@style/TextHistoricListItem"
+                            android:layout_marginBottom="@dimen/spacing_small"
+                            android:layout_height="wrap_content"/>
+
+                    <nl.victronenergy.views.BetterTextView
+                            android:layout_below="@+id/tv_historic_7"
+                            android:layout_marginBottom="@dimen/spacing_small"
+                            android:layout_marginTop="@dimen/spacing_small"
+                            android:id="@+id/tv_historic_maximum_voltage"
+                            android:text="@string/not_available_v"
+                            android:layout_alignParentRight="true"
+                            style="@style/TextHistoricListItem"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                    <nl.victronenergy.views.BetterTextView
+                            android:layout_below="@+id/tv_historic_8"
+                            android:layout_marginTop="@dimen/spacing_small"
+                            android:id="@+id/tv_historic_9"
+                            android:text="@string/historic_time_since_last_full_charge"
+                            android:layout_alignParentLeft="true"
+                            android:layout_width="wrap_content"
+                            style="@style/TextHistoricListItem"
+                            android:layout_marginBottom="@dimen/spacing_small"
+                            android:layout_height="wrap_content"/>
+
+                    <nl.victronenergy.views.BetterTextView
+                            android:layout_below="@+id/tv_historic_8"
+                            android:layout_marginBottom="@dimen/spacing_small"
+                            android:layout_marginTop="@dimen/spacing_small"
+                            android:id="@+id/tv_historic_time_since_last_full_charge"
+                            android:text="@string/not_available_time"
+                            android:layout_alignParentRight="true"
+                            style="@style/TextHistoricListItem"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                    <nl.victronenergy.views.BetterTextView
+                            android:layout_below="@+id/tv_historic_9"
+                            android:layout_marginTop="@dimen/spacing_small"
+                            android:id="@+id/tv_historic_10"
+                            android:text="@string/historic_automatic_syncs"
+                            android:layout_alignParentLeft="true"
+                            android:layout_width="wrap_content"
+                            style="@style/TextHistoricListItem"
+                            android:layout_marginBottom="@dimen/spacing_small"
+                            android:layout_height="wrap_content"/>
+
+                    <nl.victronenergy.views.BetterTextView
+                            android:layout_below="@+id/tv_historic_9"
+                            android:layout_marginBottom="@dimen/spacing_small"
+                            android:layout_marginTop="@dimen/spacing_small"
+                            android:id="@+id/tv_historic_automatic_syncs"
+                            android:text="@string/not_available"
+                            android:layout_alignParentRight="true"
+                            style="@style/TextHistoricListItem"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                    <nl.victronenergy.views.BetterTextView
+                            android:layout_below="@+id/tv_historic_10"
+                            android:layout_marginTop="@dimen/spacing_small"
+                            android:id="@+id/tv_historic_11"
+                            android:text="@string/historic_low_voltage_alarms"
+                            android:layout_alignParentLeft="true"
+                            android:layout_width="wrap_content"
+                            style="@style/TextHistoricListItem"
+                            android:layout_marginBottom="@dimen/spacing_small"
+                            android:layout_height="wrap_content"/>
+
+                    <nl.victronenergy.views.BetterTextView
+                            android:layout_below="@+id/tv_historic_10"
+                            android:layout_marginBottom="@dimen/spacing_small"
+                            android:layout_marginTop="@dimen/spacing_small"
+                            android:id="@+id/tv_historic_low_voltage_alarms"
+                            android:text="@string/not_available"
+                            android:layout_alignParentRight="true"
+                            style="@style/TextHistoricListItem"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                    <nl.victronenergy.views.BetterTextView
+                            android:layout_below="@+id/tv_historic_11"
+                            android:layout_marginTop="@dimen/spacing_small"
+                            android:id="@+id/tv_historic_12"
+                            android:text="@string/historic_high_voltage_alarms"
+                            android:layout_alignParentLeft="true"
+                            android:layout_width="wrap_content"
+                            style="@style/TextHistoricListItem"
+                            android:layout_marginBottom="@dimen/spacing_small"
+                            android:layout_height="wrap_content"/>
+
+                    <nl.victronenergy.views.BetterTextView
+                            android:layout_below="@+id/tv_historic_11"
+                            android:layout_marginBottom="@dimen/spacing_small"
+                            android:layout_marginTop="@dimen/spacing_small"
+                            android:id="@+id/tv_historic_high_voltage_alarms"
+                            android:text="@string/not_available"
+                            android:layout_alignParentRight="true"
+                            style="@style/TextHistoricListItem"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                    <nl.victronenergy.views.BetterTextView
+                            android:layout_below="@+id/tv_historic_12"
+                            android:layout_marginTop="@dimen/spacing_small"
+                            android:id="@+id/tv_historic_13"
+                            android:text="@string/historic_low_starter_voltage_alarms"
+                            android:layout_alignParentLeft="true"
+                            android:layout_width="wrap_content"
+                            style="@style/TextHistoricListItem"
+                            android:layout_marginBottom="@dimen/spacing_small"
+                            android:layout_height="wrap_content"/>
+
+                    <nl.victronenergy.views.BetterTextView
+                            android:layout_below="@+id/tv_historic_12"
+                            android:layout_marginBottom="@dimen/spacing_small"
+                            android:layout_marginTop="@dimen/spacing_small"
+                            android:id="@+id/tv_historic_low_starter_voltage_alarms"
+                            android:text="@string/not_available"
+                            android:layout_alignParentRight="true"
+                            style="@style/TextHistoricListItem"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                    <nl.victronenergy.views.BetterTextView
+                            android:layout_below="@+id/tv_historic_13"
+                            android:layout_marginTop="@dimen/spacing_small"
+                            android:id="@+id/tv_historic_14"
+                            android:text="@string/historic_high_starter_voltage_alarms"
+                            android:layout_alignParentLeft="true"
+                            android:layout_width="wrap_content"
+                            style="@style/TextHistoricListItem"
+                            android:layout_marginBottom="@dimen/spacing_small"
+                            android:layout_height="wrap_content"/>
+
+                    <nl.victronenergy.views.BetterTextView
+                            android:layout_below="@+id/tv_historic_13"
+                            android:layout_marginBottom="@dimen/spacing_small"
+                            android:layout_marginTop="@dimen/spacing_small"
+                            android:id="@+id/tv_historic_high_starter_voltage_alarms"
+                            android:text="@string/not_available"
+                            android:layout_alignParentRight="true"
+                            style="@style/TextHistoricListItem"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                    <nl.victronenergy.views.BetterTextView
+                            android:layout_below="@+id/tv_historic_14"
+                            android:layout_marginTop="@dimen/spacing_small"
+                            android:id="@+id/tv_historic_15"
+                            android:text="@string/historic_minimum_starter_voltage"
+                            android:layout_alignParentLeft="true"
+                            android:layout_width="wrap_content"
+                            style="@style/TextHistoricListItem"
+                            android:layout_marginBottom="@dimen/spacing_small"
+                            android:layout_height="wrap_content"/>
+
+                    <nl.victronenergy.views.BetterTextView
+                            android:layout_below="@+id/tv_historic_14"
+                            android:layout_marginBottom="@dimen/spacing_small"
+                            android:layout_marginTop="@dimen/spacing_small"
+                            android:id="@+id/tv_historic_minimum_starter_voltage"
+                            android:text="@string/not_available_v"
+                            android:layout_alignParentRight="true"
+                            style="@style/TextHistoricListItem"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                    <nl.victronenergy.views.BetterTextView
+                            android:layout_below="@+id/tv_historic_15"
+                            android:layout_marginTop="@dimen/spacing_small"
+                            android:id="@+id/tv_historic_16"
+                            android:text="@string/historic_maximum_starter_voltage"
+                            android:layout_alignParentLeft="true"
+                            android:layout_width="wrap_content"
+                            style="@style/TextHistoricListItem"
+                            android:layout_height="wrap_content"/>
+
+                    <nl.victronenergy.views.BetterTextView
+                            android:layout_below="@+id/tv_historic_15"
+                            android:layout_marginTop="@dimen/spacing_small"
+                            android:id="@+id/tv_historic_maximum_starter_voltage"
+                            android:text="@string/not_available_v"
+                            android:layout_alignParentRight="true"
+                            style="@style/TextHistoricListItem"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                </RelativeLayout>
+            </LinearLayout>
+        </FrameLayout>
+    </ScrollView>
+</LinearLayout>

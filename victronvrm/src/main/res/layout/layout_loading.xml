@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:id="@+id/data_loading"
+              android:orientation="horizontal"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:gravity="center"
+              android:paddingBottom="@dimen/spacing_small"
+              android:paddingTop="@dimen/spacing_small"
+              android:visibility="visible">
+
+    <ProgressBar
+            android:layout_width="@dimen/progress_size"
+            android:layout_height="@dimen/progress_size"
+            android:layout_marginRight="@dimen/spacing_small"
+            android:indeterminateOnly="true"/>
+
+    <nl.victronenergy.views.BetterTextView
+            style="@style/TextSecondHeader"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/loading"/>
+</LinearLayout>

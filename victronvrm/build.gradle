@@ -1,0 +1,220 @@
+import com.android.builder.core.DefaultManifestParser
+import org.apache.tools.ant.taskdefs.condition.Os
+
+buildscript {
+    repositories {
+        mavenCentral()
+        maven { url 'https://maven.fabric.io/repo' }
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:1.0.0'
+        classpath 'com.jakewharton.sdkmanager:gradle-plugin:0.12.+'
+        classpath 'org.notlocalhost.gradle:gradle-calabash-android-plugin:0.1.+'
+        // The Fabric Gradle plugin uses an open ended version to react quickly to Android tooling updates
+        classpath 'io.fabric.tools:gradle:1.+'
+    }
+}
+
+apply plugin: 'android-sdk-manager'
+apply plugin: 'com.android.application'
+apply plugin: 'io.fabric'
+apply plugin: 'calabash-test'
+apply from: "$rootDir/gradle/checkstyle.gradle"
+apply plugin: 'pmd'
+//apply from: "$rootDir/gradle/findbugs.gradle"
+
+pmd {
+    ruleSets = [
+            "basic",
+            "braces",
+            "naming",
+            "android",
+            "clone",
+            "codesize",
+            "controversial",
+            "design",
+            "finalizers",
+            "imports",
+            "junit",
+            "migrating",
+            "optimizations",
+            "strictexception",
+            "strings",
+            "sunsecure",
+            "typeresolution",
+            "unusedcode"
+    ]
+    ignoreFailures = true
+}
+
+repositories {
+    mavenCentral()
+    maven { url 'https://maven.fabric.io/repo' }
+}
+
+dependencies {
+    compile 'com.android.support:support-v4:19.0.1'
+    compile 'com.android.support:appcompat-v7:19.0.1'
+    compile 'com.android.support:support-v13:19.0.1'
+    compile 'com.google.code.gson:gson:2.3'
+    compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.1'
+    compile 'com.nineoldandroids:library:2.4.0'
+    compile 'com.github.chrisbanes.photoview:library:1.2.3'
+    compile 'org.apache.commons:commons-lang3:3.+'
+    compile('org.apache.httpcomponents:httpmime:4.+') {
+        exclude module: "httpclient"
+    }
+    compile('org.apache.httpcomponents:httpcore:4.+') {
+        exclude module: "httpclient"
+    }
+    compile 'org.apache.maven:maven-artifact:3.+'
+    compile fileTree(dir: 'libs', include: '*.jar')
+    compile('com.crashlytics.sdk.android:crashlytics:2.1.0@aar') {
+        transitive = true;
+    }
+}
+
+/*************************************************************************************
+ * Version configuration for the application                                         *
+ *************************************************************************************/
+
+ext {
+    VERSION_CODE = 10
+    VERSION_NAME = "2.1.4"
+}
+
+/*************************************************************************************
+ * General Android build configuration                                               *
+ *************************************************************************************/
+
+android {
+    compileSdkVersion 19
+    buildToolsVersion '19.1.0'
+
+    defaultConfig {
+        minSdkVersion 8
+        targetSdkVersion 19
+        versionCode VERSION_CODE
+        versionName VERSION_NAME
+    }
+
+    signingConfigs {
+        release {
+            storeFile file("path_to_keystore")
+            storePassword ""
+            keyAlias ""
+            keyPassword ""
+        }
+    }
+
+    buildTypes {
+        all {
+            buildConfigField "String", "BUILD_HOSTNAME", "\"${getComputerName()}\""
+            buildConfigField "String", "BUILD_USER", "\"${getUserName()}\""
+            buildConfigField "String", "BUILD_OS", "\"${getOS()}\""
+            buildConfigField "String", "BUILD_JAVA_VERSION", "\"${getJavaVersion()}\""
+            buildConfigField "String", "BUILD_GRADLE_VERSION", "\"${getGradleVersion()}\""
+            buildConfigField "String", "BUILD_CHANGELOG", "\"${getChangelog()}\""
+            buildConfigField "String", "BUILD_BASE_URL", "\"${getBaseUrl()}\""
+            buildConfigField "String", "DEBUG_PHONE_NUMER", "\"\""
+        }
+        release {
+            signingConfig signingConfigs.release
+            buildConfigField "boolean", "CRASHLYTICS_ENABLED", "true"
+            ext.enableCrashlytics = true
+        }
+        debug {
+            applicationIdSuffix ".debug"
+            versionNameSuffix "-" + getDate() + "-SNAPSHOT"
+            buildConfigField "boolean", "CRASHLYTICS_ENABLED", "false"
+            ext.enableCrashlytics = false
+        }
+        acceptance {
+            initWith buildTypes.debug
+            applicationIdSuffix ""
+            buildConfigField "boolean", "CRASHLYTICS_ENABLED", "true"
+            ext.enableCrashlytics = true
+        }
+    }
+
+    lintOptions {
+        abortOnError false
+        enable 'RtlHardcoded', 'RtlCompat', 'RtlEnabled'
+        textReport false
+        xmlReport true
+        xmlOutput file("$project.buildDir/reports/lint/lint-${project.name}.xml")
+        htmlReport true
+        htmlOutput file("$project.buildDir/reports/lint/lint-${project.name}.html")
+    }
+
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+    }
+}
+
+/*************************************************************************************
+ * Convenience methods that provide some information regarding the build environment *
+ *************************************************************************************/
+
+def getDate() {
+    def date = new Date()
+    def formattedDate = date.format('yyyyMMddHHmm')
+    return formattedDate
+}
+
+def getComputerName() {
+    if (Os.isFamily(Os.FAMILY_MAC)) {
+        return "scutil --get ComputerName".execute().text.replace("\n", "")
+    } else if (Os.isFamily(Os.FAMILY_WINDOWS)) {
+        return "hostname".execute().text.replaceAll("\\r\\n|\\r|\\n", "")
+    } else {
+        return "Unknown"
+    }
+}
+
+def getUserName() {
+    return "git config --get user.name".execute().text.replaceAll("\\r\\n|\\r|\\n", "").replace("\r", "")
+}
+
+def getOS() {
+    return Os.OS_NAME + " " + Os.OS_VERSION
+}
+
+def getGradleVersion() {
+    return gradle.getGradleVersion().replace("\n", "")
+}
+
+def getJavaVersion() {
+    return JavaVersion.current().toString()
+}
+
+def getVersionNameForReleaseVariant() {
+    return new DefaultManifestParser().getVersionName(android.sourceSets.main.manifest.srcFile)
+}
+
+def getChangelog() {
+    def changelogBuilder = new StringBuilder()
+    changelogBuilder // -
+            .append("############################<br/>") // -
+            .append("Changelog<br/>") // -
+            .append("############################<br/>") // -
+            .append(
+            ["git", "--no-pager", "--work-tree=${rootDir}", "--git-dir=${rootDir}/.git", "log", // -
+             "--pretty=format:*\u00a0%s\u0020<br/>\u00a0\u00a0(%ar\u00a0by\u00a0%an)<br/>", // -
+             "--max-count=10", "."].execute().text.trim().replaceAll("\\r\\n|\\r|\\n", "") // -
+                    .replaceAll("\\\"", "\\\\\"") // -
+    )
+    return changelogBuilder.toString();
+}
+
+def getBaseUrl() {
+    def url = project.hasProperty('baseUrl') ? project.getProperties().get('baseUrl') : ""
+    if (url.length() > 0) {
+        println "Applying custom base URL: $url"
+    }
+    return url;
+}

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content">
+
+    <nl.victronenergy.views.BetterTextView
+        android:id="@+id/tv_summary_header"
+        style="@style/TextSubHeading"
+        android:gravity="center_vertical"
+        android:padding="@dimen/spacing_medium"
+        android:layout_marginTop="@dimen/spacing_medium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/header_background"
+        android:visibility="gone"/>
+
+    <RelativeLayout
+        android:id="@+id/layout_site_data"
+        android:background="@drawable/background_site_summary_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/spacing_medium">
+
+        <nl.victronenergy.views.BetterTextView
+            android:id="@+id/textview_site_name"
+            style="@style/TextLoginHeader"
+            android:layout_marginBottom="@dimen/spacing_xsmall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <nl.victronenergy.views.BetterTextView
+            android:id="@+id/textview_last_update"
+            android:layout_below="@+id/textview_site_name"
+            android:drawableLeft="@drawable/ic_alert_red"
+            style="@style/TextSummaryItem"
+            android:textColor="@color/red"
+            android:drawablePadding="@dimen/spacing_xsmall"
+            android:layout_marginBottom="@dimen/spacing_small"
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_small"/>
+
+        <ProgressBar
+            android:id="@+id/progressbar_summary_loading"
+            android:layout_below="@+id/textview_last_update"
+            android:indeterminate="true"
+            android:layout_width="@dimen/size_extra_small"
+            android:layout_height="@dimen/size_extra_small"
+            android:layout_centerInParent="true"/>
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewpager_widgets"
+            android:layout_below="@+id/textview_last_update"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/widget_row_height"/>
+
+        <LinearLayout
+            android:id="@+id/layout_widgets_pager_indicator"
+            android:layout_below="@+id/viewpager_widgets"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:orientation="horizontal"/>
+
+    </RelativeLayout>
+
+</LinearLayout>
