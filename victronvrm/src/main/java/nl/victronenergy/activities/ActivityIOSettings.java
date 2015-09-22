@@ -4,12 +4,6 @@
 
 package nl.victronenergy.activities;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.List;
 import nl.victronenergy.R;
 import nl.victronenergy.models.Attribute;
 import nl.victronenergy.models.BaseResponse;
@@ -23,14 +17,9 @@ import nl.victronenergy.util.TakePictureUtils;
 import nl.victronenergy.util.webservice.JsonParserHelper;
 import nl.victronenergy.util.webservice.RestResponse;
 import nl.victronenergy.util.webservice.WebserviceAsync;
+
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.content.pm.ResolveInfo;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.support.v4.app.LoaderManager.LoaderCallbacks;
 import android.support.v4.content.Loader;
 import android.support.v7.app.ActionBar;
@@ -42,6 +31,7 @@ import android.view.View.OnClickListener;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
+
 import com.google.analytics.tracking.android.EasyTracker;
 
 /**

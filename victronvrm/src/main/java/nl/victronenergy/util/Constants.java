@@ -59,6 +59,18 @@ public final class Constants {
 	public static final int TIMEOUT = 15000; // 15 seconds
 
 	/**
+	 * Indication (in HOURS) of how old the last update time can be before showing it as timestamp rather than
+	 * differential time
+	 */
+	public static final int HOURS_LIMIT_FOR_TIMESTAMP = 6;
+
+	/**
+	 * Indication (in Milliseconds, obtained by multiplying the HOURS) of how old the last update time can be before
+	 * showing it as timestamp rather than differential time
+	 */
+	public static final int MS_LIMIT_FOR_TIMESTAMP = HOURS_LIMIT_FOR_TIMESTAMP * 3600000;
+
+	/**
 	 * Possible response codes for the webservice
 	 *
 	 * @author Victron Energy

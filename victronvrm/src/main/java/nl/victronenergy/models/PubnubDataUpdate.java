@@ -5,6 +5,7 @@
 package nl.victronenergy.models;
 
 import nl.victronenergy.util.MyLog;
+
 import android.text.TextUtils;
 
 import com.google.gson.annotations.SerializedName;

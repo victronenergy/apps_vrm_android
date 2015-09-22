@@ -12,6 +12,6 @@ import com.google.gson.annotations.Expose;
  * @author Victron Energy
  */
 public class AttributesResponse extends BaseResponse {
-    @Expose
+	@Expose
 	public AttributeData data;
 }

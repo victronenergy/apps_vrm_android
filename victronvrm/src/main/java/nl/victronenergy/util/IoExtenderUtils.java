@@ -5,13 +5,16 @@
 package nl.victronenergy.util;
 
 import java.io.File;
+
 import nl.victronenergy.models.Site;
 import nl.victronenergy.util.Constants.IO_PICTURE;
 import nl.victronenergy.util.Constants.SHARED_PREFERENCES;
+
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.widget.ImageView;
+
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 /**

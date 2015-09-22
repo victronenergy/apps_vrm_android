@@ -1,6 +1,6 @@
-<nl.victronenergy.views.CustomViewPager xmlns:android="http://schemas.android.com/apk/res/android"
-                                        android:id="@+id/viewpager_gallery"
+<nl.victronenergy.views.CustomViewPager android:id="@+id/viewpager_gallery"
+                                        xmlns:android="http://schemas.android.com/apk/res/android"
                                         android:layout_width="match_parent"
                                         android:layout_height="match_parent"
-                                        android:clickable="true"
-                                        android:background="@color/background"/>
+                                        android:background="@color/background"
+                                        android:clickable="true"/>

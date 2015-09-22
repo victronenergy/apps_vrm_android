@@ -1,0 +1,4 @@
+- Fixed the bug where the spinner would not disappear when trying to open the VRM website from within the app
+- Changed Historic data to Historical data so now grammatically correct
+- Hiding Widget PagerIndicator when there is only one page of widgets
+- Time to go and State of charge are now hidden if they are not available

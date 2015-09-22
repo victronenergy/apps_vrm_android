@@ -50,7 +50,7 @@ class AndroidCheckstyleTask extends DefaultTask {
                 fileset(dir: gradleProject.projectDir.getPath()) {
                     gradleProject.android.sourceSets.each { sourceSet ->
                         sourceSet.java.each { file ->
-                            include(name: gradleProject.relativePath(file))
+                            include(name: gradleProject.relativePath(file.toString()))
                         }
                     }
                 }

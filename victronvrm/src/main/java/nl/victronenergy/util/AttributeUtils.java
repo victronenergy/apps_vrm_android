@@ -4,10 +4,17 @@
 
 package nl.victronenergy.util;
 
+import java.util.Date;
+
 import nl.victronenergy.R;
 import nl.victronenergy.models.Attribute;
+import nl.victronenergy.models.Site;
 import nl.victronenergy.util.Constants.AttributeUnit;
+
+import org.apache.commons.lang3.StringUtils;
+
 import android.content.Context;
+import android.text.format.DateUtils;
 import android.view.View;
 import android.widget.TextView;
 
@@ -242,5 +249,49 @@ public final class AttributeUtils {
 			return pContext.getString(R.string.not_available_time);
 		}
 		return pContext.getString(R.string.formatted_value_time, hours, minutes);
+	}
+
+	/**
+	 * Helper method to group in one place the creation of the 'Status' lines of a site, used by adapters and fragments
+	 * Handles conditional printing of an alarm (and it's icon), text colors, single/multi-line text, and date format
+	 *
+	 * @param pContext
+	 *        needed to retrieve colors, icons and strings
+	 * @param pField
+	 *        the TextView instance to set
+	 * @param pSite
+	 *        the site in need of the Status TextView
+	 */
+	public static void populateStatusTextView(Context pContext, TextView pField, Site pSite) {
+
+		long now = new Date().getTime();
+
+		if (pSite.getSiteStatus() == Constants.SITE_STATUS.ALARM) {
+			pField.setVisibility(View.VISIBLE);
+			pField.setTextColor(pContext.getResources().getColor(R.color.red));
+			pField.setCompoundDrawablesWithIntrinsicBounds(pContext.getResources().getDrawable(R.drawable.ic_alert_red), null, null, null);
+
+			pField.setText(pContext.getString(R.string.sitesummary_last_update_alarm));
+		} else {
+			pField.setText(null);
+			pField.setCompoundDrawables(null, null, null, null);
+		}
+
+		// Create pretty timestamp of last update timestamp
+		CharSequence lastUpdate = pContext.getString(R.string.not_available);
+		if (Constants.MS_LIMIT_FOR_TIMESTAMP < (now - pSite.getLastTimestampInMS())) {
+			// given the flags, would format like: ", 01/01/1970"
+			lastUpdate = DateUtils.formatDateTime(pContext, pSite.getLastTimestampInMS(), DateUtils.LENGTH_MEDIUM | DateUtils.FORMAT_SHOW_DATE | DateUtils.FORMAT_NUMERIC_DATE | DateUtils.FORMAT_SHOW_YEAR
+					| DateUtils.FORMAT_SHOW_TIME);
+		} else if (pSite.getLastTimeStampInSeconds() > 0) {
+			lastUpdate = DateUtils.getRelativeTimeSpanString(pSite.getLastTimestampInMS(), now, DateUtils.SECOND_IN_MILLIS, 0);
+		}
+		String existingText = (StringUtils.isNotEmpty(pField.getText())) ? pField.getText() + pContext.getString(R.string.sitesummary_status_divider)
+				: "";
+		if (StringUtils.isEmpty(existingText) && StringUtils.isNotEmpty(lastUpdate)) {
+			pField.setVisibility(View.VISIBLE);
+			pField.setTextColor(pContext.getResources().getColor(R.color.grey));
+		}
+		pField.setText(pContext.getString(R.string.sitesummary_last_update_old, existingText, lastUpdate.toString()));
 	}
 }

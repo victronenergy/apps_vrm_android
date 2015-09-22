@@ -1,10 +1,11 @@
 package nl.victronenergy.views;
 
+import nl.victronenergy.util.MyLog;
+
 import android.content.Context;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
-import nl.victronenergy.util.MyLog;
 
 /**
  * Custom viewpager that prevents a crash when zooming in the photoview.<br/>

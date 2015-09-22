@@ -12,6 +12,7 @@ import nl.victronenergy.models.AttributeData;
 import nl.victronenergy.util.AttributeUtils;
 import nl.victronenergy.util.Constants.ATTRIBUTE;
 import nl.victronenergy.util.Constants.AttributeUnit;
+
 import android.content.Context;
 
 /**

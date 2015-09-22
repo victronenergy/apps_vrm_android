@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 import nl.victronenergy.util.Constants;
 import nl.victronenergy.util.IoExtenderUtils;
+
 import android.content.Context;
 import android.text.TextUtils;
 

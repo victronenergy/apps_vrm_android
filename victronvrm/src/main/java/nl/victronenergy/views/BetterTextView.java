@@ -1,6 +1,7 @@
 package nl.victronenergy.views;
 
 import nl.victronenergy.R;
+
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Rect;
@@ -11,7 +12,7 @@ import android.widget.TextView;
 /**
  * Custom TextView component, that expands the existing one by adding: - fontFace attribute for easy setting of font by
  * xml - fakeFocused attribute for easy force-marqueeing
- * 
+ *
  * @author piet
  */
 public class BetterTextView extends TextView {
@@ -35,7 +36,7 @@ public class BetterTextView extends TextView {
 
 	/**
 	 * Processing of custom styling attributes is done here
-	 * 
+	 *
 	 * @param ctx
 	 * @param attribs
 	 */

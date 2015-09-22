@@ -11,6 +11,7 @@ import nl.victronenergy.models.AttributeData;
 import nl.victronenergy.util.AttributeUtils;
 import nl.victronenergy.util.Constants;
 import nl.victronenergy.util.Constants.ATTRIBUTE;
+
 import android.content.Context;
 
 /**
@@ -22,7 +23,7 @@ public class SummaryWidgetAcPowerIn extends SummaryWidget implements Serializabl
 
 	@Override
 	protected void initIcon(Context pContext, AttributeData pAttributeData) {
-		mIcon = R.drawable.ic_kwh_metre;
+		mIcon = R.drawable.ic_grid;
 	}
 
 	@Override

@@ -4,28 +4,8 @@
 
 package nl.victronenergy.activities;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import android.support.v4.app.LoaderManager.LoaderCallbacks;
-import android.support.v4.content.Loader;
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.support.v7.app.ActionBarActivity;
-import android.view.ContextThemeWrapper;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Toast;
-import com.nineoldandroids.animation.ArgbEvaluator;
-import com.nineoldandroids.animation.ObjectAnimator;
-import com.nineoldandroids.animation.ValueAnimator;
 import nl.victronenergy.R;
 import nl.victronenergy.adapters.GalleryPagerAdapter;
-import android.app.Activity;
-import android.os.Bundle;
-import android.support.v4.view.ViewPager;
 import nl.victronenergy.models.BaseResponse;
 import nl.victronenergy.models.Site;
 import nl.victronenergy.util.Constants;
@@ -37,6 +17,24 @@ import nl.victronenergy.util.MyLog;
 import nl.victronenergy.util.webservice.JsonParserHelper;
 import nl.victronenergy.util.webservice.RestResponse;
 import nl.victronenergy.util.webservice.WebserviceAsync;
+
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.os.Bundle;
+import android.support.v4.app.LoaderManager.LoaderCallbacks;
+import android.support.v4.content.Loader;
+import android.support.v4.view.ViewPager;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.support.v7.app.ActionBarActivity;
+import android.view.ContextThemeWrapper;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+
+import com.nineoldandroids.animation.ArgbEvaluator;
+import com.nineoldandroids.animation.ObjectAnimator;
+import com.nineoldandroids.animation.ValueAnimator;
 
 /**
  * Activity that lets a user swipe between the pictures of his site

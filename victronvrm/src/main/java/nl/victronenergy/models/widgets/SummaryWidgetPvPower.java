@@ -11,6 +11,7 @@ import nl.victronenergy.models.AttributeData;
 import nl.victronenergy.util.AttributeUtils;
 import nl.victronenergy.util.Constants;
 import nl.victronenergy.util.Constants.ATTRIBUTE;
+
 import android.content.Context;
 
 /**

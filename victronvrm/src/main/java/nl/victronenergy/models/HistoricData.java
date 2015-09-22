@@ -11,7 +11,7 @@ public class HistoricData {
 	@Expose
 	@SerializedName("ts")
 	public int timestamp;
-    @Expose
+	@Expose
 	@SerializedName("dd")
 	public String deepestDischarge;
 	@Expose

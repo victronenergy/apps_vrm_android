@@ -10,6 +10,7 @@ import nl.victronenergy.models.SiteListData;
 import nl.victronenergy.util.AnalyticsConstants;
 import nl.victronenergy.util.Constants.BUNDLE;
 import nl.victronenergy.util.Constants.DEFAULT_VALUE;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;

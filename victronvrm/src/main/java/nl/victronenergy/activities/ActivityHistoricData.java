@@ -4,10 +4,11 @@
 
 package nl.victronenergy.activities;
 
-import nl.victronenergy.fragments.FragmentHistoricData;
 import nl.victronenergy.R;
+import nl.victronenergy.fragments.FragmentHistoricData;
 import nl.victronenergy.util.AnalyticsConstants;
 import nl.victronenergy.util.Constants;
+
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;

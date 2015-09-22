@@ -9,6 +9,7 @@ import nl.victronenergy.R;
 import nl.victronenergy.models.BaseResponse;
 import nl.victronenergy.util.Constants.RESPONSE_CODE;
 import nl.victronenergy.util.MyLog;
+
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;

@@ -8,8 +8,9 @@ import java.util.ArrayList;
 
 import nl.victronenergy.R;
 import nl.victronenergy.fragments.FragmentSiteSummary;
-import nl.victronenergy.util.MyLog;
 import nl.victronenergy.models.widgets.SummaryWidget;
+import nl.victronenergy.util.MyLog;
+
 import android.content.Context;
 import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;

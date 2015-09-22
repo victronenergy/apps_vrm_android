@@ -16,6 +16,7 @@ import nl.victronenergy.util.UserUtils;
 import nl.victronenergy.util.webservice.JsonParserHelper;
 import nl.victronenergy.util.webservice.RestResponse;
 import nl.victronenergy.util.webservice.WebserviceAsync;
+
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -25,6 +26,7 @@ import android.support.v4.app.LoaderManager.LoaderCallbacks;
 import android.support.v4.content.Loader;
 import android.text.TextUtils;
 import android.view.View;
+
 import com.google.analytics.tracking.android.EasyTracker;
 
 /**

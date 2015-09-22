@@ -15,6 +15,7 @@ import nl.victronenergy.util.Constants;
 import nl.victronenergy.util.Constants.BUNDLE;
 import nl.victronenergy.util.Constants.DEFAULT_VALUE;
 import nl.victronenergy.util.UserUtils;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -37,6 +38,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.EditText;
 import android.widget.ListView;
+
 import com.google.analytics.tracking.android.EasyTracker;
 
 /**

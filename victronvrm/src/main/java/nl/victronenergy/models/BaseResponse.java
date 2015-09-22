@@ -12,6 +12,6 @@ import com.google.gson.annotations.Expose;
  * @author Victron Energy
  */
 public class BaseResponse {
-    @Expose
+	@Expose
 	public Status status;
 }

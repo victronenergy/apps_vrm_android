@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="https://schemas.android.com/tools" tools:ignore="TypographyDashes">
+
+    <!-- Replace placeholder ID with your tracking ID -->
+    <string name="ga_trackingId">UA-36047521-1</string>
+
+    <!-- Enable automatic activity tracking -->
+    <bool name="ga_autoActivityTracking">true</bool>
+
+    <!-- Enable automatic exception tracking -->
+    <bool name="ga_reportUncaughtExceptions">true</bool>
+
+    <!-- The screen names that will appear in your reporting -->
+    <string name="nl.victronenergy.activities.ActivitySplash">Splash</string>
+    <string name="nl.victronenergy.activities.ActivityLogin">Login</string>
+    <string name="nl.victronenergy.activities.ActivitySiteSummary">SiteSummary</string>
+    <string name="nl.victronenergy.activities.ActivityIOSettings">IOSettings</string>
+    <string name="nl.victronenergy.activities.ActivityWebsite">WebappPortal</string>
+
+    <!-- Custom screen names for fragments -->
+    <string name="ga_activity_site_detail">SiteDetail</string>
+    <string name="ga_activity_historic_data">HistoricData</string>
+    <string name="ga_activity_io_generator_settings">IOGeneratorSettings</string>
+
+</resources>

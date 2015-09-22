@@ -6,6 +6,7 @@ package nl.victronenergy.fragments.overviews;
 
 import nl.victronenergy.R;
 import nl.victronenergy.models.Site;
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;

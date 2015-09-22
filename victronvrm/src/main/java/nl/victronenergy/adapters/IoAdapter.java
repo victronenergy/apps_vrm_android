@@ -4,17 +4,18 @@
 
 package nl.victronenergy.adapters;
 
-import android.content.pm.PackageManager;
 import nl.victronenergy.BuildConfig;
 import nl.victronenergy.R;
 import nl.victronenergy.models.Attribute;
 import nl.victronenergy.models.Site;
 import nl.victronenergy.util.Constants;
 import nl.victronenergy.util.IoExtenderUtils;
+
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.text.Html;
 import android.text.Spanned;
 import android.text.TextUtils;

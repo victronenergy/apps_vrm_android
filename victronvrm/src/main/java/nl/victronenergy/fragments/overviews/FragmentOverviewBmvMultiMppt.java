@@ -10,6 +10,7 @@ import nl.victronenergy.models.Site;
 import nl.victronenergy.util.Constants.ATTRIBUTE;
 import nl.victronenergy.util.Constants.AttributeUnit;
 import nl.victronenergy.util.OverviewHelper;
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;

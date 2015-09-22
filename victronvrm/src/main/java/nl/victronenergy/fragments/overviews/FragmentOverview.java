@@ -12,6 +12,7 @@ import nl.victronenergy.util.Constants.ATTRIBUTE;
 import nl.victronenergy.util.Constants.AttributeUnit;
 import nl.victronenergy.util.Constants.BUNDLE;
 import nl.victronenergy.util.OverviewHelper;
+
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.View;

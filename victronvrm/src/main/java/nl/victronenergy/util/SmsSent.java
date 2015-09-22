@@ -5,6 +5,7 @@
 package nl.victronenergy.util;
 
 import nl.victronenergy.R;
+
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;

@@ -1,14 +1,16 @@
 import com.android.builder.core.DefaultManifestParser
+import com.android.builder.model.SigningConfig
 import org.apache.tools.ant.taskdefs.condition.Os
 
 buildscript {
     repositories {
         mavenCentral()
-        maven { url 'https://maven.fabric.io/repo' }
+        maven { url 'https://maven.fabric.io/public' }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:1.0.0'
         classpath 'com.jakewharton.sdkmanager:gradle-plugin:0.12.+'
+        classpath 'org.notlocalhost.gradle:gradle-calabash-android-plugin:0.1.+'
         // The Fabric Gradle plugin uses an open ended version to react quickly to Android tooling updates
         classpath 'io.fabric.tools:gradle:1.+'
     }
@@ -17,9 +19,10 @@ buildscript {
 apply plugin: 'android-sdk-manager'
 apply plugin: 'com.android.application'
 apply plugin: 'io.fabric'
+apply plugin: 'calabash-test'
 apply from: "$rootDir/gradle/checkstyle.gradle"
 apply plugin: 'pmd'
-//apply from: "$rootDir/gradle/findbugs.gradle"
+apply from: "$rootDir/gradle/findbugs.gradle"
 
 pmd {
     ruleSets = [
@@ -47,7 +50,7 @@ pmd {
 
 repositories {
     mavenCentral()
-    maven { url 'https://maven.fabric.io/repo' }
+    maven { url 'https://maven.fabric.io/public' }
 }
 
 dependencies {
@@ -59,15 +62,13 @@ dependencies {
     compile 'com.nineoldandroids:library:2.4.0'
     compile 'com.github.chrisbanes.photoview:library:1.2.3'
     compile 'org.apache.commons:commons-lang3:3.+'
-    compile('org.apache.httpcomponents:httpmime:4.+') {
-        exclude module: "httpclient"
+    compile('org.apache.httpcomponents:httpmime:4.3.6') {
+        exclude module: 'httpclient'
     }
-    compile('org.apache.httpcomponents:httpcore:4.+') {
-        exclude module: "httpclient"
-    }
+    compile 'org.apache.httpcomponents:httpclient-android:4.3.5'
     compile 'org.apache.maven:maven-artifact:3.+'
     compile fileTree(dir: 'libs', include: '*.jar')
-    compile('com.crashlytics.sdk.android:crashlytics:2.1.0@aar') {
+    compile('com.crashlytics.sdk.android:crashlytics:2.5.0@aar') {
         transitive = true;
     }
 }
@@ -115,9 +116,11 @@ android {
             buildConfigField "String", "BUILD_CHANGELOG", "\"${getChangelog()}\""
             buildConfigField "String", "BUILD_BASE_URL", "\"${getBaseUrl()}\""
             buildConfigField "String", "DEBUG_PHONE_NUMER", "\"\""
+            buildConfigField "boolean", "CRASHLYTICS_ENABLED", "false"
+            ext.enableCrashlytics = false
         }
         release {
-            signingConfig signingConfigs.release
+            signingConfig getReleaseSigningConfig()
             buildConfigField "boolean", "CRASHLYTICS_ENABLED", "true"
             ext.enableCrashlytics = true
         }
@@ -132,6 +135,8 @@ android {
             applicationIdSuffix ""
             buildConfigField "boolean", "CRASHLYTICS_ENABLED", "true"
             ext.enableCrashlytics = true
+            ext.betaDistributionReleaseNotesFilePath="crashlytics/release_notes.txt"
+            ext.betaDistributionEmailsFilePath="crashlytics/testers_internal.txt"
         }
     }
 
@@ -215,4 +220,14 @@ def getBaseUrl() {
         println "Applying custom base URL: $url"
     }
     return url;
+}
+
+def getReleaseSigningConfig(SigningConfig signingConfig) {
+    if (System.getenv('JENKINS_HOME') ) {
+        println "On CI, using empty singingconfig"
+        return signingConfig
+    } else {
+        println "Using real singingConfig"
+        return project.android.signingConfigs.release
+    }
 }

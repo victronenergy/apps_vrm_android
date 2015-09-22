@@ -58,16 +58,17 @@
     <string name="sitesummary_section_alarm">Status alarm</string>
     <string name="sitesummary_section_ok">Status OK</string>
     <string name="sitesummary_section_old_data">Data older than two weeks</string>
-    <string name="sitesummary_last_update_alarm">In alarm since %s</string>
-    <string name="sitesummary_last_update_old">Not sending data since %s</string>
+    <string name="sitesummary_last_update_alarm">In alarm</string>
+    <string name="sitesummary_last_update_old">%1$sLast update: %2$s</string>
     <string name="sitesummary_filter_no_sites_found">No sites found</string>
+    <string name="sitesummary_status_divider">.\n</string>
 
     <!-- Widget titles -->
     <string name="widget_title_ac_in_genset">GENSET</string>
     <string name="widget_title_ac_in_grid">GRID</string>
-    <string name="widget_title_ac_out">AC LOAD</string>
+    <string name="widget_title_ac_out">AC CONSUMPTION</string>
     <string name="widget_title_battery_state">BATTERY STATE</string>
-    <string name="widget_title_dc_power_system">DC POWER SYSTEM</string>
+    <string name="widget_title_dc_power_system">DC System</string>
     <string name="widget_title_pv_power">PV POWER</string>
     <string name="widget_title_state_of_charge">BATTERY SOC</string>
 
@@ -87,6 +88,7 @@
     <string name="site_detail_generator_settings_not_set">Start/Stop Generator</string>
     <string name="site_detail_info_generator_set_settings">Click on the settings icon to setup this feature</string>
     <string name="site_detail_button_historical_data">Historical data</string>
+    <string name="site_detail_status_divider">.\n</string>
 
     <!-- Value formatting -->
     <string name="formatted_value_v">%.2fV</string>

@@ -1,13 +1,16 @@
 package nl.victronenergy.util.webservice;
 
 import java.net.URI;
+
 import javax.net.ssl.SSLPeerUnverifiedException;
+
 import nl.victronenergy.BuildConfig;
 import nl.victronenergy.R;
 import nl.victronenergy.util.Constants;
 import nl.victronenergy.util.Constants.POST;
 import nl.victronenergy.util.MyLog;
 import nl.victronenergy.util.UserUtils;
+
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpVersion;
@@ -25,6 +28,7 @@ import org.apache.http.params.HttpProtocolParams;
 import org.apache.http.protocol.HTTP;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONObject;
+
 import android.content.Context;
 import android.os.Bundle;
 import android.provider.Settings.Secure;

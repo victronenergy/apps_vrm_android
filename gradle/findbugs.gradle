@@ -15,7 +15,6 @@ dependencies {
 task findbugs(type: AndroidFindBugsTask) {
     ignoreFailures true
     xslFile = new File("$project.rootDir/config/findbugs/fancy.xsl")
-    effort = 'max'
 }
 
 ///////////////////////////////////////////////
@@ -63,7 +62,7 @@ class AndroidFindBugsTask extends DefaultTask {
                 gradleProject.android.sourceSets*.java.srcDirs.each { srcDir ->
                     sourcePath(path: srcDir)
                 }
-                "class"(location: "$gradleProject.buildDir/classes")
+                "class"(location: "$gradleProject.buildDir/intermediates/classes")
             }
 
             if (ant.project.properties[errorProp]) {

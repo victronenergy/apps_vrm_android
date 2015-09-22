@@ -8,6 +8,7 @@ import nl.victronenergy.fragments.FragmentSiteDetail;
 import nl.victronenergy.models.Site;
 import nl.victronenergy.models.SiteListData;
 import nl.victronenergy.util.Constants.BUNDLE;
+
 import android.os.Bundle;
 import android.support.v4.app.FixedFragmentStatePagerAdapter;
 import android.support.v4.app.Fragment;

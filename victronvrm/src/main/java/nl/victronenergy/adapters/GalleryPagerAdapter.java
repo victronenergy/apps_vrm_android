@@ -4,28 +4,26 @@
 
 package nl.victronenergy.adapters;
 
-import android.view.View.OnClickListener;
 import nl.victronenergy.R;
-import android.content.Context;
+import nl.victronenergy.activities.ActivityGallery;
+import nl.victronenergy.models.Site;
+import nl.victronenergy.util.Constants;
+import uk.co.senab.photoview.PhotoView;
+import uk.co.senab.photoview.PhotoViewAttacher.OnViewTapListener;
+
 import android.graphics.Bitmap;
 import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.ProgressBar;
+
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.FailReason;
 import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 import com.nostra13.universalimageloader.core.assist.SimpleImageLoadingListener;
 import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
-import nl.victronenergy.activities.ActivityGallery;
-import nl.victronenergy.models.Site;
-import nl.victronenergy.util.Constants;
-import nl.victronenergy.util.MyLog;
-import uk.co.senab.photoview.PhotoView;
-import uk.co.senab.photoview.PhotoViewAttacher.OnViewTapListener;
 
 /**
  * Gallery pager adapter takes care of loading the mImageUrls in the viewpager gallery

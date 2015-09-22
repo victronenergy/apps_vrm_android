@@ -1,6 +1,7 @@
 package nl.victronenergy.util;
 
 import nl.victronenergy.BuildConfig;
+
 import android.util.Log;
 
 public class MyLog {

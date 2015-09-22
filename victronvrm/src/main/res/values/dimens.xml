@@ -36,6 +36,7 @@
     <dimen name="circle_size_state">15dp</dimen>
     <dimen name="shadow_width">10dp</dimen>
     <dimen name="widget_row_height">40dp</dimen>
+    <dimen name="alarm_row_height">30dp</dimen>
 
     <!-- Gallery dimensions -->
     <dimen name="gallery_grid_width">100dp</dimen>
