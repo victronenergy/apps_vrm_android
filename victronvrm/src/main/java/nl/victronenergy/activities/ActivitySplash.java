@@ -1,7 +1,3 @@
-/*
- * Copyright (c) 2012-2015 Victron Energy.
- */
-
 package nl.victronenergy.activities;
 
 import nl.victronenergy.R;
@@ -16,7 +12,6 @@ import nl.victronenergy.util.UserUtils;
 import nl.victronenergy.util.webservice.JsonParserHelper;
 import nl.victronenergy.util.webservice.RestResponse;
 import nl.victronenergy.util.webservice.WebserviceAsync;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -26,14 +21,13 @@ import android.support.v4.app.LoaderManager.LoaderCallbacks;
 import android.support.v4.content.Loader;
 import android.text.TextUtils;
 import android.view.View;
-
 import com.google.analytics.tracking.android.EasyTracker;
 
 /**
  * Splash screen, automatically tries to login the user and continue to the sitelist, if login fails it will open the
  * login screen
  *
- * @author Victron Energy
+ * @author M2mobi
  */
 public class ActivitySplash extends FragmentActivity implements LoaderCallbacks<RestResponse> {
 	private static final String LOG_TAG = "ActivitySplash";
@@ -156,7 +150,7 @@ public class ActivitySplash extends FragmentActivity implements LoaderCallbacks<
 	/**
 	 * Countdown timer starts a timer and tries to open the next screen
 	 *
-	 * @author Victron Energy
+	 * @author M2Mobi
 	 */
 	public class MyCount extends CountDownTimer {
 

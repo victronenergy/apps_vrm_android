@@ -1,12 +1,7 @@
-/*
- * Copyright (c) 2012-2015 Victron Energy.
- */
-
 package nl.victronenergy.fragments.overviews;
 
 import nl.victronenergy.R;
 import nl.victronenergy.models.Site;
-
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,7 +10,7 @@ import android.view.ViewGroup;
 /**
  * Fragment that is shown when there is no valid configuration
  *
- * @author Victron Energy
+ * @author M2Mobi
  */
 public class FragmentOverviewNoConnection extends FragmentOverview {
 

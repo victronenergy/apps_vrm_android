@@ -1,7 +1,3 @@
-/*
- * Copyright (c) 2012-2015 Victron Energy.
- */
-
 package nl.victronenergy.fragments;
 
 import nl.victronenergy.R;
@@ -15,7 +11,6 @@ import nl.victronenergy.util.Constants;
 import nl.victronenergy.util.Constants.BUNDLE;
 import nl.victronenergy.util.Constants.DEFAULT_VALUE;
 import nl.victronenergy.util.UserUtils;
-
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -38,13 +33,12 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.EditText;
 import android.widget.ListView;
-
 import com.google.analytics.tracking.android.EasyTracker;
 
 /**
  * Shows a list of sites for the logged in user
  *
- * @author Victron Energy
+ * @author M2Mobi
  */
 public class FragmentSiteSummary extends Fragment implements OnItemClickListener, OnScrollListener {
 	private static final String LOG_TAG = "FragmentSiteSummary";

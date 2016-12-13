@@ -1,7 +1,3 @@
-/*
- * Copyright (c) 2012-2015 Victron Energy.
- */
-
 package nl.victronenergy.adapters;
 
 import java.util.ArrayList;
@@ -13,7 +9,6 @@ import nl.victronenergy.models.AttributesResponse;
 import nl.victronenergy.models.Site;
 import nl.victronenergy.models.SiteListData;
 import nl.victronenergy.models.UserResponse;
-import nl.victronenergy.util.AttributeUtils;
 import nl.victronenergy.util.Constants;
 import nl.victronenergy.util.Constants.DownloadStatus;
 import nl.victronenergy.util.Constants.LOADER_ID;
@@ -23,8 +18,6 @@ import nl.victronenergy.util.UserUtils;
 import nl.victronenergy.util.webservice.JsonParserHelper;
 import nl.victronenergy.util.webservice.RestResponse;
 import nl.victronenergy.util.webservice.WebserviceAsync;
-
-import org.apache.commons.lang3.StringUtils;
 
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -50,7 +43,7 @@ import android.widget.TextView;
  * <li>Sites with old data</li>
  * </ul>
  *
- * @author Victron Energy
+ * @author M2Mobi
  */
 public class SiteSummaryAdapter extends BaseAdapter implements LoaderCallbacks<RestResponse> {
 
@@ -209,7 +202,32 @@ public class SiteSummaryAdapter extends BaseAdapter implements LoaderCallbacks<R
 	private void initSiteItemView(final ViewHolder viewHolder, final Site pSite, int pSiteStatus) {
 		viewHolder.textViewSiteName.setText(pSite.getName());
 
-		AttributeUtils.populateStatusTextView(mActivity, viewHolder.textViewLastUpdate, pSite);
+		switch (pSiteStatus) {
+			case Constants.SITE_STATUS.OK:
+				viewHolder.textViewLastUpdate.setVisibility(View.GONE);
+				break;
+			case Constants.SITE_STATUS.ALARM:
+				viewHolder.textViewLastUpdate.setVisibility(View.VISIBLE);
+
+				// Create pretty timestamp of alarmStarted
+				CharSequence alarmStarted = DateUtils.getRelativeTimeSpanString(pSite.getAlarmStartedTimestampInMS(), new Date().getTime(),
+						DateUtils.SECOND_IN_MILLIS, 0);
+
+				viewHolder.textViewLastUpdate.setText(String.format(mActivity.getString(R.string.sitesummary_last_update_alarm), alarmStarted));
+				break;
+			case Constants.SITE_STATUS.OLD:
+				viewHolder.textViewLastUpdate.setVisibility(View.VISIBLE);
+
+				// Create pretty timestamp of last update timestamp
+				CharSequence lastUpdate = mActivity.getString(R.string.not_available);
+				if (pSite.getLastTimeStampInSeconds() > 0) {
+					lastUpdate = DateUtils.getRelativeTimeSpanString(pSite.getLastTimestampInMS(), new Date().getTime(), DateUtils.SECOND_IN_MILLIS,
+							0);
+				}
+
+				viewHolder.textViewLastUpdate.setText(String.format(mActivity.getString(R.string.sitesummary_last_update_old), lastUpdate));
+				break;
+		}
 
 		// Don't show widgets/loading for sites with old data
 		if (pSiteStatus == Constants.SITE_STATUS.OLD) {

@@ -1,7 +1,3 @@
-/*
- * Copyright (c) 2012-2015 Victron Energy.
- */
-
 package nl.victronenergy.activities;
 
 import nl.victronenergy.R;
@@ -13,7 +9,6 @@ import nl.victronenergy.util.AnalyticsConstants;
 import nl.victronenergy.util.Constants;
 import nl.victronenergy.util.SmsDelivered;
 import nl.victronenergy.util.SmsSent;
-
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
@@ -27,12 +22,13 @@ import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.google.analytics.tracking.android.EasyTracker;
 
 /**
  * Shows a viewpager with detailed info of the site status.<br/>
- * Created by Victron Energy on 20-3-14.
+ * Created by M2Mobi on 20-3-14.
  */
 public class ActivitySiteDetail extends ActionBarActivity implements SiteDetailCallBacks, AnimationListener, SiteViewPagerCallBacks {
 	private static final String LOG_TAG = "ActivitySiteDetail";
@@ -218,6 +214,7 @@ public class ActivitySiteDetail extends ActionBarActivity implements SiteDetailC
 
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		Toast.makeText(this, "LA", Toast.LENGTH_SHORT).show();
 		super.onActivityResult(requestCode, resultCode, data);
 	}
 }

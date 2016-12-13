@@ -1,12 +1,7 @@
-/*
- * Copyright (c) 2012-2015 Victron Energy.
- */
-
 package nl.victronenergy.fragments.overviews;
 
 import nl.victronenergy.R;
 import nl.victronenergy.models.Site;
-
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,7 +10,7 @@ import android.view.ViewGroup;
 /**
  * Fragment that shows the data for the BMV overview
  *
- * @author Victron Energy
+ * @author M2Mobi
  */
 public class FragmentOverviewBmv extends FragmentOverview {
 	private final String LOG_TAG = "FragmentOverviewBmv";

@@ -1,11 +1,13 @@
-/*
- * Copyright (c) 2012-2015 Victron Energy.
- */
-
 package nl.victronenergy.activities;
 
-import java.io.ByteArrayOutputStream;
-
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.CompressFormat;
+import android.graphics.BitmapFactory;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.LoaderManager.LoaderCallbacks;
+import android.support.v4.content.Loader;
+import android.widget.Toast;
 import nl.victronenergy.R;
 import nl.victronenergy.models.BaseResponse;
 import nl.victronenergy.util.Constants;
@@ -15,24 +17,16 @@ import nl.victronenergy.util.Constants.POST;
 import nl.victronenergy.util.Constants.RESPONSE_CODE;
 import nl.victronenergy.util.MyLog;
 import nl.victronenergy.util.TakePictureUtils;
+import android.os.Bundle;
 import nl.victronenergy.util.webservice.JsonParserHelper;
 import nl.victronenergy.util.webservice.RestResponse;
 import nl.victronenergy.util.webservice.WebserviceAsync;
-
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.CompressFormat;
-import android.graphics.BitmapFactory;
-import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.LoaderManager.LoaderCallbacks;
-import android.support.v4.content.Loader;
-import android.widget.Toast;
+import java.io.ByteArrayOutputStream;
 
 /**
  * Activity that lets a user take a picture and uploads it to the victron server
  * <p/>
- * User: Victron Energy<br/>
+ * User: M2Mobi<br/>
  * Date: 16-5-2014<br/>
  * Time: 10:58<br/>
  */

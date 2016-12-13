@@ -1,7 +1,3 @@
-/*
- * Copyright (c) 2012-2015 Victron Energy.
- */
-
 package nl.victronenergy.util.webservice;
 
 import nl.victronenergy.BuildConfig;
@@ -9,7 +5,6 @@ import nl.victronenergy.R;
 import nl.victronenergy.models.BaseResponse;
 import nl.victronenergy.util.Constants.RESPONSE_CODE;
 import nl.victronenergy.util.MyLog;
-
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -21,7 +16,7 @@ import com.google.gson.GsonBuilder;
 /**
  * Helps parsing the Json files to objects
  *
- * @author Victron Energy
+ * @author M2Mobi
  */
 public class JsonParserHelper {
 	private static final String LOG_TAG = "JsonParserHelper";

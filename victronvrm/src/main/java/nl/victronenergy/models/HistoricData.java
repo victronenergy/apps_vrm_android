@@ -1,7 +1,3 @@
-/*
- * Copyright (c) 2012-2015 Victron Energy.
- */
-
 package nl.victronenergy.models;
 
 import com.google.gson.annotations.Expose;
@@ -11,7 +7,7 @@ public class HistoricData {
 	@Expose
 	@SerializedName("ts")
 	public int timestamp;
-	@Expose
+    @Expose
 	@SerializedName("dd")
 	public String deepestDischarge;
 	@Expose

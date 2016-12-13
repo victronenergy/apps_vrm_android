@@ -1,7 +1,6 @@
 package nl.victronenergy.views;
 
 import nl.victronenergy.R;
-
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Typeface;
@@ -10,7 +9,7 @@ import android.widget.Button;
 
 /**
  * Custom Button (Remix of Piet's TextView) - fontFace attribute for easy setting of font via xml
- *
+ * 
  * @author lorenz *
  */
 public class BetterButton extends Button {
@@ -31,7 +30,7 @@ public class BetterButton extends Button {
 
 	/**
 	 * Processing of custom styling attributes is done here
-	 *
+	 * 
 	 * @param ctx
 	 * @param attribs
 	 */

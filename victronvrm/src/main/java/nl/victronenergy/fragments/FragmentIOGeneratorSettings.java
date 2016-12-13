@@ -1,7 +1,3 @@
-/*
- * Copyright (c) 2012-2015 Victron Energy.
- */
-
 package nl.victronenergy.fragments;
 
 import nl.victronenergy.R;
@@ -22,7 +18,6 @@ import nl.victronenergy.util.MyLog;
 import nl.victronenergy.util.webservice.JsonParserHelper;
 import nl.victronenergy.util.webservice.RestResponse;
 import nl.victronenergy.util.webservice.WebserviceAsync;
-
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -51,7 +46,7 @@ import com.google.analytics.tracking.android.EasyTracker;
  * - Generator settings<br>
  * - IO Extender settings<br>
  *
- * @author Victron Energy
+ * @author M2Mobi
  */
 public class FragmentIOGeneratorSettings extends VictronVRMFragment implements OnClickListener, LoaderCallbacks<RestResponse>, OnItemClickListener {
 	private static final String LOG_TAG = "FragmentIOGeneratorSettings";

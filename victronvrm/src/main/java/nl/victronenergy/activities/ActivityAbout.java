@@ -1,11 +1,4 @@
-/*
- * Copyright (c) 2012-2015 Victron Energy.
- */
-
 package nl.victronenergy.activities;
-
-import nl.victronenergy.BuildConfig;
-import nl.victronenergy.R;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -16,11 +9,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
+import nl.victronenergy.BuildConfig;
+import nl.victronenergy.R;
 
 /**
  * About page that contains info about the app and links to the Victron social media pages
  * <p/>
- * Created by Victron Energy<br/>
+ * Created by M2Mobi<br/>
  * 7/11/2014<br/>
  * 11:15<br/>
  */

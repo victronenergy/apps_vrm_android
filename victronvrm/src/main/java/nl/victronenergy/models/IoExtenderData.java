@@ -1,7 +1,3 @@
-/*
- * Copyright (c) 2012-2015 Victron Energy.
- */
-
 package nl.victronenergy.models;
 
 import java.io.Serializable;
@@ -9,14 +5,13 @@ import java.util.ArrayList;
 
 import nl.victronenergy.util.Constants;
 import nl.victronenergy.util.IoExtenderUtils;
-
 import android.content.Context;
 import android.text.TextUtils;
 
 /**
  * IOExtender data object contains an array of IO objects that are connected to the IO Extender
  *
- * @author Victron Energy
+ * @author M2Mobi
  */
 public class IoExtenderData implements Serializable {
 	private ArrayList<Attribute> mIoAttributes = new ArrayList<Attribute>();

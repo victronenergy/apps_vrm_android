@@ -1,7 +1,3 @@
-/*
- * Copyright (c) 2012-2015 Victron Energy.
- */
-
 package nl.victronenergy.activities;
 
 import nl.victronenergy.R;
@@ -16,7 +12,6 @@ import nl.victronenergy.util.UserUtils;
 import nl.victronenergy.util.webservice.JsonParserHelper;
 import nl.victronenergy.util.webservice.RestResponse;
 import nl.victronenergy.util.webservice.WebserviceAsync;
-
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -37,13 +32,12 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
-
 import com.google.analytics.tracking.android.EasyTracker;
 
 /**
  * Login screen for authentication.
  *
- * @author Victron Energy
+ * @author M2Mobi
  */
 public class ActivityLogin extends ActionBarActivity implements OnClickListener, LoaderCallbacks<RestResponse>, OnEditorActionListener {
 	private static final String LOG_TAG = "ActivityLogin";
@@ -56,7 +50,7 @@ public class ActivityLogin extends ActionBarActivity implements OnClickListener,
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		// ActionBar is hidden on tablets
+		// Force portrait orientation on phone
 		if (!getResources().getBoolean(R.bool.is_phone)) {
 			getSupportActionBar().hide();
 		}
@@ -95,14 +89,10 @@ public class ActivityLogin extends ActionBarActivity implements OnClickListener,
 		mEditTextPassword.setOnEditorActionListener(this);
 		findViewById(R.id.textview_forgot_password).setOnClickListener(this);
 
-		// If there is a username saved, make sure to prefill the field
-		if (!TextUtils.isEmpty(UserUtils.getUsername(this))) {
+		// If there is a username saved, make sure to prefill the fields
+		if (!TextUtils.isEmpty(UserUtils.getUsername(this)) && !TextUtils.isEmpty(UserUtils.getPassword(this))) {
 			mEditTextEmail.setText(UserUtils.getUsername(this));
-
-			// If there is a saved password prefill it
-			if (!TextUtils.isEmpty(UserUtils.getPassword(this))) {
-				mEditTextPassword.setText(UserUtils.getPassword(this));
-			}
+			mEditTextPassword.setText(UserUtils.getPassword(this));
 		}
 	}
 
@@ -117,7 +107,7 @@ public class ActivityLogin extends ActionBarActivity implements OnClickListener,
 		EasyTracker.getTracker().sendTiming(AnalyticsConstants.CAT_TIMING_WEBSERVICE, loginEndTime - mLoginStartTime,
 				AnalyticsConstants.TIMING_LOGIN, AnalyticsConstants.TIMING_LABEL_SPLASH);
 
-		// Save the session data
+		// Save the sessionId
 		UserUtils.saveSessionID(this, pUserResponse.data.user.sessionId);
 		UserUtils.saveUsername(this, mEditTextEmail.getText().toString());
 		UserUtils.savePassword(this, mEditTextPassword.getText().toString());

@@ -1,7 +1,3 @@
-/*
- * Copyright (c) 2012-2015 Victron Energy.
- */
-
 package nl.victronenergy.activities;
 
 import nl.victronenergy.R;
@@ -26,18 +22,14 @@ import nl.victronenergy.util.UserUtils;
 import nl.victronenergy.util.webservice.JsonParserHelper;
 import nl.victronenergy.util.webservice.RestResponse;
 import nl.victronenergy.util.webservice.WebserviceAsync;
-
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
 import android.support.v4.view.MenuItemCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -46,69 +38,80 @@ import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
-
 import com.google.analytics.tracking.android.EasyTracker;
+import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
+import com.jeremyfeinstein.slidingmenu.lib.actionbar.ActionBarSlideIcon;
+import com.jeremyfeinstein.slidingmenu.lib.app.SlidingActivity;
 
 /**
  * The Main Activity. On tablets shows the sitesummary in a sliding menu and the sitedetails on the main screen. On
  * phones the sitesummary and sitedetails are shown separately.<br/>
  * <br/>
- * Created by Victron Energy on 27-2-14.
+ * Created by M2Mobi on 27-2-14.
  */
-public class ActivitySiteSummary extends ActionBarActivity implements LoaderManager.LoaderCallbacks<RestResponse>, AnimationListener,
+public class ActivitySiteSummary extends SlidingActivity implements LoaderManager.LoaderCallbacks<RestResponse>, AnimationListener,
 		OnSiteSelectedListener, SiteDetailCallBacks, SiteViewPagerCallBacks {
-
-	/** Tag used for logging */
 	private static final String LOG_TAG = "ActivitySiteSummary";
 
-	/** Used to show refresh animation in the actionbar */
+	/* Used to show refresh animation in the actionbar */
 	private ImageView mImageViewRefresh;
 	private MenuItem mMenuItemRefresh;
 	private Animation mAnimationRotate;
 
-	/** Used to indicate if all loading tasks are finished */
+	/* Used to indicate if all loading tasks are finished */
 	private boolean mAllTasksFinishedLoading = false;
 	private boolean mSiteDetailLoadingFinished = false;
 	private boolean mSiteSummaryLoadingFinished = false;
 
-	/** The data of all the sites */
+	/* The data of all the sites */
 	private SiteListData mSiteData;
 
-	/** SMS Objects */
+	/* SMS Objects */
 	private SmsSent mSmsSent = null;
 	private SmsDelivered mSmsDelivered = null;
 
-	/** Indicates if the current device is a phone or a tablet */
+	/* Indicates if the menu is in the sliding menu or not */
+	private boolean mHasSlidingMenu;
+
+	/* Indicates if the current device is a phone or a tablet */
 	private boolean mIsPhone;
-
-	/** Drawer menu layout */
-	private DrawerLayout mDrawerLayout;
-
-	/** View used as the left Drawer */
-	private View mLeftDrawer;
-
-	/** Toggle for the ActionBar drawer */
-	private ActionBarDrawerToggle mDrawerToggle;
 
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+
 		setContentView(R.layout.activity_main);
 
 		// Check if the current device is a phone or tablet
 		mIsPhone = getResources().getBoolean(R.bool.is_phone);
 
-		// Find and setup the DrawerLayout
-		View viewDrawerLayout = findViewById(R.id.drawer_layout);
-		if (viewDrawerLayout != null) {
-			mDrawerLayout = (DrawerLayout) viewDrawerLayout;
-			mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.drawable.ic_drawer, R.string.menu_open, R.string.menu_close);
-			mLeftDrawer = findViewById(R.id.frame_site_summary);
+		if (findViewById(R.id.frame_site_summary) == null) {
+			// Init the sliding menu
+			setBehindContentView(R.layout.layout_menu);
 
-			// Set the drawer toggle as the DrawerListener
-			mDrawerLayout.setDrawerListener(mDrawerToggle);
+			SlidingMenu slidingMenu = getSlidingMenu();
+			slidingMenu.setBehindWidthRes(R.dimen.behind_width_menu);
+			slidingMenu.setTouchModeAbove(SlidingMenu.TOUCHMODE_MARGIN);
+			slidingMenu.setActionBarSlideIcon(new ActionBarSlideIcon(this, R.drawable.ic_drawer, R.string.menu_open, R.string.menu_close));
+			slidingMenu.setShadowDrawable(R.drawable.shadow);
+			slidingMenu.setShadowWidthRes(R.dimen.shadow_width);
 
-			getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-			getSupportActionBar().setHomeButtonEnabled(true);
+			setSlidingActionBarEnabled(false);
+			mHasSlidingMenu = true;
+		} else {
+			// Fill the sliding menu with an empty view and disable sliding
+			View viewEmpty = new View(this);
+			setBehindContentView(viewEmpty);
+			getSlidingMenu().setSlidingEnabled(false);
+			getSlidingMenu().setTouchModeAbove(SlidingMenu.TOUCHMODE_NONE);
+			getSlidingMenu().setBehindWidth(0);
+
+			// The slidingMenu shows an empty view when changing from portrait to landscape force it to close
+			Handler handler = new Handler();
+			handler.postDelayed(new Runnable() {
+				public void run() {
+					getSlidingMenu().showContent();
+				}
+			}, 100);
 		}
 
 		// Create sms objects
@@ -116,15 +119,6 @@ public class ActivitySiteSummary extends ActionBarActivity implements LoaderMana
 		mSmsDelivered = new SmsDelivered();
 
 		initView(savedInstanceState);
-	}
-
-	@Override
-	protected void onPostCreate(Bundle savedInstanceState) {
-		super.onPostCreate(savedInstanceState);
-		// Sync the toggle state after onRestoreInstanceState has occurred.
-		if (mDrawerToggle != null) {
-			mDrawerToggle.syncState();
-		}
 	}
 
 	@Override
@@ -165,13 +159,9 @@ public class ActivitySiteSummary extends ActionBarActivity implements LoaderMana
 	private void initView(Bundle savedInstanceState) {
 
 		if (savedInstanceState == null) {
-			// Show the list of site summaries if the summary frame
-			if (findViewById(R.id.frame_site_summary) != null) {
-				getSupportFragmentManager().beginTransaction().replace(R.id.frame_site_summary, new FragmentSiteSummary(), FRAGMENT_TAG.SITE_SUMMARY)
-						.commit();
-			}
-
-			// Show the site details in the content frame (tablet only)
+			// For phones only show the site list, for tablets show both
+			getSupportFragmentManager().beginTransaction().replace(R.id.frame_site_summary, new FragmentSiteSummary(), FRAGMENT_TAG.SITE_SUMMARY)
+					.commit();
 			if (findViewById(R.id.frame_content) != null) {
 				getSupportFragmentManager().beginTransaction().replace(R.id.frame_content, new FragmentSiteViewPager(), FRAGMENT_TAG.SITE_VIEWPAGER)
 						.commit();
@@ -207,27 +197,19 @@ public class ActivitySiteSummary extends ActionBarActivity implements LoaderMana
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		// Pass the event to ActionBarDrawerToggle, if it returns
-		// true, then it has handled the app icon touch event
-		if (mDrawerToggle != null && mDrawerToggle.onOptionsItemSelected(item)) {
-			return true;
-		}
-
-		// Refresh data, should not return true as the detail screen should listen for the menu press too
 		if (item.getItemId() == R.id.button_refresh) {
 			EasyTracker.getTracker().sendEvent(AnalyticsConstants.CAT_UI_ACTION, AnalyticsConstants.BUTTON_PRESS,
 					AnalyticsConstants.REFRESH_SITELIST, null);
 			refreshData(item);
-		}
-
-		// Make sure that the list of site summary is opened when search is clicked
-		if (item.getItemId() == R.id.button_search) {
-			if (mDrawerLayout != null) {
-				mDrawerLayout.openDrawer(mLeftDrawer);
+		} else if (item.getItemId() == R.id.button_search) {
+			if (mHasSlidingMenu) {
+				getSlidingMenu().showMenu();
 			}
-			return true;
+		} else if (item.getItemId() == android.R.id.home) {
+			if (mHasSlidingMenu) {
+				getSlidingMenu().toggle();
+			}
 		}
-
 		return super.onOptionsItemSelected(item);
 	}
 
@@ -303,10 +285,7 @@ public class ActivitySiteSummary extends ActionBarActivity implements LoaderMana
 					}
 				}, 100);
 
-				// Close the drawer if there is one
-				if (mDrawerLayout != null) {
-					mDrawerLayout.closeDrawers();
-				}
+				getSlidingMenu().showContent();
 			}
 		}
 	}

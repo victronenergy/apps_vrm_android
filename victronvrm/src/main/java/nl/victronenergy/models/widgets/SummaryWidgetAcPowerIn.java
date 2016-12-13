@@ -1,7 +1,3 @@
-/*
- * Copyright (c) 2012-2015 Victron Energy.
- */
-
 package nl.victronenergy.models.widgets;
 
 import java.io.Serializable;
@@ -11,11 +7,10 @@ import nl.victronenergy.models.AttributeData;
 import nl.victronenergy.util.AttributeUtils;
 import nl.victronenergy.util.Constants;
 import nl.victronenergy.util.Constants.ATTRIBUTE;
-
 import android.content.Context;
 
 /**
- * Created by Victron Energy on 25-2-14.
+ * Created by M2Mobi on 25-2-14.
  */
 public class SummaryWidgetAcPowerIn extends SummaryWidget implements Serializable {
 	private static final String[] ATTRIBUTE_CODES = new String[] { ATTRIBUTE.GRID_L1, ATTRIBUTE.GRID_L2, ATTRIBUTE.GRID_L3, ATTRIBUTE.GENSET_L1,
@@ -23,7 +18,7 @@ public class SummaryWidgetAcPowerIn extends SummaryWidget implements Serializabl
 
 	@Override
 	protected void initIcon(Context pContext, AttributeData pAttributeData) {
-		mIcon = R.drawable.ic_grid;
+		mIcon = R.drawable.ic_kwh_metre;
 	}
 
 	@Override

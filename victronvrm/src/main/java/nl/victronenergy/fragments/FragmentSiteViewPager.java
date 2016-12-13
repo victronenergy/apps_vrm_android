@@ -1,7 +1,3 @@
-/*
- * Copyright (c) 2012-2015 Victron Energy.
- */
-
 package nl.victronenergy.fragments;
 
 import nl.victronenergy.R;
@@ -10,7 +6,6 @@ import nl.victronenergy.models.SiteListData;
 import nl.victronenergy.util.AnalyticsConstants;
 import nl.victronenergy.util.Constants.BUNDLE;
 import nl.victronenergy.util.Constants.DEFAULT_VALUE;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -27,7 +22,7 @@ import com.google.analytics.tracking.android.EasyTracker;
 /**
  * Shows an overview of the sites owned by this user in a pagerAdapter
  *
- * @author Victron Energy
+ * @author M2Mobi
  */
 public class FragmentSiteViewPager extends Fragment implements OnPageChangeListener {
 	private static final String LOG_TAG = "FragmentSiteViewPager";

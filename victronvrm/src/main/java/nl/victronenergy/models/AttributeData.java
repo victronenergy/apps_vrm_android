@@ -1,7 +1,3 @@
-/*
- * Copyright (c) 2012-2015 Victron Energy.
- */
-
 package nl.victronenergy.models;
 
 import java.io.Serializable;
@@ -12,7 +8,7 @@ import com.google.gson.annotations.SerializedName;
 /**
  * Class that contains an array of attributes
  *
- * @author Victron Energy
+ * @author M2Mobi
  */
 public class AttributeData implements Serializable {
 	// Generated Serial version id

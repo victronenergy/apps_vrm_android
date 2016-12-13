@@ -1,14 +1,9 @@
-/*
- * Copyright (c) 2012-2015 Victron Energy.
- */
-
 package nl.victronenergy.adapters;
 
 import nl.victronenergy.fragments.FragmentSiteDetail;
 import nl.victronenergy.models.Site;
 import nl.victronenergy.models.SiteListData;
 import nl.victronenergy.util.Constants.BUNDLE;
-
 import android.os.Bundle;
 import android.support.v4.app.FixedFragmentStatePagerAdapter;
 import android.support.v4.app.Fragment;
@@ -17,7 +12,7 @@ import android.support.v4.app.FragmentManager;
 /**
  * Viewpager that contains fragments for all the sites
  *
- * @author Victron Energy
+ * @author M2Mobi
  */
 public class SiteFragmentStatePagerAdapter extends FixedFragmentStatePagerAdapter {
 	private Site[] mSites;

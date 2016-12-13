@@ -1,16 +1,11 @@
-/*
- * Copyright (c) 2012-2015 Victron Energy.
- */
-
 package nl.victronenergy.adapters;
 
 import java.util.ArrayList;
 
 import nl.victronenergy.R;
 import nl.victronenergy.fragments.FragmentSiteSummary;
-import nl.victronenergy.models.widgets.SummaryWidget;
 import nl.victronenergy.util.MyLog;
-
+import nl.victronenergy.models.widgets.SummaryWidget;
 import android.content.Context;
 import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
@@ -20,7 +15,7 @@ import android.widget.TextView;
 
 /**
  * Viewpager that shows the widgets of a site<br/>
- * Created by Victron Energy on 1-5-2014.
+ * Created by M2Mobi on 1-5-2014.
  */
 public class WidgetViewPagerAdapter extends PagerAdapter {
 

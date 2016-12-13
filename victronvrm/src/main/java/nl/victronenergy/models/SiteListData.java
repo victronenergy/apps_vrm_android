@@ -1,7 +1,3 @@
-/*
- * Copyright (c) 2012-2015 Victron Energy.
- */
-
 package nl.victronenergy.models;
 
 import java.io.Serializable;
@@ -13,7 +9,7 @@ import com.google.gson.annotations.Expose;
 /**
  * Array of sites returned by the webservice
  *
- * @author Victron Energy
+ * @author M2Mobi
  */
 public class SiteListData implements Serializable {
 	/**

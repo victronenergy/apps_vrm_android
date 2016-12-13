@@ -1,10 +1,8 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item>
-        <bitmap android:src="@drawable/ic_launcher_base"/>
+        <bitmap android:src="@drawable/ic_launcher_base" />
     </item>
     <item>
-        <bitmap
-            android:src="@drawable/ic_launcher_overlay"
-            android:gravity="bottom|left"/>
+        <bitmap android:src="@drawable/ic_launcher_overlay" android:gravity="bottom|left" />
     </item>
 </layer-list>

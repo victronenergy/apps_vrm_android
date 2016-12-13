@@ -1,7 +1,3 @@
-/*
- * Copyright (c) 2012-2015 Victron Energy.
- */
-
 package nl.victronenergy.fragments.overviews;
 
 import nl.victronenergy.R;
@@ -12,7 +8,6 @@ import nl.victronenergy.util.Constants.ATTRIBUTE;
 import nl.victronenergy.util.Constants.AttributeUnit;
 import nl.victronenergy.util.Constants.BUNDLE;
 import nl.victronenergy.util.OverviewHelper;
-
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.View;
@@ -23,7 +18,7 @@ import android.widget.TextView;
  * FragmentOverview used as a base for the actual overviews.<br/>
  * Contains some abstract functions that will setup the overviews.
  *
- * @author Victron Energy
+ * @author M2Mobi
  */
 public abstract class FragmentOverview extends Fragment {
 	private static final String LOG_TAG = "FragmentOverview";

@@ -1,16 +1,11 @@
-/*
- * Copyright (c) 2012-2015 Victron Energy.
- */
-
 package nl.victronenergy.activities;
 
 import nl.victronenergy.R;
 import nl.victronenergy.util.Constants;
+import nl.victronenergy.util.Constants.WEBAPP;
 import nl.victronenergy.util.MyLog;
 import nl.victronenergy.util.UserUtils;
-
 import org.apache.http.util.EncodingUtils;
-
 import android.content.Intent;
 import android.net.Uri;
 import android.net.http.SslError;
@@ -25,7 +20,6 @@ import android.webkit.SslErrorHandler;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
-
 import com.google.analytics.tracking.android.EasyTracker;
 
 /**
@@ -35,7 +29,7 @@ import com.google.analytics.tracking.android.EasyTracker;
  * - Site settings<br/>
  * - Site alarm settings<br/>
  *
- * @author Victron Energy
+ * @author M2Mobi
  */
 public class ActivityWebsite extends ActionBarActivity {
 	private static final String LOG_TAG = "ActivityWebsite";

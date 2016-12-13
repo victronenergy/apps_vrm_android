@@ -84,7 +84,7 @@
         <item name="@attr/fontFace">@string/font_museo300</item>
         <item name="android:textColor">@color/dark_grey</item>
         <item name="android:textSize">@dimen/text_micro</item>
-        <item name="android:singleLine">false</item>
+        <item name="android:singleLine">true</item>
     </style>
 
     <style name="TextSpinnerItem">

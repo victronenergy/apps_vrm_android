@@ -1,21 +1,17 @@
-/*
- * Copyright (c) 2012-2015 Victron Energy.
- */
-
 package nl.victronenergy.util;
 
 import nl.victronenergy.util.Constants.LOADER_ID;
 
 /**
  * Contains helper functions for the loader id
- *
- * @author Victron Energy
+ * 
+ * @author M2Mobi
  */
 public class LoaderUtils {
 
 	/**
 	 * Returns loaderID
-	 *
+	 * 
 	 * @param loaderType
 	 *        The actual loader type
 	 * @param siteId
@@ -29,7 +25,7 @@ public class LoaderUtils {
 
 	/**
 	 * Returns the loaderId from the unique loader id, this undo's what the getUniqueLoaderId function does.
-	 *
+	 * 
 	 * @param loaderId
 	 *        The loaderId returned by the webservice
 	 * @return The original loaderId that was originaly used

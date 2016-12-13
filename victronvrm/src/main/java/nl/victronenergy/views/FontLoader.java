@@ -3,7 +3,6 @@ package nl.victronenergy.views;
 import java.util.HashMap;
 
 import nl.victronenergy.util.MyLog;
-
 import android.content.Context;
 import android.graphics.Typeface;
 

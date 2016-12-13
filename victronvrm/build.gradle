@@ -1,5 +1,4 @@
 import com.android.builder.core.DefaultManifestParser
-import com.android.builder.model.SigningConfig
 import org.apache.tools.ant.taskdefs.condition.Os
 
 buildscript {
@@ -8,7 +7,7 @@ buildscript {
         maven { url 'https://maven.fabric.io/public' }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:1.0.0'
+        classpath 'com.android.tools.build:gradle:2.2.3'
         classpath 'com.jakewharton.sdkmanager:gradle-plugin:0.12.+'
         classpath 'org.notlocalhost.gradle:gradle-calabash-android-plugin:0.1.+'
         // The Fabric Gradle plugin uses an open ended version to react quickly to Android tooling updates
@@ -16,13 +15,12 @@ buildscript {
     }
 }
 
-apply plugin: 'android-sdk-manager'
 apply plugin: 'com.android.application'
 apply plugin: 'io.fabric'
 apply plugin: 'calabash-test'
 apply from: "$rootDir/gradle/checkstyle.gradle"
 apply plugin: 'pmd'
-apply from: "$rootDir/gradle/findbugs.gradle"
+//apply from: "$rootDir/gradle/findbugs.gradle"
 
 pmd {
     ruleSets = [
@@ -63,12 +61,15 @@ dependencies {
     compile 'com.github.chrisbanes.photoview:library:1.2.3'
     compile 'org.apache.commons:commons-lang3:3.+'
     compile('org.apache.httpcomponents:httpmime:4.3.6') {
+        exclude module: "httpclient"
+    }
+    compile('org.apache.httpcomponents:httpmime:4.3.6') {
         exclude module: 'httpclient'
     }
     compile 'org.apache.httpcomponents:httpclient-android:4.3.5'
     compile 'org.apache.maven:maven-artifact:3.+'
     compile fileTree(dir: 'libs', include: '*.jar')
-    compile('com.crashlytics.sdk.android:crashlytics:2.5.0@aar') {
+    compile('com.crashlytics.sdk.android:crashlytics:2.6.5@aar') {
         transitive = true;
     }
 }
@@ -78,8 +79,8 @@ dependencies {
  *************************************************************************************/
 
 ext {
-    VERSION_CODE = 10
-    VERSION_NAME = "2.1.4"
+    VERSION_CODE = 9
+    VERSION_NAME = "2.1.3"
 }
 
 /*************************************************************************************
@@ -88,7 +89,7 @@ ext {
 
 android {
     compileSdkVersion 19
-    buildToolsVersion '19.1.0'
+    buildToolsVersion '21.1.2'
 
     defaultConfig {
         minSdkVersion 8
@@ -116,11 +117,9 @@ android {
             buildConfigField "String", "BUILD_CHANGELOG", "\"${getChangelog()}\""
             buildConfigField "String", "BUILD_BASE_URL", "\"${getBaseUrl()}\""
             buildConfigField "String", "DEBUG_PHONE_NUMER", "\"\""
-            buildConfigField "boolean", "CRASHLYTICS_ENABLED", "false"
-            ext.enableCrashlytics = false
         }
         release {
-            signingConfig getReleaseSigningConfig()
+            signingConfig signingConfigs.release
             buildConfigField "boolean", "CRASHLYTICS_ENABLED", "true"
             ext.enableCrashlytics = true
         }
@@ -220,14 +219,4 @@ def getBaseUrl() {
         println "Applying custom base URL: $url"
     }
     return url;
-}
-
-def getReleaseSigningConfig(SigningConfig signingConfig) {
-    if (System.getenv('JENKINS_HOME') ) {
-        println "On CI, using empty singingconfig"
-        return signingConfig
-    } else {
-        println "Using real singingConfig"
-        return project.android.signingConfigs.release
-    }
 }

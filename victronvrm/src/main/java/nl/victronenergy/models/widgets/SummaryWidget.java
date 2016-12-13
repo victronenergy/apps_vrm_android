@@ -1,17 +1,12 @@
-/*
- * Copyright (c) 2012-2015 Victron Energy.
- */
-
 package nl.victronenergy.models.widgets;
 
 import java.io.Serializable;
 
 import nl.victronenergy.models.AttributeData;
-
 import android.content.Context;
 
 /**
- * Created by Victron Energy on 25-2-14.
+ * Created by M2Mobi on 25-2-14.
  */
 public abstract class SummaryWidget implements Serializable {
 	/**

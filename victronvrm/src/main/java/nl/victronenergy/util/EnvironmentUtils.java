@@ -1,7 +1,3 @@
-/*
- * Copyright (c) 2012-2015 Victron Energy.
- */
-
 package nl.victronenergy.util;
 
 import org.apache.maven.artifact.versioning.DefaultArtifactVersion;
@@ -9,7 +5,7 @@ import org.apache.maven.artifact.versioning.DefaultArtifactVersion;
 /**
  * Class containing utility methods related to system environment values.
  * <p/>
- * User: Victron Energy<br/>
+ * User: m2mobi<br/>
  * Date: 18/09/14<br/>
  * Time: 15:55
  */

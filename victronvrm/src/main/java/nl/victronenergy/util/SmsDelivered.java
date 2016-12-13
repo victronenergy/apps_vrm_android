@@ -1,11 +1,6 @@
-/*
- * Copyright (c) 2012-2015 Victron Energy.
- */
-
 package nl.victronenergy.util;
 
 import nl.victronenergy.R;
-
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -13,7 +8,7 @@ import android.content.Intent;
 import android.widget.Toast;
 
 /**
- * @author Victron Energy
+ * @author M2Mobi
  */
 public class SmsDelivered extends BroadcastReceiver {
 

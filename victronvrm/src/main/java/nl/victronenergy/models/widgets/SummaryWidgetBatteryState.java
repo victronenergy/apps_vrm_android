@@ -1,7 +1,3 @@
-/*
- * Copyright (c) 2012-2015 Victron Energy.
- */
-
 package nl.victronenergy.models.widgets;
 
 import java.io.Serializable;
@@ -9,11 +5,10 @@ import java.io.Serializable;
 import nl.victronenergy.R;
 import nl.victronenergy.models.AttributeData;
 import nl.victronenergy.util.Constants.ATTRIBUTE;
-
 import android.content.Context;
 
 /**
- * Created by Victron Energy on 25-2-14.
+ * Created by M2Mobi on 25-2-14.
  */
 public class SummaryWidgetBatteryState extends SummaryWidget implements Serializable {
 

@@ -1,7 +1,3 @@
-/*
- * Copyright (c) 2012-2015 Victron Energy.
- */
-
 package nl.victronenergy.models;
 
 import java.io.Serializable;
@@ -22,7 +18,7 @@ import com.google.gson.annotations.SerializedName;
 /**
  * Site contains info about a site
  *
- * @author Victron Energy
+ * @author M2Mobi
  */
 public class Site implements Serializable {
 	private static final String LOG_TAG = "Site";

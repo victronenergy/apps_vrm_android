@@ -9,7 +9,7 @@ import android.widget.GridView;
  *
  * @see <a
  *      href="http://www.jayway.com/2012/10/04/how-to-make-the-height-of-a-gridview-wrap-its-content/">http://www.jayway.com/2012/10/04/how-to-make-the-height-of-a-gridview-wrap-its-content/</a>
- *      User: Victron Energy<br/>
+ *      User: M2Mobi<br/>
  *      Date: 12-5-2014<br/>
  *      Time: 13:40<br/>
  */

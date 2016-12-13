@@ -1,26 +1,19 @@
-/*
- * Copyright (c) 2012-2015 Victron Energy.
- */
-
 package nl.victronenergy.util;
 
 import java.io.File;
-
 import nl.victronenergy.models.Site;
 import nl.victronenergy.util.Constants.IO_PICTURE;
 import nl.victronenergy.util.Constants.SHARED_PREFERENCES;
-
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.widget.ImageView;
-
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 /**
  * Contains a set of functions used by the IO Extender and Generator
  *
- * @author Victron Energy
+ * @author M2Mobi
  */
 public class IoExtenderUtils {
 

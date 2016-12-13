@@ -1,14 +1,9 @@
-/*
- * Copyright (c) 2012-2015 Victron Energy.
- */
-
 package nl.victronenergy.adapters;
 
 import java.util.ArrayList;
 
 import nl.victronenergy.R;
 import nl.victronenergy.models.Attribute;
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;

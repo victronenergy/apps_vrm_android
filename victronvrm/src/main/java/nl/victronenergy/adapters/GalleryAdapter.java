@@ -1,13 +1,7 @@
-/*
- * Copyright (c) 2012-2015 Victron Energy.
- */
-
 package nl.victronenergy.adapters;
 
+import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 import nl.victronenergy.R;
-import nl.victronenergy.models.Site;
-import nl.victronenergy.util.Constants;
-
 import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,17 +9,18 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
-
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.FailReason;
-import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 import com.nostra13.universalimageloader.core.assist.SimpleImageLoadingListener;
+import nl.victronenergy.models.Site;
+import nl.victronenergy.util.Constants;
+import java.util.ArrayList;
 
 /**
  * Used to show a grid of images in a grid
  * <p/>
- * User: Victron Energy<br/>
+ * User: M2Mobi<br/>
  * Date: 12-5-2014<br/>
  * Time: 11:34<br/>
  */

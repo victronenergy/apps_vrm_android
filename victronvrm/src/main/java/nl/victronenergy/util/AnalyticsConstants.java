@@ -1,13 +1,9 @@
-/*
- * Copyright (c) 2012-2015 Victron Energy.
- */
-
 package nl.victronenergy.util;
 
 /**
  * Constants used for analytics
- *
- * @author Victron Energy
+ * 
+ * @author M2Mobi
  */
 public class AnalyticsConstants {
 	// Special views that use "subpages" are defined here

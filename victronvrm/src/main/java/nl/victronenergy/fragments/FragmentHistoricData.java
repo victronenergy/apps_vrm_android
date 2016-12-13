@@ -1,7 +1,3 @@
-/*
- * Copyright (c) 2012-2015 Victron Energy.
- */
-
 package nl.victronenergy.fragments;
 
 import nl.victronenergy.R;
@@ -20,7 +16,6 @@ import nl.victronenergy.util.MyLog;
 import nl.victronenergy.util.webservice.JsonParserHelper;
 import nl.victronenergy.util.webservice.RestResponse;
 import nl.victronenergy.util.webservice.WebserviceAsync;
-
 import android.os.Bundle;
 import android.support.v4.app.LoaderManager.LoaderCallbacks;
 import android.support.v4.content.Loader;
@@ -35,7 +30,7 @@ import com.google.analytics.tracking.android.EasyTracker;
 /**
  * Shows a list of 16 historic values
  *
- * @author Victron Energy
+ * @author M2Mobi
  */
 public class FragmentHistoricData extends VictronVRMFragment implements LoaderCallbacks<RestResponse> {
 	private static final String LOG_TAG = "FragmentHistoricData";

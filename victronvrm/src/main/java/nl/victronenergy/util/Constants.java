@@ -1,7 +1,3 @@
-/*
- * Copyright (c) 2012-2015 Victron Energy.
- */
-
 package nl.victronenergy.util;
 
 import nl.victronenergy.BuildConfig;
@@ -19,9 +15,7 @@ import nl.victronenergy.models.widgets.SummaryWidgetPvPower;
 import nl.victronenergy.models.widgets.SummaryWidgetStateOfCharge;
 
 /**
- * Class that contains constants used in the app
- *
- * @see <a href="https://juice.victronenergy.com/build/apidoc/">Victron Webservice API Specification</a>
+ * @see <a href="http://juice.m2mobi.com/build/apidoc/">Victron Webservice API Specification</a>
  */
 public final class Constants {
 
@@ -30,7 +24,7 @@ public final class Constants {
 
 	static {
 		if (BuildConfig.BUILD_TYPE.equals("debug")) {
-			SERVER_URL = "http://juice.m2mobi.com/";
+			SERVER_URL = "https://juice.victronenergy.com/";
 		} else {
 			SERVER_URL = "https://juice.victronenergy.com/";
 		}
@@ -59,21 +53,9 @@ public final class Constants {
 	public static final int TIMEOUT = 15000; // 15 seconds
 
 	/**
-	 * Indication (in HOURS) of how old the last update time can be before showing it as timestamp rather than
-	 * differential time
-	 */
-	public static final int HOURS_LIMIT_FOR_TIMESTAMP = 6;
-
-	/**
-	 * Indication (in Milliseconds, obtained by multiplying the HOURS) of how old the last update time can be before
-	 * showing it as timestamp rather than differential time
-	 */
-	public static final int MS_LIMIT_FOR_TIMESTAMP = HOURS_LIMIT_FOR_TIMESTAMP * 3600000;
-
-	/**
 	 * Possible response codes for the webservice
 	 *
-	 * @author Victron Energy
+	 * @author M2Mobi
 	 */
 	public static final class RESPONSE_CODE {
 		/** Unknown */
@@ -164,7 +146,7 @@ public final class Constants {
 	/**
 	 * Contains default values used when no value has been assigned
 	 *
-	 * @author Victron Energy
+	 * @author M2Mobi
 	 */
 	public static final class DEFAULT_VALUE {
 		public static final int SITE_INDEX = 0;
@@ -175,7 +157,7 @@ public final class Constants {
 	/**
 	 * Post keys, used to send parameters to the webservice
 	 *
-	 * @author Victron Energy
+	 * @author M2Mobi
 	 */
 	public static final class POST {
 		public static final String APIVERSION = "version";
@@ -198,7 +180,7 @@ public final class Constants {
 	/**
 	 * Keys for the shared preferences
 	 *
-	 * @author Victron Energy
+	 * @author M2Mobi
 	 */
 	public static final class SHARED_PREFERENCES {
 		// Sp name
@@ -207,7 +189,6 @@ public final class Constants {
 		public static final String LAST_SPLASH = "last_splash";
 		public static final String USERNAME = "username";
 		public static final String PASSWORD = "password";
-		public static final String ENCRYPTION_KEY = "encryption_key";
 		public static final String SESSIONID = "sessionid";
 		public static final String DEMO_USER = "demo_user";
 		public static final String URI_PHOTO_TEMP = "uri_photo_temp";
@@ -231,6 +212,22 @@ public final class Constants {
 		public static final int UPLOAD_IMAGE = 0xD0000000;
 		public static final int ATTRIBUTES = 0xE0000000;
 		public static final int FILTER = 0xF0000000;
+	}
+
+	/**
+	 * Constants related to pubnub
+	 */
+	public static final class PUBNUB {
+		public static final String PUBKEY = "pub-c-bde6e083-bf8e-43d2-9ac9-b3f777d9fcb5";
+		public static final String SUBKEY = "sub-c-8bb751ba-013e-11e3-91f6-02ee2ddab7fe";
+		public static final String CHANNEL_STATUS = "847e40669664_LiveFeed";
+		public static final String CHANNEL_KEEPALIVE = "847e40669664_Reader";
+
+		public static final String JSON_TIMESTAMP = "ts";
+		public static final String JSON_TOKEN = "token";
+		public static final String JSON_USER = "user";
+		public static final String JSON_OPCOMMAND = "opCommand";
+		public static final String JSON_KEEPALIVE = "keepAlive";
 	}
 
 	public static final class SITE_STATUS {

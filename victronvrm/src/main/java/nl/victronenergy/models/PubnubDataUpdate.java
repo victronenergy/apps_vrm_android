@@ -1,11 +1,6 @@
-/*
- * Copyright (c) 2012-2015 Victron Energy.
- */
-
 package nl.victronenergy.models;
 
 import nl.victronenergy.util.MyLog;
-
 import android.text.TextUtils;
 
 import com.google.gson.annotations.SerializedName;
@@ -13,7 +8,7 @@ import com.google.gson.annotations.SerializedName;
 /**
  * Represents a pubnub data update object. This contains the new value of an data attribute<br/>
  * <br/>
- * Created by Victron Energy on 9-4-14.
+ * Created by M2Mobi on 9-4-14.
  */
 public class PubnubDataUpdate {
 

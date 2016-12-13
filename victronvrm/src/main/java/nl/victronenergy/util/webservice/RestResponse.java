@@ -1,14 +1,10 @@
-/*
- * Copyright (c) 2012-2015 Victron Energy.
- */
-
 package nl.victronenergy.util.webservice;
 
 /**
  * Class that contains info that for returned by a webservice call. This will be the status code and the actual data. If
  * everything went alright the data should be JSON
- *
- * @author Victron Energy
+ * 
+ * @author M2Mobi
  */
 public class RestResponse {
 	private String mData = null;
@@ -24,7 +20,7 @@ public class RestResponse {
 
 	/**
 	 * Returns the data object
-	 *
+	 * 
 	 * @return The data object
 	 */
 	public String getData() {
@@ -33,7 +29,7 @@ public class RestResponse {
 
 	/**
 	 * Returns the status code returned by the webservice
-	 *
+	 * 
 	 * @return The status code that was returned by the webservice
 	 */
 	public int getStatusCode() {

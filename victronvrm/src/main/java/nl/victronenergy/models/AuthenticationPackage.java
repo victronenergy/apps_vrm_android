@@ -1,7 +1,3 @@
-/*
- * Copyright (c) 2012-2015 Victron Energy.
- */
-
 package nl.victronenergy.models;
 
 import java.io.Serializable;
@@ -12,7 +8,7 @@ import com.google.gson.annotations.SerializedName;
 /**
  * AuthenticationPackage contains the required keys to subscribe to pubnub
  * <p/>
- * User: Victron Energy<br/>
+ * User: M2Mobi<br/>
  * Date: 9-5-2014<br/>
  * Time: 13:35<br/>
  */

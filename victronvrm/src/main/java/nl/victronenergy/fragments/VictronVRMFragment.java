@@ -1,7 +1,3 @@
-/*
- * Copyright (c) 2012-2015 Victron Energy.
- */
-
 package nl.victronenergy.fragments;
 
 import nl.victronenergy.models.UserResponse;
@@ -13,7 +9,6 @@ import nl.victronenergy.util.UserUtils;
 import nl.victronenergy.util.webservice.JsonParserHelper;
 import nl.victronenergy.util.webservice.RestResponse;
 import nl.victronenergy.util.webservice.WebserviceAsync;
-
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager.LoaderCallbacks;
@@ -22,7 +17,7 @@ import android.support.v4.content.Loader;
 /**
  * Fragment that has relogin build in, to prevent duplicate code
  * <p/>
- * User: Victron Energy<br/>
+ * User: M2Mobi<br/>
  * Date: 15-5-2014<br/>
  * Time: 13:48<br/>
  */

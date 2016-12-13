@@ -1,16 +1,13 @@
 package nl.victronenergy.util.webservice;
 
 import java.net.URI;
-
 import javax.net.ssl.SSLPeerUnverifiedException;
-
 import nl.victronenergy.BuildConfig;
 import nl.victronenergy.R;
 import nl.victronenergy.util.Constants;
 import nl.victronenergy.util.Constants.POST;
 import nl.victronenergy.util.MyLog;
 import nl.victronenergy.util.UserUtils;
-
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpVersion;
@@ -28,7 +25,6 @@ import org.apache.http.params.HttpProtocolParams;
 import org.apache.http.protocol.HTTP;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONObject;
-
 import android.content.Context;
 import android.os.Bundle;
 import android.provider.Settings.Secure;
@@ -39,7 +35,7 @@ import android.widget.Toast;
 /**
  * Loader that performs a webservice call async and will return a RestResponse
  *
- * @author Victron Energy
+ * @author M2Mobi
  */
 public class WebserviceAsync extends AsyncTaskLoader<RestResponse> {
 	private final static String LOG_TAG = "WebserviceAsync";
@@ -69,6 +65,8 @@ public class WebserviceAsync extends AsyncTaskLoader<RestResponse> {
 	public void setParams(Bundle args) {
 		// Get the URI from the args
 		mURI = args.get(POST.URI).toString();
+
+		MyLog.e(LOG_TAG, "URI: " + mURI);
 
 		// Add api version to the parameters
 		args.putString(POST.APIVERSION, Constants.API_VERSION);

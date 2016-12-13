@@ -1,7 +1,3 @@
-/*
- * Copyright (c) 2012-2015 Victron Energy.
- */
-
 package nl.victronenergy.models;
 
 import java.io.Serializable;
@@ -12,7 +8,7 @@ import com.google.gson.annotations.SerializedName;
 /**
  * Contains the cipher key required to encrypt data on this channel and the name of the channel
  * <p/>
- * User: Victron Energy<br/>
+ * User: M2Mobi<br/>
  * Date: 9-5-2014<br/>
  * Time: 13:37<br/>
  */

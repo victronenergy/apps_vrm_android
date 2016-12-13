@@ -1,7 +1,3 @@
-/*
- * Copyright (c) 2012-2015 Victron Energy.
- */
-
 package nl.victronenergy.models.widgets;
 
 import java.io.Serializable;
@@ -12,7 +8,6 @@ import nl.victronenergy.models.AttributeData;
 import nl.victronenergy.util.AttributeUtils;
 import nl.victronenergy.util.Constants.ATTRIBUTE;
 import nl.victronenergy.util.Constants.AttributeUnit;
-
 import android.content.Context;
 
 /**
@@ -25,7 +20,7 @@ import android.content.Context;
  * <li>QUARTER CHARGED</li>
  * <li>EMPTY</li>
  * </ul>
- * Created by Victron Energy on 25-2-14.
+ * Created by M2Mobi on 25-2-14.
  */
 public class SummaryWidgetStateOfCharge extends SummaryWidget implements Serializable {
 	/* Percentages of how much the battery is charged */

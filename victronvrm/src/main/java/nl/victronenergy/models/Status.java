@@ -1,7 +1,3 @@
-/*
- * Copyright (c) 2012-2015 Victron Energy.
- */
-
 package nl.victronenergy.models;
 
 import com.google.gson.annotations.Expose;
@@ -9,7 +5,7 @@ import com.google.gson.annotations.Expose;
 /**
  * Contains the status of the reponse
  *
- * @author Victron Energy
+ * @author M2Mobi
  */
 public class Status {
 	@Expose

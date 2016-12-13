@@ -1,12 +1,7 @@
-/*
- * Copyright (c) 2012-2015 Victron Energy.
- */
-
 package nl.victronenergy.util;
 
 import nl.victronenergy.R;
 import nl.victronenergy.models.Attribute;
-
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.view.View;
@@ -14,7 +9,7 @@ import android.view.View;
 /**
  * Helper class that contains functions to setup the overview
  *
- * @author Victron Energy
+ * @author M2Mobi
  */
 public class OverviewHelper {
 

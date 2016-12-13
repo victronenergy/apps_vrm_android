@@ -71,7 +71,10 @@
             android:name="nl.victronenergy.activities.TakePictureActivity"
             android:theme="@style/TransparentDialogTheme"
             android:configChanges="keyboardHidden|orientation|screenSize"/>
-        <meta-data android:name="io.fabric.ApiKey" android:value="d50d41cc16153f4927c01a1c210fbdc801b2d0c3"/>
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="daca00bb346ea26df08ec6a160407490dc880918"
+            />
     </application>
 
 </manifest>

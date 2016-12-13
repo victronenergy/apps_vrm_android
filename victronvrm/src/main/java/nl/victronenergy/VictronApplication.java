@@ -1,32 +1,26 @@
-/*
- * Copyright (c) 2012-2015 Victron Energy.
- */
-
 package nl.victronenergy;
 
-import nl.victronenergy.util.Constants.CRASHLYTICS_KEYS;
-import nl.victronenergy.util.EnvironmentUtils;
-import nl.victronenergy.util.MyLog;
-
-import org.apache.commons.lang3.StringUtils;
-
 import android.app.Application;
-
 import com.crashlytics.android.Crashlytics;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
-
 import io.fabric.sdk.android.Fabric;
+import nl.victronenergy.util.Constants.CRASHLYTICS_KEYS;
+import nl.victronenergy.util.EnvironmentUtils;
+import nl.victronenergy.util.MyLog;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * This is the application class, specified in the android:name attribute in AndroidManifest.xml.
  *
- * @author Victron Energy
+ * @author M2Mobi
  */
 public class VictronApplication extends Application {
 
 	/** Tag used for logging */
 	private static String LOG_TAG = "VictronApplication";
+
+	private static String obfuscatedEncryptionPassword = null;
 
 	@Override
 	public void onCreate() {
@@ -48,5 +42,19 @@ public class VictronApplication extends Application {
 		// Initialise universal image loader
 		ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(getApplicationContext()).build();
 		ImageLoader.getInstance().init(config);
+	}
+
+	public static String getEncryptionMasterKey() {
+		if (obfuscatedEncryptionPassword == null) {
+			obfuscatedEncryptionPassword = obfuscateKey();
+		}
+		return obfuscatedEncryptionPassword;
+	}
+
+	private static String obfuscateKey() {
+		String secret = "BW!VI".replace("!", "8QL").concat("ehChlib".replace("lib", "1ib")).concat("EcmL").concat("-+$xgtwl".replace("-+$", "+"))
+				.concat("9RqYflQDY".replace("9RqYflQ", "Q")).concat("=");
+
+		return secret;
 	}
 }

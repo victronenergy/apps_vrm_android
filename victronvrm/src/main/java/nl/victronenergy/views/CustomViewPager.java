@@ -1,17 +1,16 @@
 package nl.victronenergy.views;
 
-import nl.victronenergy.util.MyLog;
-
 import android.content.Context;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
+import nl.victronenergy.util.MyLog;
 
 /**
  * Custom viewpager that prevents a crash when zooming in the photoview.<br/>
  * http://stackoverflow.com/questions/18383083/arrayindexoutofboundsexception-in-photoview-viewpager<br/>
  * <p/>
- * Created by Victron Energy<br/>
+ * Created by M2Mobi<br/>
  * 6/17/ 2014<br/>
  * 13:23<br/>
  */

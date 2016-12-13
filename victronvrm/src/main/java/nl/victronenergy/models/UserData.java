@@ -1,7 +1,3 @@
-/*
- * Copyright (c) 2012-2015 Victron Energy.
- */
-
 package nl.victronenergy.models;
 
 import com.google.gson.annotations.Expose;
@@ -10,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
 /**
  * Data object with user info
  *
- * @author Victron Energy
+ * @author M2Mobi
  */
 public class UserData {
 	@Expose
@@ -19,7 +15,7 @@ public class UserData {
 	/**
 	 * User class contains the session id and an UserInfo object
 	 *
-	 * @author Victron Energy
+	 * @author M2Mobi
 	 */
 	public class User {
 		@Expose
@@ -33,7 +29,7 @@ public class UserData {
 	/**
 	 * UserInfo class contains info about the user
 	 *
-	 * @author Victron Energy
+	 * @author M2Mobi
 	 */
 	public class UserInfo {
 		@Expose

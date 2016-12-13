@@ -1,7 +1,3 @@
-/*
- * Copyright (c) 2012-2015 Victron Energy.
- */
-
 package nl.victronenergy.fragments;
 
 import java.util.Date;
@@ -19,7 +15,6 @@ import nl.victronenergy.models.AttributesResponse;
 import nl.victronenergy.models.Site;
 import nl.victronenergy.models.SiteListResponse;
 import nl.victronenergy.util.AnalyticsConstants;
-import nl.victronenergy.util.AttributeUtils;
 import nl.victronenergy.util.Constants;
 import nl.victronenergy.util.Constants.ATTRIBUTE;
 import nl.victronenergy.util.Constants.BUNDLE;
@@ -35,8 +30,6 @@ import nl.victronenergy.util.MyLog;
 import nl.victronenergy.util.webservice.JsonParserHelper;
 import nl.victronenergy.util.webservice.RestResponse;
 import nl.victronenergy.util.webservice.WebserviceAsync;
-
-import org.apache.commons.lang3.StringUtils;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -82,7 +75,7 @@ import com.google.analytics.tracking.android.EasyTracker;
  * <li>No Data.</li>
  * </ol>
  *
- * @author Victron Energy
+ * @author M2mobi
  */
 public class FragmentSiteDetail extends VictronVRMFragment implements OnClickListener, LoaderCallbacks<RestResponse>, OnItemClickListener {
 
@@ -406,9 +399,25 @@ public class FragmentSiteDetail extends VictronVRMFragment implements OnClickLis
 			mViewFooterGenerator.setVisibility(View.GONE);
 		}
 
-		AttributeUtils.populateStatusTextView(getActivity(), mTextViewSiteStatus, mSite);
+		// Display the site status
+		if (mSite.getSiteStatus() == Constants.SITE_STATUS.ALARM) {
+			// Create pretty timestamp of alarmStarted
+			CharSequence alarmStarted = DateUtils.getRelativeTimeSpanString(mSite.getAlarmStartedTimestampInMS(), new Date().getTime(),
+					DateUtils.SECOND_IN_MILLIS, 0);
 
-		mTextViewSiteStatus.setVisibility(View.VISIBLE);
+			mTextViewSiteStatus.setText(String.format(getString(R.string.sitesummary_last_update_alarm), alarmStarted));
+			mTextViewSiteStatus.setVisibility(View.VISIBLE);
+		} else if (mSite.getSiteStatus() == Constants.SITE_STATUS.OLD) {
+			// Create pretty timestamp of last update timestamp
+			CharSequence lastUpdate = getString(R.string.not_available);
+			if (mSite.getLastTimeStampInSeconds() > 0) {
+				lastUpdate = DateUtils.getRelativeTimeSpanString(mSite.getLastTimestampInMS(), new Date().getTime(), DateUtils.SECOND_IN_MILLIS, 0);
+			}
+			mTextViewSiteStatus.setText(String.format(getString(R.string.sitesummary_last_update_old), lastUpdate));
+			mTextViewSiteStatus.setVisibility(View.VISIBLE);
+		} else {
+			mTextViewSiteStatus.setVisibility(View.GONE);
+		}
 
 		mGridViewGallery.setAdapter(new GalleryAdapter(mSite));
 	}

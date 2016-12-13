@@ -1,7 +1,3 @@
-/*
- * Copyright (c) 2012-2015 Victron Energy.
- */
-
 package nl.victronenergy.fragments.overviews;
 
 import nl.victronenergy.R;
@@ -10,7 +6,6 @@ import nl.victronenergy.models.Site;
 import nl.victronenergy.util.Constants.ATTRIBUTE;
 import nl.victronenergy.util.Constants.AttributeUnit;
 import nl.victronenergy.util.OverviewHelper;
-
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,7 +15,7 @@ import android.widget.ImageView;
 /**
  * Fragment that shows the data for the BMV+Multi+MPPT overview
  *
- * @author Victron Energy
+ * @author M2Mobi
  */
 public class FragmentOverviewBmvMultiMppt extends FragmentOverview {
 

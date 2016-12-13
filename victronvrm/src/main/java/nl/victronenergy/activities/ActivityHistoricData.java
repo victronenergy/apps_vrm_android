@@ -1,14 +1,9 @@
-/*
- * Copyright (c) 2012-2015 Victron Energy.
- */
-
 package nl.victronenergy.activities;
 
-import nl.victronenergy.R;
 import nl.victronenergy.fragments.FragmentHistoricData;
+import nl.victronenergy.R;
 import nl.victronenergy.util.AnalyticsConstants;
 import nl.victronenergy.util.Constants;
-
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
@@ -18,7 +13,7 @@ import com.google.analytics.tracking.android.EasyTracker;
 
 /**
  * Activity that shows the historic data fragment<br/>
- * Created by Victron Energy on 5-3-14.
+ * Created by M2Mobi on 5-3-14.
  */
 public class ActivityHistoricData extends ActionBarActivity {
 

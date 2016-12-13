@@ -39,7 +39,7 @@
             android:layout_marginBottom="@dimen/spacing_small"
             android:gravity="center_vertical"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/alarm_row_height"/>
+            android:layout_height="@dimen/size_small"/>
 
         <ProgressBar
             android:id="@+id/progressbar_summary_loading"

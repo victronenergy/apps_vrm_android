@@ -1,21 +1,16 @@
-/*
- * Copyright (c) 2012-2015 Victron Energy.
- */
-
 package nl.victronenergy.adapters;
 
+import android.content.pm.PackageManager;
 import nl.victronenergy.BuildConfig;
 import nl.victronenergy.R;
 import nl.victronenergy.models.Attribute;
 import nl.victronenergy.models.Site;
 import nl.victronenergy.util.Constants;
 import nl.victronenergy.util.IoExtenderUtils;
-
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.text.Html;
 import android.text.Spanned;
 import android.text.TextUtils;
@@ -36,7 +31,7 @@ import android.widget.Toast;
  * When a toggle is pressed the user will be asked if he wants to send the SMS command to toggle the ioObject's status<br/>
  * If the user agrees an sms will be send to toggle the IO status
  *
- * @author Victron Energy
+ * @author M2Mobi
  */
 public class IoAdapter extends BaseAdapter {
 	private final String LOG_TAG = "IoAdapter";
