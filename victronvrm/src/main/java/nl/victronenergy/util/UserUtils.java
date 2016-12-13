@@ -52,6 +52,26 @@ public class UserUtils {
 				.putString(SHARED_PREFERENCES.SESSIONID, pSessionId).commit();
 	}
 
+	public static void saveToken(Context pContext, String token) {
+		pContext.getSharedPreferences(SHARED_PREFERENCES.VICTRON_PREFERENCES, Context.MODE_PRIVATE).edit().putString(SHARED_PREFERENCES.TOKEN, token).commit();
+		pContext.getSharedPreferences(SHARED_PREFERENCES.VICTRON_PREFERENCES, Context.MODE_PRIVATE).edit().putString(SHARED_PREFERENCES.TOKEN_USER, getUsername(pContext)).commit();
+	}
+
+	public static String getSavedToken(Context pContext)
+	{
+		String token = pContext.getSharedPreferences(SHARED_PREFERENCES.VICTRON_PREFERENCES, Context.MODE_PRIVATE).getString(SHARED_PREFERENCES.TOKEN, "");
+		String tokenUsername = pContext.getSharedPreferences(SHARED_PREFERENCES.VICTRON_PREFERENCES, Context.MODE_PRIVATE).getString(SHARED_PREFERENCES.TOKEN_USER, "");
+
+		if (!tokenUsername.equals(getUsername(pContext)))
+		{
+			// Reset token
+			saveToken(pContext, "");
+			return "";
+		}
+
+		return token;
+	}
+
 	/**
 	 * Save the username to the shared preferences, used for autorelogin
 	 * 

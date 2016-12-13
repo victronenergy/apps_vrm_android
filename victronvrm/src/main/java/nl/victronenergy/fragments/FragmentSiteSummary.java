@@ -240,8 +240,7 @@ public class FragmentSiteSummary extends Fragment implements OnItemClickListener
 	 * Open the VRM Portal website
 	 */
 	private void openVrmPortal() {
-		EasyTracker.getTracker().sendEvent(AnalyticsConstants.CAT_UI_ACTION, AnalyticsConstants.BUTTON_PRESS, AnalyticsConstants.SETTINGS_WEBSITE,
-				null);
+		EasyTracker.getTracker().sendEvent(AnalyticsConstants.CAT_UI_ACTION, AnalyticsConstants.BUTTON_PRESS, AnalyticsConstants.SETTINGS_WEBSITE, null);
 		Intent websiteIntent = new Intent(getActivity(), ActivityWebsite.class);
 		websiteIntent.putExtra(Constants.INTENT_SITE_URL, Constants.WEBAPP.BASE_URL);
 		startActivity(websiteIntent);

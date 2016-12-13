@@ -302,15 +302,13 @@ public class FragmentSiteDetail extends VictronVRMFragment implements OnClickLis
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 			case R.id.button_web:
-				EasyTracker.getTracker().sendEvent(AnalyticsConstants.CAT_UI_ACTION, AnalyticsConstants.BUTTON_PRESS,
-						AnalyticsConstants.SETTINGS_WEBSITE, null);
+				EasyTracker.getTracker().sendEvent(AnalyticsConstants.CAT_UI_ACTION, AnalyticsConstants.BUTTON_PRESS, AnalyticsConstants.SETTINGS_WEBSITE, null);
 				Intent settingsIntent = new Intent(getActivity(), ActivityWebsite.class);
-				settingsIntent.putExtra(Constants.INTENT_SITE_URL, Constants.WEBAPP.OPEN_SITE_URL + mSite.getIdSite());
+				settingsIntent.putExtra(Constants.INTENT_SITE_URL, Constants.WEBAPP.OPEN_SITE_URL.replace("{site}",Integer.toString(mSite.getIdSite())));
 				startActivity(settingsIntent);
 				break;
 			case R.id.button_refresh:
-				EasyTracker.getTracker().sendEvent(AnalyticsConstants.CAT_UI_ACTION, AnalyticsConstants.BUTTON_PRESS,
-						AnalyticsConstants.REFRESH_SITESUM, null);
+				EasyTracker.getTracker().sendEvent(AnalyticsConstants.CAT_UI_ACTION, AnalyticsConstants.BUTTON_PRESS, AnalyticsConstants.REFRESH_SITESUM, null);
 				loadData();
 				break;
 		}

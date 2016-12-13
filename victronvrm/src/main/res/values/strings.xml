@@ -37,6 +37,7 @@
 
     <!-- Victron Energy Login -->
     <string name="login">Login</string>
+    <string name="sms_token">Enter SMS token</string>
     <string name="user">VRM Portal e-mail</string>
     <string name="password">VRM Portal password</string>
     <string name="forgot_password">Forgot password?</string>

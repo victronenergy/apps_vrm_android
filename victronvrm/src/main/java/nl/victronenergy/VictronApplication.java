@@ -8,6 +8,8 @@ import io.fabric.sdk.android.Fabric;
 import nl.victronenergy.util.Constants.CRASHLYTICS_KEYS;
 import nl.victronenergy.util.EnvironmentUtils;
 import nl.victronenergy.util.MyLog;
+import nl.victronenergy.util.UserUtils;
+
 import org.apache.commons.lang3.StringUtils;
 
 /**
@@ -25,6 +27,9 @@ public class VictronApplication extends Application {
 	@Override
 	public void onCreate() {
 		super.onCreate();
+
+		// Reset token
+		UserUtils.saveToken(this, "");
 
 		// Initialise crashlytics
 		if (BuildConfig.CRASHLYTICS_ENABLED) {

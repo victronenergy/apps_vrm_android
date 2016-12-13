@@ -98,8 +98,10 @@ public final class Constants {
 	// WebApp URLs
 	public static final class WEBAPP {
 		public static final String BASE_URL = "https://acceptancevrm.victronenergy.com/";
-		public static final String OPEN_SITE_URL = BASE_URL + "user/login?return=%2Fsite%2F";
+		public static final String LOGIN_ENDPOINT = "https://acceptancevrmapi.victronenergy.com/v2/auth/login";
+		public static final String OPEN_SITE_URL = BASE_URL + "installation/{site}/dashboard";
 		public static final String FORGOT_PASSWORD_URL = BASE_URL + "forgot-password";
+		public static final String TOKEN_KEY = "vrm.acc.storage.token";
 	}
 
 	/**
@@ -189,6 +191,8 @@ public final class Constants {
 		public static final String USERNAME = "username";
 		public static final String PASSWORD = "password";
 		public static final String SESSIONID = "sessionid";
+		public static final String TOKEN = "token";
+		public static final String TOKEN_USER = "token_user";
 		public static final String DEMO_USER = "demo_user";
 		public static final String URI_PHOTO_TEMP = "uri_photo_temp";
 		public static final String PATH_PHOTO_TEMP = "path_photo_temp";
