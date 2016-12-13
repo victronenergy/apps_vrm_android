@@ -228,15 +228,9 @@ public class ActivityLogin extends ActionBarActivity implements OnClickListener,
 				processLogin();
 				break;
 			case R.id.textview_forgot_password:
-				String email = mEditTextEmail.getText().toString();
-				if (isEmailAddressValid(email)) {
-					String forgotPasswordURL = WEBAPP.FORGOT_PASSWORD_URL + email;
-					Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(forgotPasswordURL));
-					startActivity(browserIntent);
-				} else {
-					showDialogWithMessage(getString(R.string.invalid_email_address));
-				}
-
+				String forgotPasswordURL = WEBAPP.FORGOT_PASSWORD_URL;
+				Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(forgotPasswordURL));
+				startActivity(browserIntent);
 				break;
 		}
 	}

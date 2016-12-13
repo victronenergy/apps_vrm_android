@@ -97,10 +97,9 @@ public final class Constants {
 
 	// WebApp URLs
 	public static final class WEBAPP {
-		public static final String BASE_URL = "https://vrm.victronenergy.com/";
-		public static final String LOGIN_URL = BASE_URL + "user/login/";
+		public static final String BASE_URL = "https://acceptancevrm.victronenergy.com/";
 		public static final String OPEN_SITE_URL = BASE_URL + "user/login?return=%2Fsite%2F";
-		public static final String FORGOT_PASSWORD_URL = BASE_URL + "user/reset-password-request/email/";
+		public static final String FORGOT_PASSWORD_URL = BASE_URL + "forgot-password";
 	}
 
 	/**
