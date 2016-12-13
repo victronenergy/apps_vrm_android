@@ -66,7 +66,7 @@ public class WebserviceAsync extends AsyncTaskLoader<RestResponse> {
 		// Get the URI from the args
 		mURI = args.get(POST.URI).toString();
 
-		MyLog.e(LOG_TAG, "URI: " + mURI);
+		MyLog.d(LOG_TAG, "URI: " + mURI);
 
 		// Add api version to the parameters
 		args.putString(POST.APIVERSION, Constants.API_VERSION);
@@ -128,7 +128,7 @@ public class WebserviceAsync extends AsyncTaskLoader<RestResponse> {
 				if (responseData != null) {
 					try {
 						JSONObject jObject = new JSONObject(responseData);
-						MyLog.d(LOG_TAG, "ResponseData: " + jObject.toString(4));
+						//MyLog.d(LOG_TAG, "ResponseData: " + jObject.toString(4));
 					} catch (Exception e) {
 						MyLog.e(LOG_TAG, "Exception in creating JSONObject, raw data :" + responseData);
 					}

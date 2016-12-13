@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import android.graphics.BitmapFactory;
+import android.os.Environment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.LoaderManager.LoaderCallbacks;
 import android.support.v4.content.Loader;
@@ -22,6 +23,10 @@ import nl.victronenergy.util.webservice.JsonParserHelper;
 import nl.victronenergy.util.webservice.RestResponse;
 import nl.victronenergy.util.webservice.WebserviceAsync;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Activity that lets a user take a picture and uploads it to the victron server
@@ -56,7 +61,18 @@ public class TakePictureActivity extends FragmentActivity implements LoaderCallb
 		setContentView(R.layout.activity_take_picture);
 
 		mSiteId = getIntent().getIntExtra(Constants.INTENT_SITE_ID, -1);
-		mPhotoPath = getExternalFilesDir(null).getAbsolutePath() + GALLERY_PREFIX + IO_PICTURE.EXTENSION;
+
+		// Save a file: path for use with ACTION_VIEW intents
+		try {
+			mPhotoPath = createImageFile();
+		}
+		catch (IOException e)
+		{
+			MyLog.e(LOG_TAG, e.toString());
+		}
+
+		MyLog.d(LOG_TAG, "Path: "+mPhotoPath);
+
 
 		if (savedInstanceState != null) {
 			mIsTakePictureStarted = savedInstanceState.getBoolean(KEY_TAKE_PICTURE_STARTED);
@@ -71,6 +87,21 @@ public class TakePictureActivity extends FragmentActivity implements LoaderCallb
 				finish();
 			}
 		}
+	}
+
+	private String createImageFile() throws IOException {
+		// Create an image file name
+		String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+		String imageFileName = "JPEG_" + timeStamp + "_";
+		File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+		File image = File.createTempFile(
+				imageFileName,  /* prefix */
+				".jpg",         /* suffix */
+				storageDir      /* directory */
+		);
+
+		// Save a file: path for use with ACTION_VIEW intents
+		return image.getAbsolutePath();
 	}
 
 	@Override
@@ -92,7 +123,7 @@ public class TakePictureActivity extends FragmentActivity implements LoaderCallb
 					break;
 				case TakePictureUtils.REQUEST_MULTI_GET_PICTURE:
 					// If the intent is null a picture was taken if it's not, a picture was picked from the gallery
-					if (intent != null) {
+					if (intent != null && TakePictureUtils.getBitmapFromIntent(this, intent) != null) {
 						callImageUploadLoader(TakePictureUtils.getBitmapFromIntent(this, intent));
 					} else {
 						callImageUploadLoader(decodeFile(mPhotoPath));
@@ -154,8 +185,9 @@ public class TakePictureActivity extends FragmentActivity implements LoaderCallb
 	 */
 	private void callImageUploadLoader(Bitmap pBitmap) {
 		if (pBitmap == null) {
-			Toast.makeText(this, R.string.error_take_picture, Toast.LENGTH_SHORT);
+			Toast.makeText(this, R.string.error_take_picture, Toast.LENGTH_SHORT).show();
 			finish();
+			return;
 		}
 
 		Bundle params = new Bundle();
