@@ -75,7 +75,7 @@ public class ActivitySiteDetail extends ActionBarActivity implements SiteDetailC
 
 		// Prepare for refresh
 		LayoutInflater inflater = LayoutInflater.from(this);
-		mImageViewRefresh = (ImageView) inflater.inflate(R.drawable.refresh_action_item, null);
+		mImageViewRefresh = (ImageView) inflater.inflate(R.layout.refresh_action_item, null);
 
 		// Load the animation
 		mAnimationRotate = AnimationUtils.loadAnimation(this, R.anim.anim_refresh);
