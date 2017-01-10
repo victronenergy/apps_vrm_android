@@ -288,7 +288,8 @@ public class FragmentSiteDetail extends VictronVRMFragment implements OnClickLis
 		fragmentOverview.setArguments(bundle);
 		// Only make the transaction when this fragment is visible
 		if (isVisible()) {
-			getChildFragmentManager().beginTransaction().replace(R.id.frame_overview, fragmentOverview).commit();
+            //Uses commitAllowingStateLoss to prevent illegalstateexceptions, however this can lead to unexpected UI changes.
+			getChildFragmentManager().beginTransaction().replace(R.id.frame_overview, fragmentOverview).commitAllowingStateLoss();
 		}
 	}
 
