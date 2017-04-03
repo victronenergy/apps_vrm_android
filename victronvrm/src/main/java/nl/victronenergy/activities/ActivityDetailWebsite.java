@@ -135,7 +135,7 @@ public class ActivityDetailWebsite extends ActionBarActivity {
                 smsToken = input.getText().toString();
 
                 Log.d(TAG, "onClick: SMS code received: " + smsToken);
-                showSite();
+                new GetUserToken(ActivityDetailWebsite.this).execute();
             }
         });
         builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -143,9 +143,17 @@ public class ActivityDetailWebsite extends ActionBarActivity {
             public void onClick(DialogInterface dialog, int which) {
                 dialog.cancel();
 
-                wv.loadUrl(mSiteUrl);
+                loadUrl();
             }
         });
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            builder.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                @Override
+                public void onDismiss(DialogInterface dialog) {
+                    loadUrl();
+                }
+            });
+        }
 
         builder.show();
     }
@@ -185,11 +193,10 @@ public class ActivityDetailWebsite extends ActionBarActivity {
                 //Try to show the site again using the new token
                 loadUrl();
 
-            } else if (result != null && !result.equals("") && !result.equals("smserror")) {
-                Toast.makeText(ActivityDetailWebsite.this, getString(R.string.error_sms_invalid), Toast.LENGTH_LONG).show();
-                getSmsToken();
             } else {
-                loadUrl();
+                //Get a new user token and try again
+                Log.d(TAG, "onPostExecute: Get New User Token!");
+                new GetUserToken(ActivityDetailWebsite.this).execute();
             }
         }
 
@@ -244,21 +251,13 @@ public class ActivityDetailWebsite extends ActionBarActivity {
                             // Ask user for confirmation
                             return "verification_sent";
                         } else if (tokenResult.isNull("token")) {
-                            if (smsToken == null) {
-                                //Invalid credentials
-                                return "crederror";
-                            } else {
-                                //Invalid sms code?
-                                return "smserror";
-                            }
+                            return "error";
                         }
 
                     } catch (Exception e) {
                         MyLog.e(TAG, "Exception in creating JSONObject, raw data :" + responseData);
                     }
                 }
-
-
             } catch (SSLPeerUnverifiedException e) {
                 Toast.makeText(this.activity, getString(R.string.date_inaccurate), Toast.LENGTH_SHORT).show();
             } catch (Throwable t) {
@@ -363,7 +362,7 @@ public class ActivityDetailWebsite extends ActionBarActivity {
                 if (responseData != null) {
                     try {
                         JSONObject tokenResult = new JSONObject(responseData);
-                        MyLog.d(TAG, "ResponseData: " + tokenResult);
+                        MyLog.d(TAG, "ResponseData: " + tokenResult + " --- " + responseStatus);
                         if (tokenResult.has("token") && !tokenResult.isNull("token") && tokenResult.getString("token") != null) {
                             return tokenResult.getString("token");
                         }
