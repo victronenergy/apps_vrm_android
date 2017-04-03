@@ -4,8 +4,8 @@ import java.util.Date;
 
 import nl.victronenergy.BuildConfig;
 import nl.victronenergy.R;
+import nl.victronenergy.activities.ActivityDetailWebsite;
 import nl.victronenergy.activities.ActivityGallery;
-import nl.victronenergy.activities.ActivityWebsite;
 import nl.victronenergy.activities.TakePictureActivity;
 import nl.victronenergy.adapters.GalleryAdapter;
 import nl.victronenergy.adapters.IoAdapter;
@@ -46,6 +46,7 @@ import android.support.v4.content.Loader;
 import android.text.Html;
 import android.text.TextUtils;
 import android.text.format.DateUtils;
+import android.util.Log;
 import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -77,10 +78,10 @@ import com.google.analytics.tracking.android.EasyTracker;
  *
  * @author M2mobi
  */
-public class FragmentSiteDetail extends VictronVRMFragment implements OnClickListener, LoaderCallbacks<RestResponse>, OnItemClickListener {
+public class FragmentSiteDetail extends VictronVRMFragment implements OnClickListener, LoaderCallbacks<RestResponse>, OnItemClickListener, ActivityDetailWebsite.TokenCallbackInterface {
 
 	/** String tag used for log messages */
-	private static final String LOG_TAG = "FragmentSiteDetail";
+	private static final String TAG = "FragmentSiteDetail";
 
 	private SiteDetailCallBacks mSiteDetailCallBacks;
 
@@ -101,7 +102,22 @@ public class FragmentSiteDetail extends VictronVRMFragment implements OnClickLis
 	/** Grid view of the gallery */
 	private GridView mGridViewGallery;
 
-	/**
+    private String mUserToken;
+    private String mGeneratedToken;
+
+    @Override
+    public void setUserToken(String token) {
+        Log.d(TAG, "setUserToken: " + token);
+        this.mUserToken = token;
+    }
+
+    @Override
+    public void setGeneratedToken(String gtoken) {
+        Log.d(TAG, "setGeneratedToken: " + gtoken);
+        this.mGeneratedToken = gtoken;
+    }
+
+    /**
 	 * Interface used to notify the activity of certain events on the site detail fragment
 	 */
 	public interface SiteDetailCallBacks {
@@ -304,8 +320,9 @@ public class FragmentSiteDetail extends VictronVRMFragment implements OnClickLis
 		switch (item.getItemId()) {
 			case R.id.button_web:
 				EasyTracker.getTracker().sendEvent(AnalyticsConstants.CAT_UI_ACTION, AnalyticsConstants.BUTTON_PRESS, AnalyticsConstants.SETTINGS_WEBSITE, null);
-				Intent settingsIntent = new Intent(getActivity(), ActivityWebsite.class);
-				settingsIntent.putExtra(Constants.INTENT_SITE_URL, Constants.WEBAPP.OPEN_SITE_URL.replace("{site}",Integer.toString(mSite.getIdSite())));
+
+				Intent settingsIntent = ActivityDetailWebsite.getIntent(getActivity(), this, mSite.getIdSite(), mUserToken, mGeneratedToken);
+
 				startActivity(settingsIntent);
 				break;
 			case R.id.button_refresh:
@@ -327,11 +344,11 @@ public class FragmentSiteDetail extends VictronVRMFragment implements OnClickLis
 	 */
 	private void loadData() {
 		if (!mDownloadComplete) {
-			MyLog.d(LOG_TAG, "[" + mSite.getIdSite() + "] Download already in progress");
+			MyLog.d(TAG, "[" + mSite.getIdSite() + "] Download already in progress");
 			return;
 		}
 
-		MyLog.d(LOG_TAG, "[" + mSite.getIdSite() + "] Starting download");
+		MyLog.d(TAG, "[" + mSite.getIdSite() + "] Starting download");
 		mDownloadComplete = false;
 
 		// Call the site loader and attributes loader
@@ -343,7 +360,7 @@ public class FragmentSiteDetail extends VictronVRMFragment implements OnClickLis
 	 * Call the loader to get the site data
 	 */
 	public void callSiteDataLoader() {
-		MyLog.d(LOG_TAG, "[" + mSite.getIdSite() + "] Site data loader called");
+		MyLog.d(TAG, "[" + mSite.getIdSite() + "] Site data loader called");
 		mSiteDownloadStatus = DownloadStatus.DOWNLOAD_IN_PROGRESS;
 
 		Bundle params = new Bundle();
@@ -362,7 +379,7 @@ public class FragmentSiteDetail extends VictronVRMFragment implements OnClickLis
 	 * Calls the attributes loader
 	 */
 	public void callAttributesLoader() {
-		MyLog.d(LOG_TAG, "[" + mSite.getIdSite() + "] Attributes loader called");
+		MyLog.d(TAG, "[" + mSite.getIdSite() + "] Attributes loader called");
 		mAttributesDownloadStatus = DownloadStatus.DOWNLOAD_IN_PROGRESS;
 
 		Bundle params = new Bundle();
@@ -629,7 +646,7 @@ public class FragmentSiteDetail extends VictronVRMFragment implements OnClickLis
 				isReloginNeeded = true;
 				break;
 			case DOWNLOAD_IN_PROGRESS:
-				MyLog.i(LOG_TAG, "[" + mSite.getIdSite() + "] Site is still downloading");
+				MyLog.i(TAG, "[" + mSite.getIdSite() + "] Site is still downloading");
 				areAllLoadersDone = false;
 				break;
 			case DOWNLOAD_ERROR:
@@ -645,7 +662,7 @@ public class FragmentSiteDetail extends VictronVRMFragment implements OnClickLis
 				isReloginNeeded = true;
 				break;
 			case DOWNLOAD_IN_PROGRESS:
-				MyLog.i(LOG_TAG, "[" + mSite.getIdSite() + "] Attribute is still downloading");
+				MyLog.i(TAG, "[" + mSite.getIdSite() + "] Attribute is still downloading");
 				areAllLoadersDone = false;
 				break;
 			case DOWNLOAD_ERROR:
@@ -659,21 +676,21 @@ public class FragmentSiteDetail extends VictronVRMFragment implements OnClickLis
 		// If all loaders are done we can check if we are done with loading
 		if (areAllLoadersDone) {
 			mDownloadComplete = true;
-			MyLog.d(LOG_TAG, "[" + mSite.getIdSite() + "] All loaders are done");
+			MyLog.d(TAG, "[" + mSite.getIdSite() + "] All loaders are done");
 
 			if (isReloginNeeded) {
-				MyLog.d(LOG_TAG, "[" + mSite.getIdSite() + "] We need to relogin");
+				MyLog.d(TAG, "[" + mSite.getIdSite() + "] We need to relogin");
 				callLoginLoader();
 			} else {
-				MyLog.d(LOG_TAG, "[" + mSite.getIdSite() + "] Download is complete");
+				MyLog.d(TAG, "[" + mSite.getIdSite() + "] Download is complete");
 				mSiteDetailCallBacks.onSiteDetailLoadingFinished();
 				if (didAnyErrorsOccur) {
-					MyLog.d(LOG_TAG, "[" + mSite.getIdSite() + "] Error occured in atleast one loader");
+					MyLog.d(TAG, "[" + mSite.getIdSite() + "] Error occured in atleast one loader");
 				}
 				setViewsVisibility();
 			}
 		} else {
-			MyLog.d(LOG_TAG, "[" + mSite.getIdSite() + "] Something is still downloading");
+			MyLog.d(TAG, "[" + mSite.getIdSite() + "] Something is still downloading");
 		}
 	}
 
@@ -782,19 +799,19 @@ public class FragmentSiteDetail extends VictronVRMFragment implements OnClickLis
 
 	@Override
 	public void onLoadFinished(Loader<RestResponse> loader, RestResponse response) {
-		MyLog.i(LOG_TAG, "[" + mSite.getIdSite() + "] Loader finished " + loader.getId());
+		MyLog.i(TAG, "[" + mSite.getIdSite() + "] Loader finished " + loader.getId());
 		int loaderType = LoaderUtils.getLoaderIdFromUniqueLoaderId(loader.getId());
 		switch (loaderType) {
 			case LOADER_ID.SITE_ATTRIBUTES_DETAIL:
-				MyLog.i(LOG_TAG, "[" + mSite.getIdSite() + "] Attributes finished");
+				MyLog.i(TAG, "[" + mSite.getIdSite() + "] Attributes finished");
 				parseAttributesResponse(response);
 				break;
 			case LOADER_ID.SITEDATA:
-				MyLog.i(LOG_TAG, "[" + mSite.getIdSite() + "] Site finished");
+				MyLog.i(TAG, "[" + mSite.getIdSite() + "] Site finished");
 				parseSiteResponse(response);
 				break;
 			default:
-				MyLog.e(LOG_TAG, "Unknown loader returned. LoaderID: " + loaderType);
+				MyLog.e(TAG, "Unknown loader returned. LoaderID: " + loaderType);
 				break;
 		}
 		checkLoadingFinished();
@@ -830,7 +847,7 @@ public class FragmentSiteDetail extends VictronVRMFragment implements OnClickLis
 				if (intent.getBooleanExtra(Constants.INTENT_IS_GENERATOR_BTN, true)) {
 					if (siteID == mSite.getIdSite()) {
 						setGeneratorButtonState(intent.getBooleanExtra(Constants.INTENT_ORIGINAL_STATE, true));
-						MyLog.i(LOG_TAG, "[Generator Toggled] SiteID: " + siteID);
+						MyLog.i(TAG, "[Generator Toggled] SiteID: " + siteID);
 
 						// notify linked switch button (on/off)
 						if (intent.getBooleanExtra(Constants.INTENT_FIRED_BY_SMS_BROADCAST, false)) {
@@ -861,7 +878,7 @@ public class FragmentSiteDetail extends VictronVRMFragment implements OnClickLis
 						// just to make sure!
 						mIoAdapter.notifyDataSetChanged();
 
-						MyLog.i(LOG_TAG, "[IO Switch Toggled] IO Code: " + ioCode + "  (SiteID: " + siteID + ")");
+						MyLog.i(TAG, "[IO Switch Toggled] IO Code: " + ioCode + "  (SiteID: " + siteID + ")");
 
 						// notify linked generator button
 						if (intent.getBooleanExtra(Constants.INTENT_FIRED_BY_SMS_BROADCAST, false)) {

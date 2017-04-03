@@ -185,6 +185,7 @@
     <string name="error_no_connection">Unable to connect, make sure you have a working internet connection and try again</string>
     <string name="error_unable_to_send_text">Unable to send text message with this device</string>
     <string name="error_take_picture">Not possible to get a picture from Gallery or Camera.</string>
+    <string name="error_sms_invalid">The SMS code you entered was invalid</string>
 
     <!-- Webservice response errors -->
     <string name="response_not_allowed">You don\'t have permission to perform this action</string>

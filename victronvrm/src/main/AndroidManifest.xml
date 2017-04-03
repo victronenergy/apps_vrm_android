@@ -58,6 +58,11 @@
         <activity
             android:name="nl.victronenergy.activities.ActivityWebsite"
             android:configChanges="orientation|screenSize"/>
+
+        <activity
+            android:name="nl.victronenergy.activities.ActivityDetailWebsite"
+            android:configChanges="orientation|screenSize"/>
+
         <activity
             android:name="nl.victronenergy.activities.ActivitySiteSummary"
             android:label="@string/actionbar_title_site_summary"/>
