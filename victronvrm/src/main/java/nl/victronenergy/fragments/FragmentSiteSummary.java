@@ -2,6 +2,7 @@ package nl.victronenergy.fragments;
 
 import nl.victronenergy.R;
 import nl.victronenergy.activities.ActivityAbout;
+import nl.victronenergy.activities.ActivityDetailWebsite;
 import nl.victronenergy.activities.ActivityLogin;
 import nl.victronenergy.activities.ActivityWebsite;
 import nl.victronenergy.adapters.SiteSummaryAdapter;
@@ -241,7 +242,7 @@ public class FragmentSiteSummary extends Fragment implements OnItemClickListener
 	 */
 	private void openVrmPortal() {
 		EasyTracker.getTracker().sendEvent(AnalyticsConstants.CAT_UI_ACTION, AnalyticsConstants.BUTTON_PRESS, AnalyticsConstants.SETTINGS_WEBSITE, null);
-		Intent websiteIntent = new Intent(getActivity(), ActivityWebsite.class);
+		Intent websiteIntent = new Intent(getActivity(), ActivityDetailWebsite.class);
 		websiteIntent.putExtra(Constants.INTENT_SITE_URL, Constants.WEBAPP.BASE_URL);
 		startActivity(websiteIntent);
 	}
