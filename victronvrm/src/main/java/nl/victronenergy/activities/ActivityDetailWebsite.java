@@ -259,7 +259,12 @@ public class ActivityDetailWebsite extends ActionBarActivity {
                     }
                 }
             } catch (SSLPeerUnverifiedException e) {
-                Toast.makeText(this.activity, getString(R.string.date_inaccurate), Toast.LENGTH_SHORT).show();
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(activity, getString(R.string.date_inaccurate), Toast.LENGTH_SHORT).show();
+                    }
+                });
             } catch (Throwable t) {
                 throwable = t;
             } finally {
@@ -276,7 +281,7 @@ public class ActivityDetailWebsite extends ActionBarActivity {
      * sign in screen
      */
     private class GetUserToken extends AsyncTask<Void, Void, String> {
-        public ActivityDetailWebsite activity;
+        public final ActivityDetailWebsite activity;
 
         private GetUserToken(ActivityDetailWebsite a)
         {
@@ -388,7 +393,12 @@ public class ActivityDetailWebsite extends ActionBarActivity {
 
 
             } catch (SSLPeerUnverifiedException e) {
-                Toast.makeText(this.activity, getString(R.string.date_inaccurate), Toast.LENGTH_SHORT).show();
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(activity, getString(R.string.date_inaccurate), Toast.LENGTH_SHORT).show();
+                    }
+                });
             } catch (Throwable t) {
                 throwable = t;
             } finally {
