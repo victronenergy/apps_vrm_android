@@ -91,7 +91,7 @@ public class ActivityDetailWebsite extends ActionBarActivity {
             mToken = getIntent().getStringExtra("userToken");
         }
 
-        if (mToken != null) {
+        if (mToken != null && !mToken.equals("")) {
             new GenerateToken(this).execute();
         } else {
             new GetUserToken(this).execute();
@@ -181,14 +181,6 @@ public class ActivityDetailWebsite extends ActionBarActivity {
             {
                 Log.d(TAG, "onPostExecute: Generated a new Token: " + result);
                 mGeneratedToken = result;
-
-
-                if (mInterface != null) {
-                    Log.d(TAG, "onPostExecute: Callback to save mGeneratedToken token");
-                    mInterface.setUserToken(mGeneratedToken);
-                } else {
-                    Log.d(TAG, "onPostExecute: Interface is null, mGeneratedToken token");
-                }
 
                 //Try to show the site again using the new token
                 loadUrl();
