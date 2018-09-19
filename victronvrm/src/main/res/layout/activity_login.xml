@@ -93,29 +93,41 @@
                 android:text="@string/logging_in"/>
     </LinearLayout>
 
+    <nl.victronenergy.views.BetterTextView
+        android:id="@+id/button_privacy_policy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/privacy_policy"
+        android:layout_marginStart="@dimen/spacing_small"
+        android:layout_marginLeft="@dimen/spacing_small"
+        android:layout_marginBottom="@dimen/spacing_medium"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        style="@style/TextSecondHeader" />
+
     <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="@dimen/spacing_small"
-            android:layout_marginBottom="@dimen/spacing_medium"
-            android:layout_height="wrap_content">
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="@dimen/spacing_medium"
+        android:layout_marginRight="@dimen/spacing_small"
+        android:orientation="vertical">
 
         <nl.victronenergy.views.BetterTextView
-                style="@style/TextSecondHeader"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/look_inside"/>
+            style="@style/TextSecondHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/look_inside"/>
 
         <nl.victronenergy.views.BetterButton
-                android:id="@+id/button_demo"
-                style="@style/Button"
-                android:layout_marginTop="@dimen/spacing_small"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/size_medium"
-                android:text="@string/demo"/>
+            android:id="@+id/button_demo"
+            style="@style/Button"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_medium"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:text="@string/demo"/>
 
     </LinearLayout>
-
 </RelativeLayout>

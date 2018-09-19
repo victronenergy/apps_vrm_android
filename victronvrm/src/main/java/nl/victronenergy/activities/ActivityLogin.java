@@ -86,6 +86,7 @@ public class ActivityLogin extends ActionBarActivity implements OnClickListener,
 
 		findViewById(R.id.button_demo).setOnClickListener(this);
 		findViewById(R.id.button_sign_in).setOnClickListener(this);
+		findViewById(R.id.button_privacy_policy).setOnClickListener(this);
 		mEditTextPassword.setOnEditorActionListener(this);
 		findViewById(R.id.textview_forgot_password).setOnClickListener(this);
 
@@ -232,6 +233,10 @@ public class ActivityLogin extends ActionBarActivity implements OnClickListener,
 				Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(forgotPasswordURL));
 				startActivity(browserIntent);
 				break;
+            case R.id.button_privacy_policy:
+                Intent privacyIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.victronenergy.com/privacy-policy"));
+                startActivity(privacyIntent);
+                break;
 		}
 	}
 
