@@ -36,7 +36,6 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.google.analytics.tracking.android.EasyTracker;
 
 /**
  * Activity that shows an overview of settings for a site Contains:
@@ -94,16 +93,6 @@ public class FragmentIOGeneratorSettings extends VictronVRMFragment implements O
 
 		outState.putSerializable(BUNDLE.SITE_OBJECT, mSite);
 	}
-
-	@Override
-	public void onStart() {
-		super.onStart();
-		if (getActivity() != null) {
-			EasyTracker.getInstance().setContext(getActivity());
-			EasyTracker.getTracker().sendView(getString(R.string.ga_activity_io_generator_settings));
-		}
-	}
-
 	/**
 	 * Initialize the view
 	 */
@@ -186,8 +175,6 @@ public class FragmentIOGeneratorSettings extends VictronVRMFragment implements O
 
 	@Override
 	public void onItemClick(AdapterView<?> parent, View v, int position, long itemID) {
-		EasyTracker.getTracker()
-				.sendEvent(AnalyticsConstants.CAT_UI_ACTION, AnalyticsConstants.LIST_PRESS, AnalyticsConstants.IO_EXTENDER_LIST, null);
 
 		Intent ioIntent = new Intent(getActivity(), ActivityIOSettings.class);
 		ioIntent.putExtra(BUNDLE.SITE_OBJECT, mSite);

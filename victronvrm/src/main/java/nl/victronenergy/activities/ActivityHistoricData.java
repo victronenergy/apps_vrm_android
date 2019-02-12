@@ -9,7 +9,6 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
 import android.view.MenuItem;
 
-import com.google.analytics.tracking.android.EasyTracker;
 
 /**
  * Activity that shows the historic data fragment<br/>
@@ -63,8 +62,6 @@ public class ActivityHistoricData extends ActionBarActivity {
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		if (item.getItemId() == android.R.id.home) {
-			EasyTracker.getTracker().sendEvent(AnalyticsConstants.CAT_UI_ACTION, AnalyticsConstants.BUTTON_PRESS, AnalyticsConstants.HISTORIC_BACK,
-					null);
 			onBackPressed();
 			return true;
 		}

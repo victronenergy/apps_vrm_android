@@ -47,7 +47,6 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.EditText;
 import android.widget.Toast;
-import com.google.analytics.tracking.android.EasyTracker;
 
 import java.net.URI;
 
@@ -77,22 +76,6 @@ public class ActivityWebsite extends ActionBarActivity {
 		mSiteUrl = getIntent().getStringExtra(Constants.INTENT_SITE_URL);
 
 		initView();
-	}
-
-	@Override
-	protected void onStart() {
-		super.onStart();
-		setTokenDone = false;
-		smsToken = null;
-		EasyTracker.getInstance().setContext(this);
-		EasyTracker.getInstance().activityStart(this);
-	}
-
-	@Override
-	protected void onStop() {
-		super.onStop();
-		EasyTracker.getInstance().setContext(this);
-		EasyTracker.getInstance().activityStop(this);
 	}
 
 	/** Initialize the view */
@@ -215,6 +198,7 @@ public class ActivityWebsite extends ActionBarActivity {
 			Throwable throwable = null;
 			String userName = UserUtils.getUsername(this.activity);
 			String password = UserUtils.getPassword(this.activity);
+
 			// If there is no username, we are logged in as the demo user
 			if (TextUtils.isEmpty(userName)) {
 				userName = Constants.DEMO_EMAIL;

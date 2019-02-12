@@ -32,7 +32,6 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
-import com.google.analytics.tracking.android.EasyTracker;
 
 /**
  * Login screen for authentication.
@@ -58,20 +57,6 @@ public class ActivityLogin extends ActionBarActivity implements OnClickListener,
 		setContentView(R.layout.activity_login);
 
 		initView();
-	}
-
-	@Override
-	protected void onStart() {
-		super.onStart();
-		EasyTracker.getInstance().setContext(this);
-		EasyTracker.getInstance().activityStart(this);
-	}
-
-	@Override
-	protected void onStop() {
-		super.onStop();
-		EasyTracker.getInstance().setContext(this);
-		EasyTracker.getInstance().activityStop(this);
 	}
 
 	/**
@@ -105,8 +90,6 @@ public class ActivityLogin extends ActionBarActivity implements OnClickListener,
 	private void openSiteList(UserResponse pUserResponse) {
 		// Track time it took to login
 		long loginEndTime = System.currentTimeMillis();
-		EasyTracker.getTracker().sendTiming(AnalyticsConstants.CAT_TIMING_WEBSERVICE, loginEndTime - mLoginStartTime,
-				AnalyticsConstants.TIMING_LOGIN, AnalyticsConstants.TIMING_LABEL_SPLASH);
 
 		// Save the sessionId
 		UserUtils.saveSessionID(this, pUserResponse.data.user.sessionId);
@@ -124,8 +107,6 @@ public class ActivityLogin extends ActionBarActivity implements OnClickListener,
 	 * Process the login, save the password and username and call the loginloader
 	 */
 	private void processLogin() {
-		// Analytics stuff
-		EasyTracker.getTracker().sendEvent(AnalyticsConstants.CAT_UI_ACTION, AnalyticsConstants.BUTTON_PRESS, AnalyticsConstants.LOGIN_BUTTON, null);
 
 		// Check if the user entered a valid email address
 		String email = mEditTextEmail.getText().toString();
@@ -219,9 +200,6 @@ public class ActivityLogin extends ActionBarActivity implements OnClickListener,
 	public void onClick(View view) {
 		switch (view.getId()) {
 			case R.id.button_demo:
-				// Analytics stuff
-				EasyTracker.getTracker().sendEvent(AnalyticsConstants.CAT_UI_ACTION, AnalyticsConstants.BUTTON_PRESS, AnalyticsConstants.DEMO_BUTTON,
-						null);
 				callLoginLoader(Constants.DEMO_EMAIL, Constants.DEMO_PASSWORD);
 				break;
 

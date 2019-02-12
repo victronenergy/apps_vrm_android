@@ -63,7 +63,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.analytics.tracking.android.EasyTracker;
 
 /**
  * Site summary can have 5 different scenarios according to documentation and each one show different data:
@@ -201,15 +200,6 @@ public class FragmentSiteDetail extends VictronVRMFragment implements OnClickLis
 	}
 
 	@Override
-	public void onStart() {
-		super.onStart();
-		if (getActivity() != null) {
-			EasyTracker.getInstance().setContext(getActivity());
-			EasyTracker.getTracker().sendView(getString(R.string.ga_activity_site_detail));
-		}
-	}
-
-	@Override
 	public void onResume() {
 		super.onResume();
 
@@ -319,14 +309,12 @@ public class FragmentSiteDetail extends VictronVRMFragment implements OnClickLis
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 			case R.id.button_web:
-				EasyTracker.getTracker().sendEvent(AnalyticsConstants.CAT_UI_ACTION, AnalyticsConstants.BUTTON_PRESS, AnalyticsConstants.SETTINGS_WEBSITE, null);
 
 				Intent settingsIntent = ActivityDetailWebsite.getIntent(getActivity(), this, mSite.getIdSite(), mUserToken, mGeneratedToken);
 
 				startActivity(settingsIntent);
 				break;
 			case R.id.button_refresh:
-				EasyTracker.getTracker().sendEvent(AnalyticsConstants.CAT_UI_ACTION, AnalyticsConstants.BUTTON_PRESS, AnalyticsConstants.REFRESH_SITESUM, null);
 				loadData();
 				break;
 		}
@@ -504,8 +492,6 @@ public class FragmentSiteDetail extends VictronVRMFragment implements OnClickLis
 	public void onClick(View view) {
 		switch (view.getId()) {
 			case R.id.button_generator:
-				EasyTracker.getTracker().sendEvent(AnalyticsConstants.CAT_UI_ACTION, AnalyticsConstants.BUTTON_PRESS,
-						AnalyticsConstants.GENERATOR_BUTTON, null);
 				Attribute generatorOuput = mSite.getIoExtenderData().getGeneratorOutputObject(getActivity(), mSite.getIdSite());
 				if (generatorOuput == null) {
 					Toast.makeText(getActivity(), getString(R.string.site_detail_info_generator_set_settings), Toast.LENGTH_SHORT).show();

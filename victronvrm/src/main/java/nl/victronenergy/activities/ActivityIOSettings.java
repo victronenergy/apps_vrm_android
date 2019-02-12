@@ -38,7 +38,6 @@ import android.view.View.OnClickListener;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
-import com.google.analytics.tracking.android.EasyTracker;
 
 /**
  * <h1>IO Settings Screen</h1> This screen is about a particular IO settings device. This screen comes up when the user
@@ -73,20 +72,6 @@ public class ActivityIOSettings extends ActionBarActivity implements OnClickList
 	}
 
 	@Override
-	protected void onStart() {
-		super.onStart();
-		EasyTracker.getInstance().setContext(this);
-		EasyTracker.getInstance().activityStart(this);
-	}
-
-	@Override
-	protected void onStop() {
-		super.onStop();
-		EasyTracker.getInstance().setContext(this);
-		EasyTracker.getInstance().activityStop(this);
-	}
-
-	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		getMenuInflater().inflate(R.menu.menu_io, menu);
 		mMenuItem = menu.findItem(R.id.button_save);
@@ -100,8 +85,6 @@ public class ActivityIOSettings extends ActionBarActivity implements OnClickList
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 			case android.R.id.home: {
-				EasyTracker.getTracker().sendEvent(AnalyticsConstants.CAT_UI_ACTION, AnalyticsConstants.BUTTON_PRESS,
-						AnalyticsConstants.IO_BACK_BUTTON, null);
 				onBackPressed();
 				break;
 			}
@@ -144,8 +127,6 @@ public class ActivityIOSettings extends ActionBarActivity implements OnClickList
 	 * Save the options
 	 */
 	private void saveOptions() {
-		EasyTracker.getTracker()
-				.sendEvent(AnalyticsConstants.CAT_UI_ACTION, AnalyticsConstants.BUTTON_PRESS, AnalyticsConstants.IO_SAVE_BUTTON, null);
 		EditText editTextName = (EditText) findViewById(R.id.et_io_name);
 
 		// If the name has changed try to save it

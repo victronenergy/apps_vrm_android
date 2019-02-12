@@ -17,7 +17,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.google.analytics.tracking.android.EasyTracker;
 
 /**
  * Shows an overview of the sites owned by this user in a pagerAdapter
@@ -119,7 +118,6 @@ public class FragmentSiteViewPager extends Fragment implements OnPageChangeListe
 
 	@Override
 	public void onPageSelected(int position) {
-		EasyTracker.getTracker().sendEvent(AnalyticsConstants.CAT_GESTURE_ACTION, AnalyticsConstants.SWIPE, AnalyticsConstants.SITE_SWIPE, null);
 		mSelectedSiteIndex = position;
 		mSiteViewPagerCallBacks.onPageChange(position);
 	}

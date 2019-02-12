@@ -38,7 +38,6 @@ import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
-import com.google.analytics.tracking.android.EasyTracker;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 import com.jeremyfeinstein.slidingmenu.lib.actionbar.ActionBarSlideIcon;
 import com.jeremyfeinstein.slidingmenu.lib.app.SlidingActivity;
@@ -139,20 +138,6 @@ public class ActivitySiteSummary extends SlidingActivity implements LoaderManage
 		updateActionbarTitle();
 	}
 
-	@Override
-	protected void onStart() {
-		super.onStart();
-		EasyTracker.getInstance().setContext(this);
-		EasyTracker.getInstance().activityStart(this);
-	}
-
-	@Override
-	protected void onStop() {
-		super.onStop();
-		EasyTracker.getInstance().setContext(this);
-		EasyTracker.getInstance().activityStop(this);
-	}
-
 	/**
 	 * Initialize the view and load required data
 	 */
@@ -198,8 +183,6 @@ public class ActivitySiteSummary extends SlidingActivity implements LoaderManage
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		if (item.getItemId() == R.id.button_refresh) {
-			EasyTracker.getTracker().sendEvent(AnalyticsConstants.CAT_UI_ACTION, AnalyticsConstants.BUTTON_PRESS,
-					AnalyticsConstants.REFRESH_SITELIST, null);
 			refreshData(item);
 		} else if (item.getItemId() == R.id.button_search) {
 			if (mHasSlidingMenu) {

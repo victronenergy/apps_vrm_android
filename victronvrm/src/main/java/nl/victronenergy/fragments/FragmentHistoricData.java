@@ -25,8 +25,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.analytics.tracking.android.EasyTracker;
-
 /**
  * Shows a list of 16 historic values
  *
@@ -79,15 +77,6 @@ public class FragmentHistoricData extends VictronVRMFragment implements LoaderCa
 		// Only make the call when there is a valid site object
 		if (mSite != null) {
 			callHistoricDataLoader();
-		}
-	}
-
-	@Override
-	public void onStart() {
-		super.onStart();
-		if (getActivity() != null) {
-			EasyTracker.getInstance().setContext(getActivity());
-			EasyTracker.getTracker().sendView(getString(R.string.ga_activity_historic_data));
 		}
 	}
 
