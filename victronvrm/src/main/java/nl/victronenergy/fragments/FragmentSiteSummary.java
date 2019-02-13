@@ -34,7 +34,6 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.EditText;
 import android.widget.ListView;
-import com.google.analytics.tracking.android.EasyTracker;
 
 /**
  * Shows a list of sites for the logged in user
@@ -161,8 +160,6 @@ public class FragmentSiteSummary extends Fragment implements OnItemClickListener
 		if (mSearchActionBar != null && MenuItemCompat.isActionViewExpanded(mSearchMenuItem)) {
 			MenuItemCompat.collapseActionView(mSearchMenuItem);
 		}
-		EasyTracker.getInstance().getTracker()
-				.sendEvent(AnalyticsConstants.CAT_UI_ACTION, AnalyticsConstants.LIST_PRESS, AnalyticsConstants.SITELIST_LIST, null);
 
 		// Notify the activity that a site has been selected
 		mOnSiteSelectedListener.onSiteSelected((int) itemId);
@@ -206,8 +203,6 @@ public class FragmentSiteSummary extends Fragment implements OnItemClickListener
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 			case R.id.button_search:
-				EasyTracker.getTracker().sendEvent(AnalyticsConstants.CAT_UI_ACTION, AnalyticsConstants.BUTTON_PRESS,
-						AnalyticsConstants.SEARCH_BUTTON, null);
 				performSearch(item);
 				break;
 			case R.id.menu_button_logout:
@@ -227,8 +222,6 @@ public class FragmentSiteSummary extends Fragment implements OnItemClickListener
 	 * Log the user out and return to the login screen
 	 */
 	private void logout() {
-		EasyTracker.getTracker().sendEvent(AnalyticsConstants.CAT_UI_ACTION, AnalyticsConstants.BUTTON_PRESS, AnalyticsConstants.SETTINGS_LOGOUT,
-				null);
 		UserUtils.deleteUserData(getActivity());
 
 		// Go to login screen
@@ -241,7 +234,6 @@ public class FragmentSiteSummary extends Fragment implements OnItemClickListener
 	 * Open the VRM Portal website
 	 */
 	private void openVrmPortal() {
-		EasyTracker.getTracker().sendEvent(AnalyticsConstants.CAT_UI_ACTION, AnalyticsConstants.BUTTON_PRESS, AnalyticsConstants.SETTINGS_WEBSITE, null);
 		Intent websiteIntent = new Intent(getActivity(), ActivityDetailWebsite.class);
 		websiteIntent.putExtra(Constants.INTENT_SITE_URL, Constants.WEBAPP.BASE_URL);
 		startActivity(websiteIntent);

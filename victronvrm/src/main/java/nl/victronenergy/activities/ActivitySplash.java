@@ -21,7 +21,6 @@ import android.support.v4.app.LoaderManager.LoaderCallbacks;
 import android.support.v4.content.Loader;
 import android.text.TextUtils;
 import android.view.View;
-import com.google.analytics.tracking.android.EasyTracker;
 
 /**
  * Splash screen, automatically tries to login the user and continue to the sitelist, if login fails it will open the
@@ -70,20 +69,6 @@ public class ActivitySplash extends FragmentActivity implements LoaderCallbacks<
 		}
 	}
 
-	@Override
-	protected void onStart() {
-		super.onStart();
-		EasyTracker.getInstance().setContext(this);
-		EasyTracker.getInstance().activityStart(this);
-	}
-
-	@Override
-	protected void onStop() {
-		super.onStop();
-		EasyTracker.getInstance().setContext(this);
-		EasyTracker.getInstance().activityStop(this);
-	}
-
 	/**
 	 * Call the loader to try login
 	 *
@@ -114,14 +99,10 @@ public class ActivitySplash extends FragmentActivity implements LoaderCallbacks<
 			if (mLoginFinished && mSplashFinished) {
 				// Analytics
 				long loginEndTime = System.currentTimeMillis();
-				EasyTracker.getTracker().sendTiming(AnalyticsConstants.CAT_TIMING_WEBSERVICE, loginEndTime - mLoginStartTime,
-						AnalyticsConstants.TIMING_LOGIN, AnalyticsConstants.TIMING_LABEL_SPLASH);
 
 				// Save the sessionId
 				UserUtils.saveSessionID(this, mSessionId);
 
-				EasyTracker.getTracker().sendTiming(AnalyticsConstants.CAT_TIMING_WEBSERVICE, loginEndTime - mLoginStartTime,
-						AnalyticsConstants.TIMING_LOGIN, AnalyticsConstants.TIMING_LABEL_SPLASH);
 				startActivity(new Intent(this, ActivitySiteSummary.class));
 			}
 		} else {

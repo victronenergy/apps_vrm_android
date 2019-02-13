@@ -11,7 +11,8 @@ import nl.victronenergy.util.MyLog;
 import nl.victronenergy.util.UserUtils;
 
 import org.apache.commons.lang3.StringUtils;
-
+import com.google.android.gms.analytics.GoogleAnalytics;
+import com.google.android.gms.analytics.Tracker;
 /**
  * This is the application class, specified in the android:name attribute in AndroidManifest.xml.
  *
@@ -21,7 +22,8 @@ public class VictronApplication extends Application {
 
 	/** Tag used for logging */
 	private static String LOG_TAG = "VictronApplication";
-
+	private static GoogleAnalytics sAnalytics;
+	private static Tracker sTracker;
 	private static String obfuscatedEncryptionPassword = null;
 
 	@Override
@@ -47,6 +49,8 @@ public class VictronApplication extends Application {
 		// Initialise universal image loader
 		ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(getApplicationContext()).build();
 		ImageLoader.getInstance().init(config);
+
+		sAnalytics = GoogleAnalytics.getInstance(this);
 	}
 
 	public static String getEncryptionMasterKey() {
@@ -61,5 +65,18 @@ public class VictronApplication extends Application {
 				.concat("9RqYflQDY".replace("9RqYflQ", "Q")).concat("=");
 
 		return secret;
+	}
+
+	/**
+	 * Gets the default {@link Tracker} for this {@link Application}.
+	 * @return tracker
+	 */
+	synchronized public Tracker getDefaultTracker() {
+		// To enable debug logging use: adb shell setprop log.tag.GAv4 DEBUG
+		if (sTracker == null) {
+			sTracker = sAnalytics.newTracker(R.xml.global_tracker);
+		}
+
+		return sTracker;
 	}
 }

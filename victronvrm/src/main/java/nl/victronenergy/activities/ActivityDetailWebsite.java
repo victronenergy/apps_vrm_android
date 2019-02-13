@@ -50,7 +50,6 @@ import android.webkit.WebViewClient;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
-import com.google.analytics.tracking.android.EasyTracker;
 
 import java.net.URI;
 
@@ -407,15 +406,6 @@ public class ActivityDetailWebsite extends ActionBarActivity {
         super.onStart();
         setTokenDone = false;
         smsToken = null;
-        EasyTracker.getInstance().setContext(this);
-        EasyTracker.getInstance().activityStart(this);
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        EasyTracker.getInstance().setContext(this);
-        EasyTracker.getInstance().activityStop(this);
     }
 
     /** Initialize the view */

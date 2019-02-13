@@ -9,8 +9,6 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
 import android.view.MenuItem;
 
-import com.google.analytics.tracking.android.EasyTracker;
-
 /**
  * Activity that shows the generator settings fragment<br/>
  * Created by M2Mobi on 5-3-14.
@@ -52,20 +50,5 @@ public class ActivityIOGeneratorSettings extends ActionBarActivity {
 		if (fragmentGeneratorSettings != null) {
 			getSupportFragmentManager().putFragment(outState, Constants.FRAGMENT_TAG.SITE_IO_GENERATOR_SETTINGS, fragmentGeneratorSettings);
 		}
-	}
-
-	/**
-	 * Checks which action bar button is pressed
-	 */
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		if (item.getItemId() == android.R.id.home) {
-			EasyTracker.getTracker().sendEvent(AnalyticsConstants.CAT_UI_ACTION, AnalyticsConstants.BUTTON_PRESS, AnalyticsConstants.SETTINGS_BACK,
-					null);
-			onBackPressed();
-			return true;
-		}
-
-		return super.onOptionsItemSelected(item);
 	}
 }

@@ -1,10 +1,17 @@
 package nl.victronenergy.util;
 
+import android.util.Base64;
+
+import java.io.UnsupportedEncodingException;
+import java.security.GeneralSecurityException;
 import java.security.SecureRandom;
+import java.security.spec.KeySpec;
 
 import javax.crypto.Cipher;
-import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;
+import javax.crypto.SecretKeyFactory;
+import javax.crypto.spec.IvParameterSpec;
+import javax.crypto.spec.PBEKeySpec;
 import javax.crypto.spec.SecretKeySpec;
 
 /**
@@ -16,77 +23,97 @@ import javax.crypto.spec.SecretKeySpec;
 
 public class SimpleCrypto {
 
-	public static String encrypt(String seed, String cleartext) throws Exception {
-		byte[] rawKey = getRawKey(seed.getBytes());
-		byte[] result = encrypt(rawKey, cleartext.getBytes());
-		return toHex(result);
-	}
+	private static final int ITERATION_COUNT = 1000;
+	private static final int KEY_LENGTH = 256;
+	private static final String PBKDF2_DERIVATION_ALGORITHM = "PBKDF2WithHmacSHA1";
+	private static final String CIPHER_ALGORITHM = "AES/CBC/PKCS5Padding";
+	private static final int PKCS5_SALT_LENGTH = 32;
+	private static final String DELIMITER = "]";
+	private static final SecureRandom random = new SecureRandom();
 
-	public static String decrypt(String seed, String encrypted) throws Exception {
-		byte[] rawKey = getRawKey(seed.getBytes());
-		byte[] enc = toByte(encrypted);
-		byte[] result = decrypt(rawKey, enc);
-		return new String(result);
-	}
+	public static String encrypt(String password, String plaintext) {
+		byte[] salt  = generateSalt();
+		SecretKey key = deriveKey(password, salt);
 
-	private static byte[] getRawKey(byte[] seed) throws Exception {
-		KeyGenerator kgen = KeyGenerator.getInstance("AES");
-		SecureRandom sr = SecureRandom.getInstance("SHA1PRNG", "Crypto");
-		sr.setSeed(seed);
-		kgen.init(128, sr); // 192 and 256 bits may not be available
-		SecretKey skey = kgen.generateKey();
-		byte[] raw = skey.getEncoded();
-		return raw;
-	}
+		try {
+			Cipher cipher = Cipher.getInstance(CIPHER_ALGORITHM);
+			byte[] iv = generateIv(cipher.getBlockSize());
+			IvParameterSpec ivParams = new IvParameterSpec(iv);
+			cipher.init(Cipher.ENCRYPT_MODE, key, ivParams);
+			byte[] cipherText = cipher.doFinal(plaintext.getBytes("UTF-8"));
 
-	private static byte[] encrypt(byte[] raw, byte[] clear) throws Exception {
-		SecretKeySpec skeySpec = new SecretKeySpec(raw, "AES");
-		Cipher cipher = Cipher.getInstance("AES");
-		cipher.init(Cipher.ENCRYPT_MODE, skeySpec);
-		byte[] encrypted = cipher.doFinal(clear);
-		return encrypted;
-	}
+			if(salt != null) {
+				return String.format("%s%s%s%s%s",
+						toBase64(salt),
+						DELIMITER,
+						toBase64(iv),
+						DELIMITER,
+						toBase64(cipherText));
+			}
 
-	private static byte[] decrypt(byte[] raw, byte[] encrypted) throws Exception {
-		SecretKeySpec skeySpec = new SecretKeySpec(raw, "AES");
-		Cipher cipher = Cipher.getInstance("AES");
-		cipher.init(Cipher.DECRYPT_MODE, skeySpec);
-		byte[] decrypted = cipher.doFinal(encrypted);
-		return decrypted;
-	}
-
-	public static String toHex(String txt) {
-		return toHex(txt.getBytes());
-	}
-
-	public static String fromHex(String hex) {
-		return new String(toByte(hex));
-	}
-
-	public static byte[] toByte(String hexString) {
-		int len = hexString.length() / 2;
-		byte[] result = new byte[len];
-		for (int i = 0; i < len; i++) {
-			result[i] = Integer.valueOf(hexString.substring(2 * i, 2 * i + 2), 16).byteValue();
+			return String.format("%s%s%s",
+					toBase64(iv),
+					DELIMITER,
+					toBase64(cipherText));
+		} catch (GeneralSecurityException e) {
+			throw new RuntimeException(e);
+		} catch (UnsupportedEncodingException e) {
+			throw new RuntimeException(e);
 		}
-		return result;
 	}
 
-	public static String toHex(byte[] buf) {
-		if (buf == null) {
-			return "";
+	public static String decrypt(String password, String ciphertext) {
+		String[] fields = ciphertext.split(DELIMITER);
+		if(fields.length != 3) {
+			throw new IllegalArgumentException("Invalid encypted text format");
 		}
-		StringBuffer result = new StringBuffer(2 * buf.length);
-		for (int i = 0; i < buf.length; i++) {
-			appendHex(result, buf[i]);
+		byte[] salt        = fromBase64(fields[0]);
+		byte[] iv          = fromBase64(fields[1]);
+		byte[] cipherBytes = fromBase64(fields[2]);
+		SecretKey key = deriveKey(password, salt);
+
+		try {
+			Cipher cipher = Cipher.getInstance(CIPHER_ALGORITHM);
+			IvParameterSpec ivParams = new IvParameterSpec(iv);
+			cipher.init(Cipher.DECRYPT_MODE, key, ivParams);
+			byte[] plaintext = cipher.doFinal(cipherBytes);
+			return new String(plaintext, "UTF-8");
+		} catch (GeneralSecurityException e) {
+			throw new RuntimeException(e);
+		} catch (UnsupportedEncodingException e) {
+			throw new RuntimeException(e);
 		}
-		return result.toString();
 	}
 
-	private final static String HEX = "0123456789ABCDEF";
+	private static byte[] generateSalt() {
+		byte[] b = new byte[PKCS5_SALT_LENGTH];
+		random.nextBytes(b);
+		return b;
+	}
 
-	private static void appendHex(StringBuffer sb, byte b) {
-		sb.append(HEX.charAt((b >> 4) & 0x0f)).append(HEX.charAt(b & 0x0f));
+	private static byte[] generateIv(int length) {
+		byte[] b = new byte[length];
+		random.nextBytes(b);
+		return b;
+	}
+
+	private static SecretKey deriveKey(String password, byte[] salt) {
+		try {
+			KeySpec keySpec = new PBEKeySpec(password.toCharArray(), salt, ITERATION_COUNT, KEY_LENGTH);
+			SecretKeyFactory keyFactory = SecretKeyFactory.getInstance(PBKDF2_DERIVATION_ALGORITHM);
+			byte[] keyBytes = keyFactory.generateSecret(keySpec).getEncoded();
+			return new SecretKeySpec(keyBytes, "AES");
+		} catch (GeneralSecurityException e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+	private static String toBase64(byte[] bytes) {
+		return Base64.encodeToString(bytes, Base64.NO_WRAP);
+	}
+
+	private static byte[] fromBase64(String base64) {
+		return Base64.decode(base64, Base64.NO_WRAP);
 	}
 }
 

@@ -24,7 +24,6 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.google.analytics.tracking.android.EasyTracker;
 
 /**
  * Shows a viewpager with detailed info of the site status.<br/>
@@ -126,8 +125,6 @@ public class ActivitySiteDetail extends ActionBarActivity implements SiteDetailC
 		if (item.getItemId() == R.id.button_refresh) {
 			startRefreshAnimation(item);
 		} else if (item.getItemId() == android.R.id.home) {
-			EasyTracker.getTracker().sendEvent(AnalyticsConstants.CAT_UI_ACTION, AnalyticsConstants.BUTTON_PRESS,
-					AnalyticsConstants.SITE_BACK_BUTTON, null);
 			onBackPressed();
 			return true;
 		}
