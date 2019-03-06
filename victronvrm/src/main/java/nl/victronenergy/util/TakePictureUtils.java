@@ -10,6 +10,8 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
 import android.media.ExifInterface;
+
+import nl.victronenergy.BuildConfig;
 import nl.victronenergy.R;
 import android.app.Activity;
 import android.content.Context;
@@ -18,6 +20,7 @@ import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.net.Uri;
 import android.provider.MediaStore;
+import android.support.v4.content.FileProvider;
 import android.widget.Toast;
 
 /**
@@ -91,7 +94,9 @@ public class TakePictureUtils {
 		if (pActivity.getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA)
 				&& isIntentAvailable(pActivity, MediaStore.ACTION_IMAGE_CAPTURE)) {
 			intentTakePicture = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-			intentTakePicture.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(photoFile));
+			intentTakePicture.putExtra(MediaStore.EXTRA_OUTPUT, FileProvider.getUriForFile(pActivity,
+					BuildConfig.APPLICATION_ID + ".provider",
+					photoFile));
 		}
 
 		// Setup pick picture intent
